@@ -1,5 +1,6 @@
 import { Switch, Route } from "react-router-dom";
 import { Dashboard } from "../pages/Dashboard";
+import { Group } from "../pages/Group";
 export const Routes = () => {
   return (
     <>
@@ -25,6 +26,10 @@ export const Routes = () => {
         </Route>
         <Route path="/my_groups">
           <h1>Grupos do usuário</h1>
+        </Route>
+        <Route path="/group">
+          {/* aqui vai mudar para :id */}
+          <Group />
         </Route>
         <Route path="/goals">
           <h1>Metas</h1>
