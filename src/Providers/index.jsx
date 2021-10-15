@@ -7,3 +7,5 @@ const Providers = ({ children }) => {
         </UserHabitsApiProvider>
     )
 }
+
+export default Providers;
