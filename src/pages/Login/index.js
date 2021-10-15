@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import api from "../../services/api";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router";
+import { jwt } from 'jwt-encode';
 
 const Signup = () => {
     const history = useHistory();    
@@ -26,12 +27,17 @@ const Signup = () => {
         
         api.post("/sessions/", userData).then((response) => {
 
-            const { access, user } = response.data
+            const { access } = response.data
 
             toast.success("Login efetuadocom sucesso");
 
-            return history.push("/login");
-        });
+            localStorage.setItem('Habit:access', JSON.stringify(access));
+            
+
+            return history.push("/dashboard");
+
+            
+        }).catch((err) => toast.error("Email ou senha inválidos"));
     };
 
     return (
