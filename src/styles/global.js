@@ -32,8 +32,7 @@ export default createGlobalStyle`
 	
 }
 body{
-	background: rgb(3,50,112);
-	background: linear-gradient(180deg, rgba(3,50,112,1) 0%, rgba(203,27,22,1) 100%);
+	background: var(---background-geral);
 	color: var(--black);
 }
 
