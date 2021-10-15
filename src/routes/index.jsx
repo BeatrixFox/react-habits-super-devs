@@ -1,4 +1,5 @@
 import { Switch, Route } from "react-router-dom";
+import { Dashboard } from "../pages/Dashboard";
 export const Routes = () => {
   return (
     <>
@@ -12,6 +13,9 @@ export const Routes = () => {
         </Route>
         <Route path="/user_create">
           <h1>Cadastro de usuário</h1>
+        </Route>
+        <Route path="/dashboard">
+          <Dashboard />
         </Route>
         <Route path="/user_update">
           <h1>Atualização do usuário</h1>
