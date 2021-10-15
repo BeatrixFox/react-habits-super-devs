@@ -4,9 +4,9 @@ import { useForm } from "react-hook-form";
 import api from "../../services/api";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router";
-import { jwt } from 'jwt-encode';
+import jwt_decode from "jwt-decode";
 
-const Signup = () => {
+const Login = () => {
     const history = useHistory();    
 
     const schema = yup.object().shape({
@@ -33,10 +33,12 @@ const Signup = () => {
 
             localStorage.setItem('Habit:access', JSON.stringify(access));
             
+            const decoded = jwt_decode(access);
+            console.log(decoded.prints.user_id);
 
             return history.push("/dashboard");
 
-            
+
         }).catch((err) => toast.error("Email ou senha inválidos"));
     };
 
@@ -53,4 +55,4 @@ const Signup = () => {
     );
 };
 
-export default Signup;
+export default Login;
