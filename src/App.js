@@ -1,5 +1,7 @@
+import { Routes } from "./routes/index.jsx";
+
 function App() {
-  return <div className="App">inicio</div>;
+  return <Routes />;
 }
 
 export default App;
