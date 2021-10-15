@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-export const DasboardCSS = styled.div`
-  img {
-    width: 300px;
-  }
+export const Img = styled.img`
+  width: 300px;
 `;

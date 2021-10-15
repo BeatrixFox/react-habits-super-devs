@@ -12,7 +12,7 @@ export const Dashboard = () => {
     console.log("handleClickUpdUser");
   };
   return (
-    <DasboardCSS>
+    <>
       <Button handleClick={handleClickGroups} type="onClick" title="Grupos" />
       <Button handleClick={handleClickHabits} type="onClick" title="Hábitos" />
       <Button
@@ -20,7 +20,8 @@ export const Dashboard = () => {
         type="onClick"
         title="Atualizar Cadastro"
       />
-      <img src={dashboardImg} alt="imagem dashboard" />
-    </DasboardCSS>
+
+      <Img src={dashboardImg} alt="imagem dashboard" />
+    </>
   );
 };
