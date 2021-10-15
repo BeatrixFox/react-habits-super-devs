@@ -1,5 +1,5 @@
 import dashboardImg from "../../assets/img/clip-uniting-the-world.png";
-import { DasboardCSS } from "./style";
+import { Img } from "./style";
 import Button from "../../components/Button/index.jsx";
 export const Dashboard = () => {
   const handleClickGroups = () => {
