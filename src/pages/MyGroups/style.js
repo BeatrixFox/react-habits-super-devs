@@ -7,7 +7,6 @@ export const Container = styled.div`
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  -moz-background-origin: scaleX(-1);
   opacity: 70%;
   width: 80vw;
   height: 80vh;
