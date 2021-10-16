@@ -7,42 +7,46 @@ import api from "../../services/api";
 export const UserHabitsApiContext = createContext();
 
 export const UserHabitsApiProvider = ({ children }) => {
-    const [userProfile, setUserProfile] = useState([]);
-    const [access] = useState(
+    const [userSignupSuccess, setSignupSuccess] = useState();
+    const [userId, setUserId] = useState();
+
+    const [accessToken] = useState(
         JSON.parse(localStorage.getItem("@Habit:access")) || ""
     );
 
-    const userSignup = ({ userData }) => {
+    const userSignup = (userData) => {
         api.post("/users/", userData)
             .then((response) => {
                 toast.success("Conta criada com sucesso!");
+                setSignupSuccess(response.data);
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                console.log(err);
+            });
     };
 
-    const userLogin = ({ userData }) => {
+    const userLogin = (userData) => {
         api.post("/sessions/", userData)
             .then((response) => {
                 const { access } = response.data;
                 toast.success("Login efetuado com sucesso!");
-                localStorage.setItem("Habit:access", JSON.stringify(access));
-
+                localStorage.setItem("@Habit:access", JSON.stringify(access));
                 const decoded = jwtDecode(access);
+                setUserId(decoded?.user_id);
             })
             .catch((err) => console.log(err));
     };
 
-    const userProfileUpdate = ({ userData }) => {
-        const { id, username } = userData;
-
+    const userProfileUpdate = (newUser, idUser) => {
+        console.log(newUser, idUser);
         api.patch(
-            `/users/${id}`,
+            `/users/${idUser}/`,
             {
-                username: username,
+                username: newUser,
             },
             {
                 headers: {
-                    Authorization: `Bearer ${access}`,
+                    Authorization: `Bearer ${accessToken}`,
                 },
             }
         );
@@ -50,7 +54,13 @@ export const UserHabitsApiProvider = ({ children }) => {
 
     return (
         <UserHabitsApiContext.Provider
-            value={{ userSignup, userLogin, userProfileUpdate }}
+            value={{
+                userSignup,
+                userSignupSuccess,
+                userLogin,
+                userId,
+                userProfileUpdate,
+            }}
         >
             {children}
         </UserHabitsApiContext.Provider>

@@ -2,11 +2,16 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import api from "../../services/api";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import { useHistory } from "react-router";
+import { useContext, useEffect, useState } from "react";
+import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
+import UpdateUserProfile from "../../components/UpdateUserProfile";
 
 const Signup = () => {
     const history = useHistory();
+
+    const { userSignup, userSignupSuccess, userId } = useContext(UserHabitsApiContext);
 
     const passRegex =
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
@@ -41,15 +46,18 @@ const Signup = () => {
 
     const onSubmitForm = ({ username, email, password }) => {
         const user = { username, email, password };
-
-        api.post("/sessions/", user).then((response) => {
-            toast.success("Sucesso ao criar a conta");
-
-            return history.push("/login");
-        });
+        userSignup(user);
     };
 
+    useEffect(() => {
+        if (userSignupSuccess) {
+            history.push("login");
+        }
+    }, [userSignupSuccess]);
+
     return (
+        <>
+
         <form onSubmit={handleSubmit(onSubmitForm)}>
             <input placeholder="Nome de usuário" {...register("username")} />
             <p>{errors.username?.message}</p>
@@ -74,6 +82,9 @@ const Signup = () => {
 
             <button type="submit">ADD</button>
         </form>
+
+        <UpdateUserProfile />
+        </>
     );
 };
 
