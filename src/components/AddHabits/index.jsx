@@ -7,21 +7,21 @@ import { toast } from "react-toastify";
 // import context provider
 
 const optionsCategory = [
-  { value: "HardSkill", label: "HardSkill" },
-  { value: "SoftSkill", label: "SoftSkill" },
-  { value: "Saúde", label: "Saúde" },
+  { value: "hardSkill", label: "hardSkill" },
+  { value: "softSkill", label: "softSkill" },
+  { value: "saude", label: "saude" },
 ];
 
 const optionsLevel = [
-  { value: "Fácil", label: "Fácil" },
-  { value: "Médio", label: "Médio" },
-  { value: "Dificil", label: "Dificil" },
+  { value: "facil", label: "facil" },
+  { value: "medio", label: "medio" },
+  { value: "dificil", label: "dificil" },
 ];
 
 const optionsFrequency = [
-  { value: "diaria", label: "Diaria" },
-  { value: "semanal", label: "Semanal" },
-  { value: "quinzenal", label: "Quinzenal" },
+  { value: "diaria", label: "diaria" },
+  { value: "semanal", label: "semanal" },
+  { value: "quinzenal", label: "quinzenal" },
 ];
 
 export const AddHabits = () => {
@@ -54,9 +54,6 @@ export const AddHabits = () => {
     <form onSubmit={handleSubmit(onSubmitForm)}>
       <input placeholder="Nome do novo hábito" {...register("title")} />
       <p>{errors.title?.message}</p>
-
-      <input placeholder="Senha" {...register("password")} />
-      <p>{errors.password?.message}</p>
 
       <Select
         defaultValue={selectedOptionCategory}
