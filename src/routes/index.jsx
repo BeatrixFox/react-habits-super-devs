@@ -1,6 +1,10 @@
 import { Switch, Route } from "react-router-dom";
 import { Dashboard } from "../pages/Dashboard";
 import { Group } from "../pages/Group";
+import { Groups } from "../pages/Groups";
+import { MyGroups } from "../pages/MyGroups/index";
+import { Habits } from "../pages/Habits";
+
 export const Routes = () => {
   return (
     <>
@@ -22,10 +26,10 @@ export const Routes = () => {
           <h1>Atualização do usuário</h1>
         </Route>
         <Route path="/groups">
-          <h1>Grupos</h1>
+          <Groups />
         </Route>
         <Route path="/my_groups">
-          <h1>Grupos do usuário</h1>
+          <MyGroups />
         </Route>
         <Route path="/group">
           {/* aqui vai mudar para :id */}
@@ -38,7 +42,7 @@ export const Routes = () => {
           <h1>Atividades</h1>
         </Route>
         <Route path="/habits">
-          <h1>Hábitos</h1>
+          <Habits />
         </Route>
       </Switch>
     </>
