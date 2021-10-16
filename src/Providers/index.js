@@ -1,5 +1,10 @@
-import { HabitsProvider } from "./Habits";
+import { HabitsProvider } from "./Habits/index";
+import { UserHabitsApiProvider } from "./userHabitsApi/index";
 
 export const Providers = ({ children }) => {
-  return <HabitsProvider>{children}</HabitsProvider>;
+  return (
+    <UserHabitsApiProvider>
+      <HabitsProvider>{children}</HabitsProvider>
+    </UserHabitsApiProvider>
+  );
 };
