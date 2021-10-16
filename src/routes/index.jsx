@@ -1,5 +1,7 @@
 import { Switch, Route } from "react-router-dom";
 import { Dashboard } from "../pages/Dashboard";
+import { Groups } from "../pages/Groups";
+import { MyGroups } from "../pages/MyGroups/index";
 import { Habits } from "../pages/Habits";
 
 export const Routes = () => {
@@ -23,10 +25,10 @@ export const Routes = () => {
           <h1>Atualização do usuário</h1>
         </Route>
         <Route path="/groups">
-          <h1>Grupos</h1>
+          <Groups />
         </Route>
         <Route path="/my_groups">
-          <h1>Grupos do usuário</h1>
+          <MyGroups />
         </Route>
         <Route path="/goals">
           <h1>Metas</h1>
