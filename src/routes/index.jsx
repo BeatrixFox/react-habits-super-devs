@@ -1,5 +1,6 @@
 import { Switch, Route } from "react-router-dom";
 import { Dashboard } from "../pages/Dashboard";
+import { MyGroups } from "../pages/MyGroups/index";
 export const Routes = () => {
   return (
     <>
@@ -24,7 +25,7 @@ export const Routes = () => {
           <h1>Grupos</h1>
         </Route>
         <Route path="/my_groups">
-          <h1>Grupos do usuário</h1>
+          <MyGroups />
         </Route>
         <Route path="/goals">
           <h1>Metas</h1>
