@@ -1,11 +1,12 @@
 import { UserHabitsApiProvider } from "./userHabitsApi";
 import { ActivitiesHabitsApiProvider } from "./activitiesHabitsApi";
+import { GoalsHabitsApiProvider } from "./goalsHabitsApi";
 
 const Providers = ({ children }) => {
     return (
         <UserHabitsApiProvider>
             <ActivitiesHabitsApiProvider>
-                {children}
+                <GoalsHabitsApiProvider>{children}</GoalsHabitsApiProvider>
             </ActivitiesHabitsApiProvider>
         </UserHabitsApiProvider>
     );
