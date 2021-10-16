@@ -4,6 +4,10 @@ import api from "../../services/api";
 export const HabitsContext = createContext([]);
 
 //TODO mudar para um stateProvider
+//const [accessToken] = useState(
+//  JSON.parse(localStorage.getItem("@Habit:access")) || ""
+//);
+//ficou assim para eu ver o resultado do array
 const token =
   "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM0NjAyMDczLCJqdGkiOiJiZGU1ODJjMDFkNjk0MmE4YmNhMjlhZDY2ZDNmMDNmNiIsInVzZXJfaWQiOjF9.LoM4YMt6Ky-xUVEI47nChgVerjnCmCU2G4hrjug5peQ";
 
@@ -24,7 +28,7 @@ export const HabitsProvider = ({ children }) => {
     /*habits !== [] &&*/ getHabits();
   }, []);
 
-  const addAHabit = (date) => {
+  const createHabit = (date) => {
     api
       .post("habits/", date, config)
       .then((response) => {
@@ -32,7 +36,7 @@ export const HabitsProvider = ({ children }) => {
       })
       .catch((error) => console.log(error));
   };
-  const removeAHabit = (id) => {
+  const deleteHabit = (id) => {
     api
       .delete(`habits/${id}/`, config)
       .then((response) => {
@@ -40,7 +44,7 @@ export const HabitsProvider = ({ children }) => {
       })
       .catch((error) => console.log(error));
   };
-  const updateAHabit = (date) => {
+  const updatedHabit = (date) => {
     api
       .patch(`habits/${date.id}/`, date, config)
       .then((response) => {
@@ -51,7 +55,7 @@ export const HabitsProvider = ({ children }) => {
 
   return (
     <HabitsContext.Provider
-      value={{ habits, setHabits, addAHabit, removeAHabit, updateAHabit }}
+      value={{ habits, setHabits, createHabit, deleteHabit, updatedHabit }}
     >
       {children}
     </HabitsContext.Provider>
