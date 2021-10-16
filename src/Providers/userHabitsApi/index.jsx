@@ -37,8 +37,7 @@ export const UserHabitsApiProvider = ({ children }) => {
             .catch((err) => console.log(err));
     };
 
-    const userProfileUpdate = (newUser, idUser) => {
-        console.log(newUser, idUser);
+    const userProfileUpdate = (newUser, idUser) => {        
         api.patch(
             `/users/${idUser}/`,
             {
