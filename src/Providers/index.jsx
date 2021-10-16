@@ -1,11 +1,14 @@
-import { UserHabitsApiProvider } from './userHabitsApi';
+import { UserHabitsApiProvider } from "./userHabitsApi";
+import { ActivitiesHabitsApiProvider } from "./activitiesHabitsApi";
 
 const Providers = ({ children }) => {
-    return(
+    return (
         <UserHabitsApiProvider>
-            {children}
+            <ActivitiesHabitsApiProvider>
+                {children}
+            </ActivitiesHabitsApiProvider>
         </UserHabitsApiProvider>
-    )
-}
+    );
+};
 
 export default Providers;
