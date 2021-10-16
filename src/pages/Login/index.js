@@ -2,19 +2,26 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import api from "../../services/api";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import { useHistory } from "react-router";
-import jwt_decode from "jwt-decode";
+import { useContext, useEffect, useState } from "react";
+import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
 
 const Login = () => {
-    const history = useHistory();    
+    const history = useHistory();
+
+    const [accessToken] = useState(
+        JSON.parse(localStorage.getItem("@Habit:access")) || ""
+    );
+
+    const { userLogin, userId } = useContext(UserHabitsApiContext);
 
     const schema = yup.object().shape({
-        username: yup.string().required("Campo obrigatório"),        
+        username: yup.string().required("Campo obrigatório"),
         password: yup
             .string()
             .min(6, "Min. de 6 caracteres")
-            .required("Campo obrigatório")       
+            .required("Campo obrigatório"),
     });
 
     const {
@@ -24,23 +31,15 @@ const Login = () => {
     } = useForm({ resolver: yupResolver(schema) });
 
     const onSubmitForm = (userData) => {
-        
-        api.post("/sessions/", userData).then((response) => {
-
-            const { access } = response.data
-
-            toast.success("Login efetuadocom sucesso");
-
-            localStorage.setItem('Habit:access', JSON.stringify(access));
-            
-            const decoded = jwt_decode(access);
-            console.log(decoded.prints.user_id);
-
-            return history.push("/dashboard");
-
-
-        }).catch((err) => toast.error("Email ou senha inválidos"));
+        userLogin(userData);
     };
+
+    useEffect(() => {
+        if (userId) {
+            console.log(userId);
+            history.push("/dashboard");
+        }
+    }, [userLogin]);
 
     return (
         <form onSubmit={handleSubmit(onSubmitForm)}>
