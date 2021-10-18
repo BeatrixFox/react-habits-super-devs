@@ -3,22 +3,18 @@ import api from "../../services/api";
 
 export const GroupsContext = createContext([]);
 
-//TODO mudar para um stateProvider
-//const [accessToken] = useState(
-//  JSON.parse(localStorage.getItem("@Group:access")) || ""
-//);
-//ficou assim para eu ver o resultado do array
-const token =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM0NjAyMDczLCJqdGkiOiJiZGU1ODJjMDFkNjk0MmE4YmNhMjlhZDY2ZDNmMDNmNiIsInVzZXJfaWQiOjF9.LoM4YMt6Ky-xUVEI47nChgVerjnCmCU2G4hrjug5peQ";
-
-const config = {
-  headers: { Authorization: `Bearer ${token}` },
-};
-
 export const GroupsProvider = ({ children }) => {
   const [groups, setGroups] = useState([]);
   const [myGroups, setMyGroups] = useState([]);
   const [oneGroup, setOneGroup] = useState([]);
+
+  const [accessToken] = useState(
+    JSON.parse(localStorage.getItem("@Habit:access")) || ""
+  );
+
+  const config = {
+    headers: { Authorization: `Bearer ${accessToken}` },
+  };
 
   const getGroups = () => {
     //não pede autenticação .get("groups/", config)
