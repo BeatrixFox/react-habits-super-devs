@@ -6,6 +6,7 @@ import { Group } from "../pages/Group";
 import { Groups } from "../pages/Groups";
 import { MyGroups } from "../pages/MyGroups/index";
 import { Habits } from "../pages/Habits";
+import Home from '../pages/Home/index';
 
 export const Routes = () => {
   return (
@@ -13,7 +14,7 @@ export const Routes = () => {
       <h3>Aqui vai a barra de navegação</h3>
       <Switch>
         <Route exact path="/">
-          <h1>Home</h1>
+          <Home />
         </Route>
         <Route path="/login">
           <Login />
