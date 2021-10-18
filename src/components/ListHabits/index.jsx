@@ -1,7 +1,10 @@
 import { Container } from "./style";
 import HabitsCard from "../../components/HabitsCard/index";
+import { HabitsContext } from "../../Providers/Habits/index";
+import { useContext } from "react";
 
-const ListHabits = ({ habits }) => {
+const ListHabits = () => {
+  const { habits } = useContext(HabitsContext);
   return (
     <Container>
       {habits.map((habit) => (
