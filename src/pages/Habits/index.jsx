@@ -6,13 +6,10 @@ import { HabitsContext } from "../../Providers/Habits/index";
 import { Redirect } from "react-router";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
 import AddHabits from "../../components/AddHabits";
-import Header from "../../components/Header";
 
 export const Habits = () => {
   const { authorized } = useContext(UserHabitsApiContext);
   const { habits } = useContext(HabitsContext);
-
-  console.log(habits);
 
   const handleClickAddHabit = () => {
     console.log("handleClickAddHabit");
@@ -27,7 +24,6 @@ export const Habits = () => {
 
   return (
     <Container>
-      <Header titleMessage="Meus Hábitos" />
       <AddHabits />
       <ListHabits habits={habits} />
       <Button
