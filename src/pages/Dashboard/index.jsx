@@ -5,8 +5,6 @@ import { Redirect, useHistory } from "react-router";
 import { useContext } from "react";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
 
-import Header from "../../components/Header";
-
 export const Dashboard = () => {
   const { authorized } = useContext(UserHabitsApiContext);
   const history = useHistory();
@@ -27,7 +25,6 @@ export const Dashboard = () => {
 
   return (
     <>
-      <Header titleMessage="Painel do SuperDev" />
       <Button handleClick={handleClickGroups} type="click" title="Grupos" />
       <Button handleClick={handleClickHabits} type="click" title="Hábitos" />
       <Button
