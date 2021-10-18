@@ -6,6 +6,7 @@ import Select from "react-select";
 import { toast } from "react-toastify";
 import { HabitsContext } from "../../Providers/Habits";
 import Button from "../Button/index";
+import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
 // import context provider
 
 const optionsCategory = [
@@ -28,6 +29,7 @@ const optionsFrequency = [
 
 export const AddHabits = () => {
   const { createHabit } = useContext(HabitsContext);
+  const { userId } = useContext(UserHabitsApiContext);
 
   const [selectedOptionCategory, setSelectedOptionCategory] = useState(null);
   const [selectedOptionLevel, setSelectedOptionLevel] = useState(null);
@@ -49,7 +51,7 @@ export const AddHabits = () => {
   const onSubmitForm = (userData) => {
     userData.achieved = false;
     userData.how_much_achieved = 30;
-    userData.user = "user.id";
+    userData.user = userId;
     createHabit(userData);
     toast.success("Habito adicionado com sucesso");
   };

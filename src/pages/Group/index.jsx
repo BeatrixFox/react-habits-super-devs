@@ -18,3 +18,5 @@ export const Group = () => {
     </>
   );
 };
+
+export default Group;
