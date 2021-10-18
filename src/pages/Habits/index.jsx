@@ -11,10 +11,14 @@ export const Habits = () => {
   const { authorized } = useContext(UserHabitsApiContext);
   const { habits } = useContext(HabitsContext);
 
+  // console.log(habits);
+
   const handleClickAddHabit = () => {
+    //Modal para add habits
     console.log("handleClickAddHabit");
   };
   const handleClickSearch = () => {
+    //Modal para procurar habito
     console.log("handleClickSearch");
   };
 
@@ -23,27 +27,21 @@ export const Habits = () => {
   }
 
   return (
-
     <>
+      {/* <Header titleMessage="Meus Hábitos" /> */}
       <Container>
+        {/* <div>aqui vai map com component com card de hábitos</div> */}
         <AddHabits />
+        <ListHabits habits={habits} />
 
-        {habits.map((item) => (
-          <HabitsCard item={item} />
-        ))}
         <Button
           handleClick={handleClickAddHabit}
           type="click"
           title="Novos hábitos"
         />
-        <Button
-          handleClick={handleClickSearch}
-          type="click"
-          title="Procurar"
-        />
+        <Button handleClick={handleClickSearch} type="click" title="Procurar" />
       </Container>
     </>
-
   );
 };
 
