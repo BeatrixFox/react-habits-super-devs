@@ -1,7 +1,7 @@
 import Button from "../../components/Button/index";
 import { Container } from "./style";
 import { useContext } from "react";
-import { HabitsCard } from "../../components/HabitsCard";
+import ListHabits from "../../components/ListHabits";
 import { HabitsContext } from "../../Providers/Habits/index";
 import { Redirect } from "react-router";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
@@ -23,6 +23,7 @@ export const Habits = () => {
   }
 
   return (
+
     <>
       <Container>
         <AddHabits />
@@ -32,16 +33,17 @@ export const Habits = () => {
         ))}
         <Button
           handleClick={handleClickAddHabit}
-          type="onClick"
+          type="click"
           title="Novos hábitos"
         />
         <Button
           handleClick={handleClickSearch}
-          type="onClick"
+          type="click"
           title="Procurar"
         />
       </Container>
     </>
+
   );
 };
 
