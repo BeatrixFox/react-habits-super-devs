@@ -11,10 +11,14 @@ export const Habits = () => {
   const { authorized } = useContext(UserHabitsApiContext);
   const { habits } = useContext(HabitsContext);
 
+  // console.log(habits);
+
   const handleClickAddHabit = () => {
+    //Modal para add habits
     console.log("handleClickAddHabit");
   };
   const handleClickSearch = () => {
+    //Modal para procurar habito
     console.log("handleClickSearch");
   };
 
@@ -26,7 +30,6 @@ export const Habits = () => {
     <>
       <Container>
         <AddHabits />
-
         <ListHabits />
         <Button
           handleClick={handleClickAddHabit}

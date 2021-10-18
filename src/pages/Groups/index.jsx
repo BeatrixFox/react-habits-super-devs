@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
 import ListGroup from "../../components/ListGroup/index";
 
-export const Groups = () => {
+const Groups = () => {
   const { authorized } = useContext(UserHabitsApiContext);
 
   const handleClickAddGroup = () => {
@@ -15,9 +15,9 @@ export const Groups = () => {
     console.log("handleClickSearch");
   };
 
-  if (!authorized) {
-    return <Redirect to="/login" />;
-  }
+  // if (!authorized) {
+  //   return <Redirect to="/login" />;
+  // }
 
   return (
     <>

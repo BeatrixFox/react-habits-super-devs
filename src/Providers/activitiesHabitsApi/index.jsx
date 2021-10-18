@@ -12,6 +12,11 @@ export const ActivitiesHabitsApiProvider = ({ children }) => {
     const [updatedActivity, setUpdatedActivity] = useState();
     const [groupActivities, setGroupActivities] = useState([]);
     const [oneActivity, setOneActivity] = useState([]);
+    const header = {
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+        },
+    };
 
     const createActivity = (title, realization_time, group) => {
         api.post(
@@ -21,12 +26,7 @@ export const ActivitiesHabitsApiProvider = ({ children }) => {
                 realization_time: realization_time,
                 group: group,
             },
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            }
+            header
         )
             .then((response) => setActivityCreated(response.data))
             .catch((err) => console.log(err));
@@ -38,23 +38,14 @@ export const ActivitiesHabitsApiProvider = ({ children }) => {
             {
                 title: newTitle,
             },
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            }
+            header
         )
             .then((response) => setUpdatedActivity(response.data))
             .catch((err) => console.log(err));
     };
 
     const deleteActivity = (activityId) => {
-        api.delete(`/activities/${activityId}`, {
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-            },
-        })
+        api.delete(`/activities/${activityId}`, header)
             .then((response) => console.log("ok"))
             .catch((err) => console.log(err));
     };

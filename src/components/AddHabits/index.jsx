@@ -1,13 +1,11 @@
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
-import { useContext, useState } from "react";
+import { useForm, Controller } from "react-hook-form";
 import Select from "react-select";
-import { toast } from "react-toastify";
+import Button from "../Button";
+import { useContext } from "react";
 import { HabitsContext } from "../../Providers/Habits";
-import Button from "../Button/index";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
-// import context provider
 
 const optionsCategory = [
   { value: "hardSkill", label: "hardSkill" },
@@ -31,19 +29,16 @@ export const AddHabits = () => {
   const { createHabit } = useContext(HabitsContext);
   const { userId } = useContext(UserHabitsApiContext);
 
-  const [selectedOptionCategory, setSelectedOptionCategory] = useState(null);
-  const [selectedOptionLevel, setSelectedOptionLevel] = useState(null);
-  const [selectedOptionFrequency, setSelectedOptionFrequency] = useState(null);
-
   const schema = yup.object().shape({
     title: yup.string().required("Campo obrigatório"),
-    category: yup.string().required("Campo obrigatório"),
-    difficulty: yup.string().required("Campo obrigatório"),
-    frequency: yup.string().required("Campo obrigatório"),
+    category: yup.object().required("Campo obrigatório"),
+    difficulty: yup.object().required("Campo obrigatório"),
+    frequency: yup.object().required("Campo obrigatório"),
   });
 
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
@@ -51,9 +46,16 @@ export const AddHabits = () => {
   const onSubmitForm = (userData) => {
     userData.achieved = false;
     userData.how_much_achieved = 30;
-    userData.user = userId;
-    createHabit(userData);
-    toast.success("Habito adicionado com sucesso");
+
+    createHabit({
+      title: userData.title,
+      category: userData.category.value,
+      difficulty: userData.difficulty.value,
+      frequency: userData.frequency.value,
+      achieved: userData.achieved,
+      how_much_achieved: userData.how_much_achieved,
+      user: userId,
+    });
   };
 
   return (
@@ -61,28 +63,28 @@ export const AddHabits = () => {
       <input placeholder="Nome do novo hábito" {...register("title")} />
       <p>{errors.title?.message}</p>
 
-      <Select
-        onChange={() => setSelectedOptionCategory()}
-        options={optionsCategory}
-        value={selectedOptionCategory}
-        {...register("category")}
+      <Controller
+        name="category"
+        control={control}
+        render={({ field }) => <Select {...field} options={optionsCategory} />}
       />
+      <p>{errors.category?.message}</p>
 
-      <Select
-        defaultValue={selectedOptionLevel}
-        onChange={setSelectedOptionLevel}
-        options={optionsLevel}
-        {...register("difficulty")}
+      <Controller
+        name="difficulty"
+        control={control}
+        render={({ field }) => <Select {...field} options={optionsLevel} />}
       />
+      <p>{errors.difficulty?.message}</p>
 
-      <Select
-        defaultValue={selectedOptionFrequency}
-        onChange={setSelectedOptionFrequency}
-        options={optionsFrequency}
-        {...register("frequency")}
+      <Controller
+        name="frequency"
+        control={control}
+        render={({ field }) => <Select {...field} options={optionsFrequency} />}
       />
+      <p>{errors.frequency?.message}</p>
 
-      <Button type="submit" title={"Adcionar"}></Button>
+      <Button type={"submit"} title={"Adcionar"}></Button>
     </form>
   );
 };

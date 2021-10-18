@@ -34,8 +34,8 @@ export const UserHabitsApiProvider = ({ children }) => {
         const { access } = response.data;
         toast.success("Login efetuado com sucesso!");
         localStorage.setItem("@Habit:access", JSON.stringify(access));
-        const decoded = jwtDecode(access);
-        setUserId(decoded?.user_id);
+        // const decoded = jwtDecode(access);
+        // setUserId(decoded?.user_id);
         setAuthorized(true);
       })
       .catch((err) => toast.error(`Falha! Senha ou email incorreto => ${err}`));
@@ -44,8 +44,11 @@ export const UserHabitsApiProvider = ({ children }) => {
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("@Habit:access"));
     if (token) {
+      const decoded = jwtDecode(token);
+        setUserId(decoded?.user_id);
       setAuthorized(true);
     }
+    
   }, [authorized]);
 
   const userProfileUpdate = (newUser, userId) => {
