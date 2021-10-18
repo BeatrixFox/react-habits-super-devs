@@ -1,12 +1,15 @@
+import { useContext } from "react";
 import { Container } from "./style";
+import { GroupsContext } from "../../Providers/Groups/index";
+import GroupsCard from "../../components/GroupsCard/index";
 
-export const ListGroup = ({ groups }) => {
+export const ListGroup = () => {
+  const { groups } = useContext(GroupsContext);
+  console.log("grupos: ", groups);
   return (
     <Container>
       {groups.map((group) => (
-        <li key={group.id}>
-          <p>Cardlist {group}</p>
-        </li>
+        <GroupsCard item={group} />
       ))}
     </Container>
   );
