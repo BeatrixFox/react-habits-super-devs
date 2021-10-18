@@ -1,5 +1,6 @@
 import jwtDecode from "jwt-decode";
 import { createContext, useState, useEffect } from "react";
+import { set } from "react-hook-form";
 import { toast } from "react-toastify";
 
 import api from "../../services/api";
@@ -7,6 +8,7 @@ import api from "../../services/api";
 export const UserHabitsApiContext = createContext();
 
 export const UserHabitsApiProvider = ({ children }) => {
+  const [user, setUser] = useState();
   const [userSignupSuccess, setSignupSuccess] = useState();
   const [userId, setUserId] = useState();
   const [authorized, setAuthorized] = useState(false);
@@ -45,10 +47,10 @@ export const UserHabitsApiProvider = ({ children }) => {
     const token = JSON.parse(localStorage.getItem("@Habit:access"));
     if (token) {
       const decoded = jwtDecode(token);
+      setUser(decoded);
       setUserId(decoded?.user_id);
       setAuthorized(true);
     }
-    
   }, [authorized]);
 
   const userProfileUpdate = (newUser, userId) => {
@@ -72,6 +74,7 @@ export const UserHabitsApiProvider = ({ children }) => {
         userSignupSuccess,
         userLogin,
         userId,
+        user,
         setUserId,
         userProfileUpdate,
         authorized,
