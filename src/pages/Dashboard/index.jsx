@@ -1,14 +1,11 @@
 import dashboardImg from "../../assets/img/clip-uniting-the-world.png";
 import { Img } from "./style";
 import Button from "../../components/Button/index.jsx";
-<<<<<<< HEAD
 import { Redirect, useHistory } from "react-router";
 import { useContext } from "react";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
 
-=======
 import Header from "../../components/Header";
->>>>>>> e4dfcb87240e46b6ffd7255f5aa729bfa08f9bca
 export const Dashboard = () => {
   const { authorized } = useContext(UserHabitsApiContext);
   const history = useHistory();
