@@ -1,14 +1,20 @@
-import { UserHabitsApiProvider } from "./userHabitsApi";
-import { ActivitiesHabitsApiProvider } from "./activitiesHabitsApi";
-import { GoalsHabitsApiProvider } from "./goalsHabitsApi";
+import { HabitsProvider } from "./Habits/index";
+import { ActivitiesHabitsApiProvider } from "./activitiesHabitsApi/index";
+import { GoalsHabitsApiProvider } from "./goalsHabitsApi/index";
+import { UserHabitsApiProvider } from "./userHabitsApi/index";
+import { GroupsProvider } from "./Groups/index";
 
 const Providers = ({ children }) => {
     return (
-        <UserHabitsApiProvider>
-            <ActivitiesHabitsApiProvider>
-                <GoalsHabitsApiProvider>{children}</GoalsHabitsApiProvider>
-            </ActivitiesHabitsApiProvider>
-        </UserHabitsApiProvider>
+        <ActivitiesHabitsApiProvider>
+        <GoalsHabitsApiProvider>
+          <UserHabitsApiProvider>
+            <GroupsProvider>
+              <HabitsProvider>{children}</HabitsProvider>
+            </GroupsProvider>
+          </UserHabitsApiProvider>
+        </GoalsHabitsApiProvider>
+      </ActivitiesHabitsApiProvider>
     );
 };
 
