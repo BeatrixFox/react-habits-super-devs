@@ -1,10 +1,18 @@
 import HomeImg from "../../assets/img/homeImg.png";
 import Button from "../../components/Button/index";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Section, Img, Div } from "./styles";
 import HeaderMain from "../../components/HeaderMain";
+import { useContext } from "react";
+import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
 
 const Home = () => {
+  const { authorized } = useContext(UserHabitsApiContext);
+
+  if (authorized) {
+    return <Redirect to="/dashboard" />;
+  }
+
   return (
     <Section>
       <HeaderMain />
