@@ -13,7 +13,7 @@ const optionsLevel = [
   { value: "dificil", label: "dificil" },
 ];
 
-export const AddGoals = () => {
+export const AddGoals = ({ groupId }) => {
   const { createGoal } = useContext(GoalsHabitsApiContext);
 
   const schema = yup.object().shape({
@@ -33,7 +33,7 @@ export const AddGoals = () => {
       title: userData.title,
       difficulty: userData.difficulty.value,
       how_much_achieved: 100,
-      group: "user group_id",
+      group: groupId,
     });
   };
 
