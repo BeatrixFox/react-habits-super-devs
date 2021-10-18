@@ -20,7 +20,7 @@ export const GroupsProvider = ({ children }) => {
     //não pede autenticação .get("groups/", config)
     api
       .get("groups/", config)
-      .then((response) => setGroups(response.data))
+      .then((response) => setGroups(response.data.results))
       .catch((error) => console.log("Erro: ", error));
   };
   const getOneGroups = (id) => {
@@ -64,7 +64,7 @@ export const GroupsProvider = ({ children }) => {
   const subscribeToGroup = (id) => {
     api
       .get(`groups/${id}/subscribe/`)
-      .then((response) => setGroups(response))
+      .then((response) => console.log("Adicionado"))
       .catch((error) => console.log("Erro: ", error));
   };
 

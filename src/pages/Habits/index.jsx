@@ -28,12 +28,9 @@ export const Habits = () => {
 
   return (
     <>
-      {/* <Header titleMessage="Meus Hábitos" /> */}
       <Container>
-        {/* <div>aqui vai map com component com card de hábitos</div> */}
         <AddHabits />
-        <ListHabits habits={habits} />
-
+        <ListHabits />
         <Button
           handleClick={handleClickAddHabit}
           type="click"
