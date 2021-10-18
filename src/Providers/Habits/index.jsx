@@ -38,7 +38,9 @@ export const HabitsProvider = ({ children }) => {
     api
       .delete(`/habits/${id}/`, config)
       .then((response) => {
-        console.log(response);
+        const refreshHabits = habits.filter((habit) => habit.id !== id);
+        setHabits(refreshHabits);
+        console.log(habits);
       })
       .catch((error) => console.log(error));
   };
