@@ -2,6 +2,8 @@ import { Container } from "./style";
 import { Redirect } from "react-router";
 import { useContext } from "react";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
+import FindActivity from "../../components/FindActivity";
+import ListActivity from "../../components/ListActivity";
 //import { GroupsContext } from "../../Providers/Groups/index";
 
 const Group = () => {
@@ -19,6 +21,8 @@ const Group = () => {
       <Container>
         <p>Aqui vai o componet metas</p>
         <p>Aqui vai o componet atividades</p>
+        <ListActivity />
+        <FindActivity />
         <p>Aqui vai o componet membros</p>
       </Container>
     </>
