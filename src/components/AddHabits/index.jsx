@@ -62,9 +62,9 @@ export const AddHabits = () => {
       <p>{errors.title?.message}</p>
 
       <Select
-        defaultValue={selectedOptionCategory}
-        onChange={setSelectedOptionCategory}
+        onChange={() => setSelectedOptionCategory()}
         options={optionsCategory}
+        value={selectedOptionCategory}
         {...register("category")}
       />
 

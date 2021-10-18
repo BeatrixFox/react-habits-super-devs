@@ -1,12 +1,9 @@
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import api from "../../services/api";
-// import { toast } from "react-toastify";
 import { useHistory } from "react-router";
 import { useContext, useEffect, useState } from "react";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
-import HeaderMain from "../../components/HeaderMain";
 
 const Login = () => {
   const history = useHistory();
@@ -43,19 +40,15 @@ const Login = () => {
   }, [userLogin]);
 
   return (
-    <>
-      <HeaderMain />
+    <form onSubmit={handleSubmit(onSubmitForm)}>
+      <input placeholder="Nome de usuário" {...register("username")} />
+      <p>{errors.username?.message}</p>
 
-      <form onSubmit={handleSubmit(onSubmitForm)}>
-        <input placeholder="Nome de usuário" {...register("username")} />
-        <p>{errors.username?.message}</p>
+      <input placeholder="Senha" {...register("password")} />
+      <p>{errors.password?.message}</p>
 
-        <input placeholder="Senha" {...register("password")} />
-        <p>{errors.password?.message}</p>
-
-        <button type="submit">ADD</button>
-      </form>
-    </>
+      <button type="submit">ADD</button>
+    </form>
   );
 };
 

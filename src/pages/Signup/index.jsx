@@ -1,19 +1,15 @@
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import api from "../../services/api";
-// import { toast } from "react-toastify";
 import { useHistory } from "react-router";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
-import UpdateUserProfile from "../../components/UpdateUserProfile";
-import HeaderMain from "../../components/HeaderMain";
+import Button from "../../components/Button/index";
 
 const Signup = () => {
   const history = useHistory();
 
-  const { userSignup, userSignupSuccess, userId } =
-    useContext(UserHabitsApiContext);
+  const { userSignup, userSignupSuccess } = useContext(UserHabitsApiContext);
 
   const passRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
@@ -30,7 +26,7 @@ const Signup = () => {
       .string()
       .min(6, "Min. de 6 caracteres")
       .required("Campo obrigatório")
-      .matches(passRegex, "Senha inválida"),
+      .matches(passRegex, "letras e caracteres especiais nescessários"),
     passwordConfirm: yup
       .string()
       .required("Campo obrigatório")
@@ -56,8 +52,6 @@ const Signup = () => {
 
   return (
     <>
-      <HeaderMain />
-
       <form onSubmit={handleSubmit(onSubmitForm)}>
         <input placeholder="Nome de usuário" {...register("username")} />
         <p>{errors.username?.message}</p>
@@ -74,10 +68,8 @@ const Signup = () => {
         <input placeholder="Confirmar senha" {...register("passwordConfirm")} />
         <p>{errors.passwordConfirm?.message}</p>
 
-        <button type="submit">ADD</button>
+        <Button type={"submit"} title={"Enviar"} />
       </form>
-
-      <UpdateUserProfile />
     </>
   );
 };

@@ -1,26 +1,38 @@
 import dashboardImg from "../../assets/img/clip-uniting-the-world.png";
 import { Img } from "./style";
 import Button from "../../components/Button/index.jsx";
+import { Redirect, useHistory } from "react-router";
+import { useContext } from "react";
+import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
+
 import Header from "../../components/Header";
 
 export const Dashboard = () => {
+  const { authorized } = useContext(UserHabitsApiContext);
+  const history = useHistory();
+
   const handleClickGroups = () => {
-    console.log("handleClickGroups");
+    history.push("/groups");
   };
   const handleClickHabits = () => {
-    console.log("handleClickHabits");
+    history.push("/habits");
   };
   const handleClickUpdUser = () => {
     console.log("handleClickUpdUser");
   };
+
+  if (!authorized) {
+    return <Redirect to="/login" />;
+  }
+
   return (
     <>
       <Header titleMessage="Painel do SuperDev" />
-      <Button handleClick={handleClickGroups} type="onClick" title="Grupos" />
-      <Button handleClick={handleClickHabits} type="onClick" title="Hábitos" />
+      <Button handleClick={handleClickGroups} type="click" title="Grupos" />
+      <Button handleClick={handleClickHabits} type="click" title="Hábitos" />
       <Button
         handleClick={handleClickUpdUser}
-        type="onClick"
+        type="click"
         title="Atualizar Cadastro"
       />
 
