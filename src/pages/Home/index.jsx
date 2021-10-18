@@ -2,7 +2,6 @@ import HomeImg from "../../assets/img/homeImg.png";
 import Button from "../../components/Button/index";
 import { Link, Redirect } from "react-router-dom";
 import { Section, Img, Div } from "./styles";
-import HeaderMain from "../../components/HeaderMain";
 import { useContext } from "react";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
 
@@ -14,8 +13,7 @@ const Home = () => {
   }
 
   return (
-    <Section>
-      <HeaderMain />
+    <Section>      
       <div>
         <figure>
           <Img src={HomeImg} alt="background" />

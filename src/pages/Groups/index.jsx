@@ -3,7 +3,6 @@ import Button from "../../components/Button/index";
 import { Redirect } from "react-router";
 import { useContext } from "react";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
-import Header from "../../components/Header";
 
 const Groups = () => {
   const { authorized } = useContext(UserHabitsApiContext);
@@ -21,8 +20,6 @@ const Groups = () => {
 
   return (
     <>
-      <Header titleMessage="Grupos" />
-
       <Container>
         <div>Aqui vai o maps com carts dos grupos</div>
         <Button

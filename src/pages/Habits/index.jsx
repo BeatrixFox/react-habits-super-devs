@@ -1,12 +1,11 @@
 import Button from "../../components/Button/index";
 import { Container } from "./style";
 import { useContext } from "react";
-import { HabitsCard } from "../../components/HabitsCard";
+import ListHabits from "../../components/ListHabits";
 import { HabitsContext } from "../../Providers/Habits/index";
 import { Redirect } from "react-router";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
 import AddHabits from "../../components/AddHabits";
-import Header from "../../components/Header";
 
 export const Habits = () => {
   const { authorized } = useContext(UserHabitsApiContext);
@@ -33,19 +32,14 @@ export const Habits = () => {
       <Container>
         {/* <div>aqui vai map com component com card de hábitos</div> */}
         <AddHabits />
-        {habits?.map((item) => (
-          <HabitsCard key={item.id} item={item} />
-        ))}
+        <ListHabits habits={habits} />
+
         <Button
           handleClick={handleClickAddHabit}
-          type="onClick"
+          type="click"
           title="Novos hábitos"
         />
-        <Button
-          handleClick={handleClickSearch}
-          type="onClick"
-          title="Procurar"
-        />
+        <Button handleClick={handleClickSearch} type="click" title="Procurar" />
       </Container>
     </>
   );

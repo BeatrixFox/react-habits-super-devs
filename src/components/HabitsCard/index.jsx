@@ -3,11 +3,8 @@ import Button from "../Button/index";
 
 import { useContext } from "react";
 
-
 export const HabitsCard = ({ item }) => {
-
   const handleClickUpdate = (id) => {
-
     console.log(`handleClickUpdate id ${id}`);
   };
 
@@ -16,10 +13,9 @@ export const HabitsCard = ({ item }) => {
   };
 
   return (
-    <Container >
+    <Container>
       <span>{item.title}</span>
       <Div>
-      
         <span>Categoria: {item.category}</span>
         <span>Dificuldade: {item.difficulty}</span>
         <span>Frequência: {item.frequency}</span>
@@ -39,3 +35,5 @@ export const HabitsCard = ({ item }) => {
     </Container>
   );
 };
+
+export default HabitsCard;

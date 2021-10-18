@@ -1,4 +1,3 @@
-import Header from "../../components/Header";
 import { Container } from "./style";
 import { Redirect } from "react-router";
 import { useContext } from "react";
@@ -17,7 +16,6 @@ const Group = () => {
 
   return (
     <>
-      <Header /*titleMessage={group}*/ />
       <Container>
         <p>Aqui vai o componet metas</p>
         <p>Aqui vai o componet atividades</p>

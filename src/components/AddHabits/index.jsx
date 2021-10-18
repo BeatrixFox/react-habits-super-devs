@@ -84,7 +84,7 @@ export const AddHabits = () => {
       />
       <p>{errors.frequency?.message}</p>
 
-      <Button title="adicionar" type="submit" />
+      <Button type={"submit"} title={"Adcionar"}></Button>
     </form>
   );
 };

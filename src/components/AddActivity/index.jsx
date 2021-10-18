@@ -3,6 +3,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { toast } from "react-toastify";
+import Button from "../Button/index";
+
 // import context provider
 
 export const AddActivity = () => {
@@ -35,7 +37,7 @@ export const AddActivity = () => {
       <input placeholder="Nome do novo hábito" {...register("title")} />
       <p>{errors.title?.message}</p>
 
-      <button type="submit">Adcionar</button>
+      <Button type="submit" title={"Adcionar"}></Button>
     </form>
   );
 };
