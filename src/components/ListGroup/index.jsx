@@ -2,13 +2,24 @@ import { useContext } from "react";
 import { Container } from "./style";
 import { GroupsContext } from "../../Providers/Groups/index";
 import GroupsCard from "../../components/GroupsCard/index";
+import { useLocation } from "react-router-dom";
 
 export const ListGroup = () => {
-  const { groups } = useContext(GroupsContext);
-  console.log("grupos: ", groups);
+  const location = useLocation();
+  const locationPath = location.pathname;
+  const { groups, myGroups } = useContext(GroupsContext);
+  const object = () => {
+    if (locationPath === "/my_groups") {
+      return myGroups;
+    }
+    if (locationPath === "/groups") {
+      return groups;
+    }
+  };
+
   return (
     <Container>
-      {groups.map((group) => (
+      {object().map((group) => (
         <GroupsCard item={group} />
       ))}
     </Container>

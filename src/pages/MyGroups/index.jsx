@@ -3,6 +3,7 @@ import Button from "../../components/Button/index";
 import { Redirect } from "react-router";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
 import { useContext } from "react";
+import ListGroup from "../../components/ListGroup/index";
 
 export const MyGroups = () => {
   const { authorized } = useContext(UserHabitsApiContext);
@@ -12,13 +13,13 @@ export const MyGroups = () => {
   };
 
   if (!authorized) {
-    return <Redirect to="/login" />;
+    //return <Redirect to="/login" />;
   }
 
   return (
     <>
       <Container>
-        <div>Aqui vai o maps com carts</div>
+        <ListGroup />
         <Button
           handleClick={handleClickSearch}
           type="onClick"

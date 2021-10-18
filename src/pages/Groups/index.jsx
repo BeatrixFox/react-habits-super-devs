@@ -15,9 +15,9 @@ const Groups = () => {
     console.log("handleClickSearch");
   };
 
-  // if (!authorized) {
-  //   return <Redirect to="/login" />;
-  // }
+  if (!authorized) {
+    //   return <Redirect to="/login" />;
+  }
 
   return (
     <>
