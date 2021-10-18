@@ -23,27 +23,19 @@ export const Habits = () => {
   }
 
   return (
-
     <>
       <Container>
         <AddHabits />
 
-        {habits.map((item) => (
-          <HabitsCard item={item} />
-        ))}
+        <ListHabits />
         <Button
           handleClick={handleClickAddHabit}
           type="click"
           title="Novos hábitos"
         />
-        <Button
-          handleClick={handleClickSearch}
-          type="click"
-          title="Procurar"
-        />
+        <Button handleClick={handleClickSearch} type="click" title="Procurar" />
       </Container>
     </>
-
   );
 };
 

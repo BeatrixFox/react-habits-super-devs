@@ -3,6 +3,7 @@ import Button from "../../components/Button/index";
 import { Redirect } from "react-router";
 import { useContext } from "react";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
+import ListGroup from "../../components/ListGroup/index";
 
 export const Groups = () => {
   const { authorized } = useContext(UserHabitsApiContext);
@@ -21,7 +22,7 @@ export const Groups = () => {
   return (
     <>
       <Container>
-        <div>Aqui vai o maps com carts dos grupos</div>
+        <ListGroup />
         <Button
           handleClick={handleClickAddGroup}
           type="click"
