@@ -14,6 +14,12 @@ export const GoalsHabitsApiProvider = ({ children }) => {
     const [goalGot, setGoalGot] = useState();
     const [groupedGoals, setGroupedGoals] = useState([]);
 
+    const header = {
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+        },
+    };
+
     const createGoal = (title, difficulty, how_much_achieved, group) => {
         api.post(
             "/goals/",
@@ -23,12 +29,7 @@ export const GoalsHabitsApiProvider = ({ children }) => {
                 how_much_achieved: how_much_achieved,
                 group: group,
             },
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            }
+            header
         )
             .then((response) => setGoalCreated(response.data))
             .catch((err) => console.log(err));
@@ -40,23 +41,14 @@ export const GoalsHabitsApiProvider = ({ children }) => {
             {
                 achieved: true,
             },
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            }
+            header
         )
             .then((response) => setGoalUpdated(response.data))
             .catch((err) => console.log(err));
     };
 
     const deleteGoal = (goalId) => {
-        api.delete(`/goals/${goalId}/`, {
-            header: {
-                Authorization: `Bearer ${accessToken}`,
-            },
-        })
+        api.delete(`/goals/${goalId}/`, header)
             .then((response) => console.log("ok"))
             .catch((err) => console.log(err));
     };
