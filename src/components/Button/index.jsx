@@ -1,13 +1,15 @@
+import { ActionButton } from './styles';
+
 function Button({ handleClick, type, title }) {
   return (
     <>
-      <button
-        // className=""
+      <ActionButton
+        // className="btn-grad"
         onClick={handleClick}
         type={type}
       >
         {title}
-      </button>
+      </ActionButton>
     </>
   );
 }
