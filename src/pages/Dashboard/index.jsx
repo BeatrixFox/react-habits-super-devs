@@ -2,6 +2,7 @@ import dashboardImg from "../../assets/img/clip-uniting-the-world.png";
 import { Img } from "./style";
 import Button from "../../components/Button/index.jsx";
 import Header from "../../components/Header";
+
 export const Dashboard = () => {
   const handleClickGroups = () => {
     console.log("handleClickGroups");
@@ -27,3 +28,5 @@ export const Dashboard = () => {
     </>
   );
 };
+
+export default Dashboard;

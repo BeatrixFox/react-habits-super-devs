@@ -18,20 +18,20 @@ export const Habits = () => {
 
   return (
     <>
-      
-   <Header titleMessage="Meus Hábitos" />
-    <Container>
-      {habits.map((item) => (
-        <HabitsCard item={item} />
-      ))}
-      <Button
-        handleClick={handleClickAddHabit}
-        type="onClick"
-        title="Novos hábitos"
-      />
-      <Button handleClick={handleClickSearch} type="onClick" title="Procurar" />
-    </Container>
-     
+      <Header titleMessage="Meus Hábitos" />
+      <Container>
+        {habits.map((item) => (
+          <HabitsCard item={item} />
+        ))}
+        <Button
+          handleClick={handleClickAddHabit}
+          type="click"
+          title="Novos hábitos"
+        />
+        <Button handleClick={handleClickSearch} type="click" title="Procurar" />
+      </Container>
     </>
   );
 };
+
+export default Habits;
