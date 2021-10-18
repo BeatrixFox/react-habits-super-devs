@@ -40,7 +40,7 @@ export const HeaderDiv = styled.header`
   }
 `;
 
-export const Link = styled.button`
+export const ButtonHeader = styled.button`
   font-family: Hack, monospace;
   margin: 15px;
   color: #ffffff;
