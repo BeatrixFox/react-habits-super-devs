@@ -3,6 +3,7 @@ import { Container } from "./style";
 import { useContext } from "react";
 import { HabitsCard } from "../../components/HabitsCard";
 import { HabitsContext } from "../../Providers/Habits/index";
+import Header from "../../components/Header";
 
 export const Habits = () => {
   const { habits } = useContext(HabitsContext);
@@ -16,6 +17,9 @@ export const Habits = () => {
   };
 
   return (
+    <>
+      
+   <Header titleMessage="Meus Hábitos" />
     <Container>
       {habits.map((item) => (
         <HabitsCard item={item} />
@@ -27,5 +31,7 @@ export const Habits = () => {
       />
       <Button handleClick={handleClickSearch} type="onClick" title="Procurar" />
     </Container>
+     
+    </>
   );
 };
