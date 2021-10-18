@@ -15,15 +15,17 @@ export const Habits = () => {
   // console.log(habits);
 
   const handleClickAddHabit = () => {
+    //Modal para add habits
     console.log("handleClickAddHabit");
   };
   const handleClickSearch = () => {
+    //Modal para procurar habito
     console.log("handleClickSearch");
   };
 
-  // if (!authorized) {
-  //   return <Redirect to="/login" />;
-  // }
+  if (!authorized) {
+    return <Redirect to="/login" />;
+  }
 
   return (
     <>
