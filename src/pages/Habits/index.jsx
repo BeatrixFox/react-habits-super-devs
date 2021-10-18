@@ -28,6 +28,7 @@ export const Habits = () => {
   return (
     <Container>
       <Header titleMessage="Meus Hábitos" />
+      <AddHabits />
       <ListHabits habits={habits} />
       <Button
         handleClick={handleClickAddHabit}
