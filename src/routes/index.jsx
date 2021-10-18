@@ -11,7 +11,7 @@ import Home from "../pages/Home/index";
 export const Routes = () => {
   return (
     <>
-      <h3>Aqui vai a barra de navegação</h3>
+      {/* <h3>Aqui vai a barra de navegação</h3> */}
       <Switch>
         <Route exact path="/">
           <Home />

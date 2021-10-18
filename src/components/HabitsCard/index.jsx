@@ -1,16 +1,25 @@
 import { Div, Container } from "./style";
 import Button from "../Button/index";
+
+import { useContext } from "react";
+
+
 export const HabitsCard = ({ item }) => {
+
   const handleClickUpdate = (id) => {
+
     console.log(`handleClickUpdate id ${id}`);
   };
+
   const handleClickDelete = (id) => {
     console.log(`handleClickDelete id ${id}`);
   };
+
   return (
-    <Container key={item.id}>
+    <Container >
       <span>{item.title}</span>
       <Div>
+      
         <span>Categoria: {item.category}</span>
         <span>Dificuldade: {item.difficulty}</span>
         <span>Frequência: {item.frequency}</span>
