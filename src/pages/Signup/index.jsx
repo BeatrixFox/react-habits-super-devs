@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useHistory } from "react-router";
 import { useContext, useEffect } from "react";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
-import HeaderMain from "../../components/HeaderMain";
+import Button from "../../components/Button/index";
 
 const Signup = () => {
   const history = useHistory();
@@ -26,7 +26,7 @@ const Signup = () => {
       .string()
       .min(6, "Min. de 6 caracteres")
       .required("Campo obrigatório")
-      .matches(passRegex, "Senha inválida"),
+      .matches(passRegex, "letras e caracteres especiais nescessários"),
     passwordConfirm: yup
       .string()
       .required("Campo obrigatório")
@@ -52,8 +52,6 @@ const Signup = () => {
 
   return (
     <>
-      <HeaderMain />
-
       <form onSubmit={handleSubmit(onSubmitForm)}>
         <input placeholder="Nome de usuário" {...register("username")} />
         <p>{errors.username?.message}</p>
@@ -70,7 +68,7 @@ const Signup = () => {
         <input placeholder="Confirmar senha" {...register("passwordConfirm")} />
         <p>{errors.passwordConfirm?.message}</p>
 
-        <button type="submit">ADD</button>
+        <Button type={"submit"} title={"Enviar"} />
       </form>
     </>
   );
