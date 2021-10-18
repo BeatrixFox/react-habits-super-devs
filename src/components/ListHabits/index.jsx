@@ -1,11 +1,12 @@
 import { Container } from "./style";
+import HabitsCard from "../../components/HabitsCard/index";
 
-export const ListHabits = ({ habits }) => {
+const ListHabits = ({ habits }) => {
   return (
     <Container>
       {habits.map((habit) => (
         <li key={habit.id}>
-          <p>CardHabit {habit}</p>
+          <HabitsCard item={habit} />
         </li>
       ))}
     </Container>

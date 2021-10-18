@@ -1,6 +1,7 @@
 import { Div, Container } from "./style";
 import Button from "../Button/index";
-export const HabitsCard = ({ item }) => {
+
+const HabitsCard = ({ item }) => {
   const handleClickUpdate = (id) => {
     console.log(`handleClickUpdate id ${id}`);
   };
@@ -30,3 +31,5 @@ export const HabitsCard = ({ item }) => {
     </Container>
   );
 };
+
+export default HabitsCard;

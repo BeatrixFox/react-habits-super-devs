@@ -1,7 +1,7 @@
 import Button from "../../components/Button/index";
 import { Container } from "./style";
 import { useContext } from "react";
-import { HabitsCard } from "../../components/HabitsCard";
+import ListHabits from "../../components/ListHabits";
 import { HabitsContext } from "../../Providers/Habits/index";
 import Header from "../../components/Header";
 
@@ -17,13 +17,9 @@ export const Habits = () => {
   };
 
   return (
-    <>
-      
-   <Header titleMessage="Meus Hábitos" />
     <Container>
-      {habits.map((item) => (
-        <HabitsCard item={item} />
-      ))}
+      <Header titleMessage="Meus Hábitos" />
+      <ListHabits habits={habits} />
       <Button
         handleClick={handleClickAddHabit}
         type="onClick"
@@ -31,7 +27,5 @@ export const Habits = () => {
       />
       <Button handleClick={handleClickSearch} type="onClick" title="Procurar" />
     </Container>
-     
-    </>
   );
 };
