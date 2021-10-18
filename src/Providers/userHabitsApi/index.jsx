@@ -45,7 +45,7 @@ export const UserHabitsApiProvider = ({ children }) => {
     const token = JSON.parse(localStorage.getItem("@Habit:access"));
     if (token) {
       const decoded = jwtDecode(token);
-        setUserId(decoded?.user_id);
+      setUserId(decoded?.user_id);
       setAuthorized(true);
     }
     
