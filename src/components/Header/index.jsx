@@ -1,13 +1,8 @@
 import AssignmentTurnedInOutlinedIcon from "@mui/icons-material/AssignmentTurnedInOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { HeaderDiv, ButtonHeader, Logout } from "./style";
-
-import { useLocation } from "react-router-dom";
-
-import { HeaderDiv, Link, Logout ,ButtonHeader } from "./style";
-
 
 function Header() {
   const locate = useLocation();
