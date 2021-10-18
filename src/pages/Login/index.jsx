@@ -34,7 +34,7 @@ const Login = () => {
 
   useEffect(() => {
     if (userId) {
-      console.log(userId);
+      
       history.push("/dashboard");
     }
   }, [userLogin]);
