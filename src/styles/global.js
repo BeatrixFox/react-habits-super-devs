@@ -1,14 +1,15 @@
 import { createGlobalStyle } from "styled-components";
 
-export default createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
 
-*{
+* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	outline: 0;
+	text-decoration: none;
 }
-:root{
+:root {
 	// a definir paleta de cores.
 	--background-geral: #f2f2f2ff;
 	--details: #566EC6;
@@ -31,13 +32,15 @@ export default createGlobalStyle`
 	--tomato: #f26a4fff;
 	
 }
-body{
+body {
 	background: var(---background-geral);
 	color: var(--black);
 }
 
-button{
+button {
 	cursor: pointer;
 }
 
 `;
+
+export default GlobalStyle;
