@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
 
 import Header from "../../components/Header";
+
 export const Dashboard = () => {
   const { authorized } = useContext(UserHabitsApiContext);
   const history = useHistory();

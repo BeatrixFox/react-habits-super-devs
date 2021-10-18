@@ -29,8 +29,9 @@ export const Habits = () => {
     <>
       <Header titleMessage="Meus Hábitos" />
       <Container>
-        <div>aqui vai map com component com card de hábitos</div>
+
         <AddHabits />
+
         {habits.map((item) => (
           <HabitsCard item={item} />
         ))}
@@ -44,6 +45,7 @@ export const Habits = () => {
           type="onClick"
           title="Procurar"
         />
+
       </Container>
     </>
   );
