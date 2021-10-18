@@ -2,10 +2,12 @@ import HomeImg from "../../assets/img/homeImg.png";
 import Button from "../../components/Button/index";
 import { Link } from "react-router-dom";
 import { Section, Img, Div } from "./styles";
+import HeaderMain from "../../components/HeaderMain";
 
 const Home = () => {
   return (
     <Section>
+      <HeaderMain />
       <div>
         <figure>
           <Img src={HomeImg} alt="background" />

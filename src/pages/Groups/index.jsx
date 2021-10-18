@@ -3,6 +3,7 @@ import Button from "../../components/Button/index";
 import { Redirect } from "react-router";
 import { useContext } from "react";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
+import Header from "../../components/Header";
 
 export const Groups = () => {
   const { authorized } = useContext(UserHabitsApiContext);
@@ -19,15 +20,19 @@ export const Groups = () => {
   }
 
   return (
-    <Container>
-      <div>Aqui vai o maps com carts dos grupos</div>
-      <Button
-        handleClick={handleClickAddGroup}
-        type="onClick"
-        title="Novo Grupo"
-      />
-      <Button handleClick={handleClickSearch} type="onClick" title="Procurar" />
-    </Container>
+    <>
+      <Header titleMessage="Grupos" />
+
+      <Container>
+        <div>Aqui vai o maps com carts dos grupos</div>
+        <Button
+          handleClick={handleClickAddGroup}
+          type="click"
+          title="Novo Grupo"
+        />
+        <Button handleClick={handleClickSearch} type="click" title="Procurar" />
+      </Container>
+    </>
   );
 };
 

@@ -6,6 +6,7 @@ import { HabitsContext } from "../../Providers/Habits/index";
 import { Redirect } from "react-router";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
 import AddHabits from "../../components/AddHabits";
+import Header from "../../components/Header";
 
 export const Habits = () => {
   const { authorized } = useContext(UserHabitsApiContext);
@@ -25,19 +26,26 @@ export const Habits = () => {
   }
 
   return (
-    <Container>
-      <div>aqui vai map com component com card de hábitos</div>
-      <AddHabits />
-      {habits.map((item) => (
-        <HabitsCard item={item} />
-      ))}
-      <Button
-        handleClick={handleClickAddHabit}
-        type="onClick"
-        title="Novos hábitos"
-      />
-      <Button handleClick={handleClickSearch} type="onClick" title="Procurar" />
-    </Container>
+    <>
+      <Header titleMessage="Meus Hábitos" />
+      <Container>
+        <div>aqui vai map com component com card de hábitos</div>
+        <AddHabits />
+        {habits.map((item) => (
+          <HabitsCard item={item} />
+        ))}
+        <Button
+          handleClick={handleClickAddHabit}
+          type="onClick"
+          title="Novos hábitos"
+        />
+        <Button
+          handleClick={handleClickSearch}
+          type="onClick"
+          title="Procurar"
+        />
+      </Container>
+    </>
   );
 };
 
