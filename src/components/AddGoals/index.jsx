@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import Select from "react-select";
 import { toast } from "react-toastify";
 import { GoalsHabitsApiContext } from "../../Providers/goalsHabitsApi";
+import Button from "../Button/index";
 // import context provider
 
 const optionsLevel = [
@@ -44,7 +45,7 @@ export const AddGoals = () => {
         options={optionsLevel}
         {...register("difficulty")}
       />
-      <button type="submit">Adcionar</button>
+      <Button type="submit" title={"Adcionar"}></Button>
     </form>
   );
 };

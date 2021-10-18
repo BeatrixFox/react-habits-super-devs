@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import Select from "react-select";
 import { toast } from "react-toastify";
 import { HabitsContext } from "../../Providers/Habits";
+import Button from "../Button/index";
 // import context provider
 
 const optionsCategory = [
@@ -79,7 +80,7 @@ export const AddHabits = () => {
         {...register("frequency")}
       />
 
-      <button type="submit">Adcionar</button>
+      <Button type="submit" title={"Adcionar"}></Button>
     </form>
   );
 };
