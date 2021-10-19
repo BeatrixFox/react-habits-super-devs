@@ -5,35 +5,54 @@ const GlobalStyle = createGlobalStyle`
 * {
 	margin: 0;
 	padding: 0;
-	box-sizing: border-box;
+	box-sizing: border-box; 
 	outline: 0;
 	text-decoration: none;
+	border: none;
+	list-style: none;
 }
 :root {
 	// a definir paleta de cores.
-	--background-geral: #f2f2f2ff;
-	--details: #566EC6;
-	--input-basic: #C4C4C4;
-	--button-accepted: #BDE8FB 
-	--button-change: #2C702A;
-	--aba-color: #DC5151;
-	--button-delete: #B70000;
-	--backgroud-back-cards: #66DFE7;
+	--background-page: var(--platinum);
+	--background-header: var(--st-patricks-blue);
+	/* --background-cards: */
+	/* --background-button-normal: */
+	/* --background-button-normal-hover: */
+	/* --background-button-change: */
+	/* --background-button-change-hover: */
+	/* --background-button-delete: */
+	/* --background-button-delete-hover: */
+	/* --background-input: */
+	/* --background-input-hover */
+	/* --font-color-page: */
+	/* --font-color-header: */
+	/* --font-color-cards: */
+	/* --font-color-button: */
+	/* --font-color-input: */
+	/* --font-color-links-visited: */
 
+//CORES (https://coolors.co/282e7b-4889ea-649ff7-a1c2fc-e9605d-28a498-ebebeb):
+	//branco 
+	--platinum: #EBEBEB;
+	//verde:
+	--persian-green: #28A498;
+	//vermelho:
+	--fire-opal: #E9605D;
+	//azul escuro:
+	--st-patricks-blue: #282E7B;
+	//azul claro:
+	--united-nations-blue: #4889EA;
+	//azul mais claro:
+	--little-boy-blue: #649FF7;
+	//azul bb:
+	--baby-blue-eyes: #a1c2fc;
 
-	--xiketic: #121420ff;
-	--rosewood: #65010cff;
-	--venetian-red: #cb1b16ff;
-	--prussian-blue: #033270ff;
-	--sapphire-blue: #1368aaff;
-	--green-blue-crayola: #4091c9ff;
-	--light-cornflower-blue: #9dcee2ff;
-	--dark-salmon: #f29479ff;
-	--tomato: #f26a4fff;
-	
+	--black: #000000;
+
 }
+
 body {
-	background: var(---background-geral);
+	background: var(--background-page);
 	color: var(--black);
 }
 
