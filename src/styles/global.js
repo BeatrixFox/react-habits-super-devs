@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
 	/* --background-input: */
 	/* --background-input-hover */
 	/* --font-color-page: */
-	/* --font-color-header: */
+	--font-color-header: var(--platinum);
 	/* --font-color-cards: */
 	/* --font-color-button: */
 	/* --font-color-input: */
