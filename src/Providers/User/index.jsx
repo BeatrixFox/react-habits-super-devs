@@ -1,21 +1,26 @@
 import jwtDecode from "jwt-decode";
 import { createContext, useState, useEffect } from "react";
-import { set } from "react-hook-form";
 import { toast } from "react-toastify";
-
 import api from "../../services/api";
 
-export const UserHabitsApiContext = createContext();
+export const UserContext = createContext();
 
-export const UserHabitsApiProvider = ({ children }) => {
+export const UserProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [userSignupSuccess, setSignupSuccess] = useState();
   const [userId, setUserId] = useState();
   const [authorized, setAuthorized] = useState(false);
+  const [config, setConfig] = useState({});
 
-  const [accessToken] = useState(
+  const [accessToken, setAccessToken] = useState(
     JSON.parse(localStorage.getItem("@Habit:access")) || ""
   );
+
+  useEffect(() => {
+    setConfig({
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+  }, [accessToken]);
 
   const userSignup = (userData) => {
     api
@@ -36,8 +41,7 @@ export const UserHabitsApiProvider = ({ children }) => {
         const { access } = response.data;
         toast.success("Login efetuado com sucesso!");
         localStorage.setItem("@Habit:access", JSON.stringify(access));
-        // const decoded = jwtDecode(access);
-        // setUserId(decoded?.user_id);
+        setAccessToken(access);
         setAuthorized(true);
       })
       .catch((err) => toast.error(`Falha! Senha ou email incorreto => ${err}`));
@@ -49,7 +53,6 @@ export const UserHabitsApiProvider = ({ children }) => {
       const decoded = jwtDecode(token);
       setUser(decoded);
       setUserId(decoded?.user_id);
-      setAuthorized(true);
     }
   }, [authorized]);
 
@@ -68,7 +71,7 @@ export const UserHabitsApiProvider = ({ children }) => {
   };
 
   return (
-    <UserHabitsApiContext.Provider
+    <UserContext.Provider
       value={{
         userSignup,
         userSignupSuccess,
@@ -79,9 +82,11 @@ export const UserHabitsApiProvider = ({ children }) => {
         userProfileUpdate,
         authorized,
         setAuthorized,
+        accessToken,
+        config,
       }}
     >
       {children}
-    </UserHabitsApiContext.Provider>
+    </UserContext.Provider>
   );
 };

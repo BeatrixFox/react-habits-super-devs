@@ -2,12 +2,12 @@ import { Container } from "./styles";
 import Button from "../../components/Button/index";
 import { Redirect } from "react-router";
 import { useContext } from "react";
-import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
+import { UserContext } from "../../Providers/User";
 import ListGroup from "../../components/ListGroup/index";
 import FindGroup from "../../components/FindGroup";
 
 const Groups = () => {
-  const { authorized } = useContext(UserHabitsApiContext);
+  const { authorized } = useContext(UserContext);
 
   const handleClickAddGroup = () => {
     console.log("handleClickAddGroup");
@@ -17,7 +17,7 @@ const Groups = () => {
   };
 
   if (!authorized) {
-    //   return <Redirect to="/login" />;
+    return <Redirect to="/login" />;
   }
 
   return (

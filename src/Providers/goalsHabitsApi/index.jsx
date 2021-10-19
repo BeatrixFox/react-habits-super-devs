@@ -1,87 +1,85 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 import api from "../../services/api";
+import { UserContext } from "../User";
 
 export const GoalsHabitsApiContext = createContext();
 
 export const GoalsHabitsApiProvider = ({ children }) => {
-    const [accessToken] = useState(
-        JSON.parse(localStorage.getItem("@Habit:access")) || ""
-    );
+  const { config } = useContext(UserContext);
 
-    const [goalCreated, setGoalCreated] = useState();
-    const [goalUpdated, setGoalUpdated] = useState();
-    const [goalGot, setGoalGot] = useState();
-    const [groupedGoals, setGroupedGoals] = useState([]);
+  const [goalCreated, setGoalCreated] = useState();
+  const [goalUpdated, setGoalUpdated] = useState();
+  const [goalGot, setGoalGot] = useState();
+  const [groupedGoals, setGroupedGoals] = useState([]);
 
-    const header = {
-        headers: {
-            Authorization: `Bearer ${accessToken}`,
+  const createGoal = (title, difficulty, how_much_achieved, group) => {
+    api
+      .post(
+        "/goals/",
+        {
+          title: title,
+          difficulty: difficulty,
+          how_much_achieved: how_much_achieved,
+          group: group,
         },
-    };
+        config
+      )
+      .then((response) => setGoalCreated(response.data))
+      .catch((err) => console.log(err));
+  };
 
-    const createGoal = (title, difficulty, how_much_achieved, group) => {
-        api.post(
-            "/goals/",
-            {
-                title: title,
-                difficulty: difficulty,
-                how_much_achieved: how_much_achieved,
-                group: group,
-            },
-            header
-        )
-            .then((response) => setGoalCreated(response.data))
-            .catch((err) => console.log(err));
-    };
+  const updateGoal = () => {
+    api
+      .patch(
+        "/goals/",
+        {
+          achieved: true,
+        },
+        config
+      )
+      .then((response) => setGoalUpdated(response.data))
+      .catch((err) => console.log(err));
+  };
 
-    const updateGoal = () => {
-        api.patch(
-            "/goals/",
-            {
-                achieved: true,
-            },
-            header
-        )
-            .then((response) => setGoalUpdated(response.data))
-            .catch((err) => console.log(err));
-    };
+  const deleteGoal = (goalId) => {
+    api
+      .delete(`/goals/${goalId}/`, config)
+      .then((response) => console.log("ok"))
+      .catch((err) => console.log(err));
+  };
 
-    const deleteGoal = (goalId) => {
-        api.delete(`/goals/${goalId}/`, header)
-            .then((response) => console.log("ok"))
-            .catch((err) => console.log(err));
-    };
+  const getOneGoal = (goalId) => {
+    api
+      .get(`/goals/${goalId}/`)
+      .then((response) => setGoalGot(response.data))
+      .catch((err) => console.log(err));
+  };
 
-    const getOneGoal = (goalId) => {
-        api.get(`/goals/${goalId}/`)
-            .then((response) => setGoalGot(response.data))
-            .catch((err) => console.log(err));
-    };
+  const getGroupGoals = (groupId, groupPage = 1) => {
+    api
+      .get(`/goals/?group=${groupId}&page=${groupPage}`)
+      .then((response) =>
+        setGroupedGoals(...groupedGoals, response.data.results)
+      )
+      .catch((err) => console.log(err));
+  };
 
-    const getGroupGoals = (groupId, groupPage = 1) => {
-        api.get(`/goals/?group=${groupId}&page=${groupPage}`)
-            .then((response) =>
-                setGroupedGoals(...groupedGoals, response.data.results)
-            )
-            .catch((err) => console.log(err));
-    };
-
-    return (
-        <GoalsHabitsApiContext.Provider
-            value={{
-                createGoal,
-                goalCreated,
-                updateGoal,
-                goalUpdated,
-                deleteGoal,
-                getOneGoal,
-                goalGot,
-                getGroupGoals,
-                groupedGoals,
-            }}
-        >
-            {children}
-        </GoalsHabitsApiContext.Provider>
-    );
+  return (
+    <GoalsHabitsApiContext.Provider
+      value={{
+        createGoal,
+        goalCreated,
+        updateGoal,
+        goalUpdated,
+        deleteGoal,
+        getOneGoal,
+        goalGot,
+        getGroupGoals,
+        groupedGoals,
+      }}
+    >
+      {children}
+    </GoalsHabitsApiContext.Provider>
+  );
 };
