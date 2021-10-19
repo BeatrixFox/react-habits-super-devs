@@ -3,7 +3,7 @@ import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
-import { HeaderDiv, ButtonHeader, Logout } from "./style";
+import { HeaderDiv, ButtonHeader, Logout } from "./styles";
 
 function Header() {
   const history = useHistory();

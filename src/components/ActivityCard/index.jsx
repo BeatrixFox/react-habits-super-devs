@@ -1,4 +1,4 @@
-import { Div, Container } from "./style";
+import { Div, Container } from "./styles";
 
 const AtivityCard = ({ item }) => {
   return (

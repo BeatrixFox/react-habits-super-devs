@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { Container } from "./style";
+import { Container } from "./styles";
 
 import { GroupsContext } from "../../Providers/Groups/index";
 

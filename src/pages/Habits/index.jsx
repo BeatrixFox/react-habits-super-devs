@@ -1,5 +1,5 @@
 import Button from "../../components/Button/index";
-import { Container } from "./style";
+import { Container } from "./styles";
 import { useContext } from "react";
 import ListHabits from "../../components/ListHabits";
 import { HabitsContext } from "../../Providers/Habits/index";

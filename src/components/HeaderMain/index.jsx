@@ -1,4 +1,4 @@
-import { HeaderDiv } from "./style";
+import { HeaderDiv } from "./styles";
 import AssignmentTurnedInOutlinedIcon from "@mui/icons-material/AssignmentTurnedInOutlined";
 
 function HeaderMain() {

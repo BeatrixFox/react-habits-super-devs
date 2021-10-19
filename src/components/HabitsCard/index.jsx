@@ -1,4 +1,4 @@
-import { Div, Container } from "./style";
+import { Div, Container } from "./styles";
 import Button from "../Button/index";
 
 import { useContext } from "react";
