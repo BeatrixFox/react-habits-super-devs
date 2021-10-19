@@ -19,7 +19,7 @@ const ListGroup = () => {
     return (
       <Container>
         {myGroups.map((group) => (
-          <GroupsCard item={group} />
+          <GroupsCard key={group.id} item={group} />
         ))}
       </Container>
     );
@@ -29,7 +29,7 @@ const ListGroup = () => {
     return (
       <Container>
         {groups.map((group) => (
-          <GroupsCard item={group} />
+          <GroupsCard key={group.id} item={group} />
         ))}
       </Container>
     );
