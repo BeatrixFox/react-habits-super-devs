@@ -20,7 +20,7 @@ const FindGoals = () => {
       <input
         type="text"
         value={text}
-        onChange={() => setText((event) => event.target.value)}
+        onChange={(event) => setText(event.target.value)}
       />
       <Button
         title="Procurar"

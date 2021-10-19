@@ -45,7 +45,7 @@ function Header() {
         <Link to="/habits/"> Hábitos </Link>
       </ButtonHeader>
       <ButtonHeader>
-        <Link to="/groups/"> Grupos </Link>
+        <Link to="/groups"> Grupos </Link>
       </ButtonHeader>
 
       <h1>{titleMessage()}</h1>

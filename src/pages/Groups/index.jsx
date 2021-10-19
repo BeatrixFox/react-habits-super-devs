@@ -30,7 +30,7 @@ const Groups = () => {
           title="Novo Grupo"
         />
         <FindGroup />
-        <Button handleClick={handleClickSearch} type="click" title="Procurar" />
+        {/* <Button handleClick={handleClickSearch} type="click" title="Procurar" /> */}
       </Container>
     </>
   );
