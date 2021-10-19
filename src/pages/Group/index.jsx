@@ -2,14 +2,17 @@ import { Container } from "./style";
 import { Redirect } from "react-router";
 import { useContext } from "react";
 import { GroupsContext } from "../../Providers/Groups/index";
+import { GoalsHabitsApiContext } from "../../Providers/goalsHabitsApi/index";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
-//import FindActivity from "../../components/FindActivity/index";
+import FindGoals from "../../components/FindGoals/index";
+import FindActivity from "../../components/FindActivity/index";
 import ListActivity from "../../components/ListActivity/index";
 import ListGoals from "../../components/ListGoals/index";
 
 const Group = () => {
   const { authorized } = useContext(UserHabitsApiContext);
   const { oneGroup } = useContext(GroupsContext);
+  const { groupedGoals } = useContext(GoalsHabitsApiContext);
   //const activities = [...oneGroup.activities];
   //TODO precisa trabalhar os params para usar :id
   //const { oneGroup } = useContext(GroupsContext);
@@ -24,9 +27,26 @@ const Group = () => {
         <p>Aqui vai o componet metas</p>
 
         <ListGoals />
-        {/* <FindGoals /> */}
-        {oneGroup.activities && <ListActivity oneGroup={oneGroup} />}
-        {/* <FindActivity /> */}
+        <div>
+          Buscar Metas:
+          <FindGoals />
+        </div>
+        <div>
+          Buscar atividades:
+          {<FindActivity />}
+        </div>
+        <div>
+          Listar Metas:
+          {/* */}
+        </div>
+        <div>
+          Listar atividades:
+          {!!oneGroup.activities && <ListActivity oneGroup={oneGroup} />}
+        </div>
+        <div>
+          Listar membros da gangue:
+          {/* */}
+        </div>
 
         <p>Aqui vai o componet membros</p>
       </Container>

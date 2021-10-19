@@ -1,4 +1,4 @@
-import { Button } from "../Button/index";
+import Button from "../Button/index";
 import { useContext, useState } from "react";
 import { ActivitiesHabitsApiContext } from "../../Providers/activitiesHabitsApi";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
