@@ -4,6 +4,7 @@ import Button from "../../components/Button/index.jsx";
 import { Redirect, useHistory } from "react-router";
 import { useContext } from "react";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
+import UpdateUserProfile from '../../components/UpdateUserProfile/index';
 
 const Dashboard = () => {
   const { authorized } = useContext(UserHabitsApiContext);
@@ -31,11 +32,8 @@ const Dashboard = () => {
         title="Meus Grupos"
       />
       <Button handleClick={handleClickHabits} type="click" title="Hábitos" />
-      <Button
-        handleClick={handleClickUpdUser}
-        type="click"
-        title="Atualizar Cadastro"
-      />
+
+      <UpdateUserProfile />      
 
       <Img src={dashboardImg} alt="imagem dashboard" />
     </>

@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import api from "../../services/api";
 
 export const GroupsContext = createContext([]);
@@ -28,7 +29,10 @@ export const GroupsProvider = ({ children }) => {
     api
       .get(`/groups/${id}/`)
       .then((response) => setOneGroup(response.data))
-      .catch((error) => console.log("Erro: ", error));
+      .catch((error) => {
+        toast.error("Grupo não encontrado");
+        console.log("Erro: ", error);
+      });
   };
 
   const getMyGroups = () => {
@@ -43,13 +47,18 @@ export const GroupsProvider = ({ children }) => {
     /*myGroups !== [] &&*/ getMyGroups();
   }, []);
 
-  const createGroup = (date) => {
+  const createGroup = (data) => {
     api
-      .post("groups/", date, config)
+      .post("groups/", data, config)
       .then((response) => {
+        setGroups([...groups, response.data]);
+        toast.success("Grupo criado com sucesso");
         console.log(response);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        toast.error("Grupo não pode ser criado. Tente novamente");
+        console.log(error);
+      });
   };
   const updatedGroup = (date, userId) => {
     if (userId === date.creator.id) {
@@ -64,7 +73,10 @@ export const GroupsProvider = ({ children }) => {
   const subscribeToGroup = (id) => {
     api
       .get(`groups/${id}/subscribe/`)
-      .then((response) => console.log("Adicionado"))
+      .then((response) => {
+        toast.success("Inscrição feita");
+        console.log("Adicionado");
+      })
       .catch((error) => console.log("Erro: ", error));
   };
 

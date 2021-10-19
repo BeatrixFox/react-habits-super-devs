@@ -35,11 +35,12 @@ export const HabitsProvider = ({ children }) => {
       .catch((error) => console.log("Erro: ", error));
   };
 
-  useEffect(() => {
-    /*habits !== [] &&*/ getHabits();
-  }, []);
+  //useEffect(() => {
+  /*habits !== [] &&*/ //getHabits();
+  //}, []);
 
   const createHabit = (data) => {
+    console.log(data);
     api
       .post("/habits/", data, config)
       .then((response) => {
@@ -71,6 +72,7 @@ export const HabitsProvider = ({ children }) => {
       value={{
         habits,
         setHabits,
+        getHabits,
         createHabit,
         deleteHabit,
         updatedHabit,

@@ -5,11 +5,11 @@ import { GroupsContext } from "../../Providers/Groups";
 
 const FindGroup = () => {
   const [text, setText] = useState("");
-  const { getOneGroup, groups } = useContext(GroupsContext);
+  const { getOneGroups, groups } = useContext(GroupsContext);
 
   const handlerClickFinding = (text) => {
     const oneTime = groups.filter((group) => group.name === text);
-    getOneGroup(oneTime.id);
+    getOneGroups(oneTime.id);
   };
 
   return (
