@@ -1,12 +1,12 @@
 import Button from "../../components/Button/index";
 import { Container } from "./styles";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import ListHabits from "../../components/ListHabits";
 import { HabitsContext } from "../../Providers/Habits/index";
 import { Redirect } from "react-router";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
 import AddHabits from "../../components/AddHabits";
-import { useEffect } from "react";
+import FindHabits from "../../components/FindHabits/index";
 
 export const Habits = () => {
   const { authorized } = useContext(UserHabitsApiContext);
@@ -34,6 +34,7 @@ export const Habits = () => {
   return (
     <>
       <Container>
+        <FindHabits />
         <ListHabits />
         <AddHabits />
         <Button handleClick={handleClickSearch} type="click" title="Procurar" />

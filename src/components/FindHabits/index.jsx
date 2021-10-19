@@ -36,6 +36,7 @@ const FindHabits = () => {
 
   return (
     <Container>
+      <Button title="Procurar hábitos" handleClick={handleOpen}></Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -46,7 +47,7 @@ const FindHabits = () => {
           <h1>Procurar Hábitos</h1>
           <TextField
             fullWidth
-            label="Novo username"
+            label="Informe hábito a procurar"
             margin="normal"
             variant="filled"
             size="small"
