@@ -1,6 +1,6 @@
-import { ActionButton } from './styles';
+import { ActionButton } from "./styles";
 
-function Button({ handleClick, type, title }) {
+const Button = ({ handleClick, type, title }) => {
   return (
     <>
       <ActionButton
@@ -12,5 +12,5 @@ function Button({ handleClick, type, title }) {
       </ActionButton>
     </>
   );
-}
+};
 export default Button;

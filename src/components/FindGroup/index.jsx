@@ -1,10 +1,11 @@
-import { Button } from "@material-ui/core";
+import Button from "../Button";
 import { useContext, useState } from "react";
-import { Container } from "./style";
+import { Container } from "./styles";
+import { GroupsContext } from "../../Providers/Groups";
 
 const FindGroup = () => {
   const [text, setText] = useState("");
-  const { getOneGroup, groups } = useContext();
+  const { getOneGroup, groups } = useContext(GroupsContext);
 
   const handlerClickFinding = (text) => {
     const oneTime = groups.filter((group) => group.name === text);
@@ -16,12 +17,12 @@ const FindGroup = () => {
       <input
         type="text"
         value={text}
-        onChange={() => setText((event) => event.target.value)}
+        onChange={(event) => setText(event.target.value)}
       />
       <Button
         title="Procurar"
         type="click"
-        handlerClick={() => handlerClickFinding(text)}
+        handleClick={() => handlerClickFinding(text)}
       />
     </Container>
   );

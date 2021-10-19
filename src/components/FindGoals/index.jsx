@@ -1,8 +1,8 @@
-import { Button } from "../Button/index";
+import Button from "../Button/index";
 import { useContext, useState } from "react";
 import { GoalsHabitsApiContext } from "../../Providers/goalsHabitsApi";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
-import { Container } from "./style";
+import { Container } from "./styles";
 
 const FindGoals = () => {
   const [text, setText] = useState("");
