@@ -5,6 +5,7 @@ export const HabitsContext = createContext([]);
 
 export const HabitsProvider = ({ children }) => {
   const [habits, setHabits] = useState([]);
+  const [oneHabit, setOneHabit] = useState([]);
 
   const [accessToken] = useState(
     JSON.parse(localStorage.getItem("@Habit:access")) || ""
@@ -21,14 +22,26 @@ export const HabitsProvider = ({ children }) => {
       .catch((error) => console.log("Erro: ", error));
   };
 
+  const getOneHabit = (titleHabit) => {
+    api
+      .get("/habits/personal/", config)
+      .then((response) => {
+        const listHabits = response.data;
+        const refreshListHabits = listHabits.filter(
+          (oneItemList) => oneItemList.title === titleHabit
+        );
+        setOneHabit(refreshListHabits);
+      })
+      .catch((error) => console.log("Erro: ", error));
+  };
+
   useEffect(() => {
     /*habits !== [] &&*/ getHabits();
   }, []);
 
-  const createHabit = (date) => {
-    console.log(date);
+  const createHabit = (data) => {
     api
-      .post("/habits/", date, config)
+      .post("/habits/", data, config)
       .then((response) => {
         setHabits([...habits, response.data]);
       })
@@ -55,7 +68,14 @@ export const HabitsProvider = ({ children }) => {
 
   return (
     <HabitsContext.Provider
-      value={{ habits, setHabits, createHabit, deleteHabit, updatedHabit }}
+      value={{
+        habits,
+        setHabits,
+        createHabit,
+        deleteHabit,
+        updatedHabit,
+        getOneHabit,
+      }}
     >
       {children}
     </HabitsContext.Provider>

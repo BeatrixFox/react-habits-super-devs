@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useHistory } from "react-router";
 import { useContext, useEffect, useState } from "react";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
+import Button from "./../../components/Button/index";
 
 const Login = () => {
   const history = useHistory();
@@ -34,7 +35,6 @@ const Login = () => {
 
   useEffect(() => {
     if (userId) {
-      
       history.push("/dashboard");
     }
   }, [userLogin]);
@@ -47,7 +47,7 @@ const Login = () => {
       <input placeholder="Senha" {...register("password")} />
       <p>{errors.password?.message}</p>
 
-      <button type="submit">ADD</button>
+      <Button type="submit" title="Enviar"></Button>
     </form>
   );
 };

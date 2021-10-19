@@ -8,37 +8,33 @@ import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
 import AddHabits from "../../components/AddHabits";
 
 export const Habits = () => {
-    const { authorized } = useContext(UserHabitsApiContext);
-    const { habits } = useContext(HabitsContext);
+  const { authorized } = useContext(UserHabitsApiContext);
+  const { habits } = useContext(HabitsContext);
 
-    // console.log(habits);
+  // console.log(habits);
 
-    const handleClickAddHabit = () => {
-        //Modal para add habits
-        console.log("handleClickAddHabit");
-    };
-    const handleClickSearch = () => {
-        //Modal para procurar habito
-        console.log("handleClickSearch");
-    };
+  const handleClickAddHabit = () => {
+    //Modal para add habits
+    console.log("handleClickAddHabit");
+  };
+  const handleClickSearch = () => {
+    //Modal para procurar habito
+    console.log("handleClickSearch");
+  };
 
-    if (!authorized) {
-        return <Redirect to="/login" />;
-    }
+  if (!authorized) {
+    return <Redirect to="/login" />;
+  }
 
-    return (
-        <>
-            <Container>
-                <ListHabits />
-                <AddHabits />
-                <Button
-                    handleClick={handleClickSearch}
-                    type="click"
-                    title="Procurar"
-                />
-            </Container>
-        </>
-    );
+  return (
+    <>
+      <Container>
+        <ListHabits />
+        <AddHabits />
+        <Button handleClick={handleClickSearch} type="click" title="Procurar" />
+      </Container>
+    </>
+  );
 };
 
 export default Habits;
