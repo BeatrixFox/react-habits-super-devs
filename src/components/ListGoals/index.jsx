@@ -1,17 +1,17 @@
-import { useContext } from "react";
 import { GoalsHabitsApiContext } from "../../Providers/goalsHabitsApi/index";
 import { Container } from "./style";
+import { useContext } from "react";
 
 export const ListGoals = () => {
-  const { goals } = useContext(GoalsHabitsApiContext);
-  console.log(goals);
+  const { groupedGoals } = useContext(GoalsHabitsApiContext);
+
   return (
     <Container>
-      {/* {goals.map((goal) => (
+      {groupedGoals.map((goal) => (
         <li key={goal.id}>
           <p>Cardlist {goal}</p>
         </li>
-      ))} */}
+      ))}
     </Container>
   );
 };

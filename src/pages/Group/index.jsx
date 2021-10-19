@@ -18,7 +18,7 @@ const Group = () => {
   //const { oneGroup } = useContext(GroupsContext);
 
   if (!authorized) {
-    //   return <Redirect to="/login" />;
+    return <Redirect to="/login" />;
   }
 
   return (

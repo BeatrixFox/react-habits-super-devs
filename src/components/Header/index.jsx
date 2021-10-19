@@ -1,10 +1,22 @@
 import AssignmentTurnedInOutlinedIcon from "@mui/icons-material/AssignmentTurnedInOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 
-import { Link, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 import { HeaderDiv, ButtonHeader, Logout } from "./style";
 
 function Header() {
+  const history = useHistory();
+
+  const handleLogout = () => {
+    const confirmLogout = window.confirm("Deseja mesmo sair?");
+    if (confirmLogout) {
+      localStorage.clear();
+      history.push("/");
+      window.location.reload();
+    }
+  };
+
   const locate = useLocation();
   console.log(locate.pathname);
 
@@ -45,12 +57,12 @@ function Header() {
         <Link to="/habits/"> Hábitos </Link>
       </ButtonHeader>
       <ButtonHeader>
-        <Link to="/groups/"> Grupos </Link>
+        <Link to="/groups"> Grupos </Link>
       </ButtonHeader>
 
       <h1>{titleMessage()}</h1>
 
-      <Logout>
+      <Logout onClick={() => handleLogout()}>
         <LogoutOutlinedIcon />
       </Logout>
     </HeaderDiv>

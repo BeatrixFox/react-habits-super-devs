@@ -5,12 +5,12 @@ import { Redirect, useHistory } from "react-router";
 import { useContext } from "react";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
 
-export const Dashboard = () => {
+const Dashboard = () => {
   const { authorized } = useContext(UserHabitsApiContext);
   const history = useHistory();
 
-  const handleClickGroups = () => {
-    history.push("/groups/");
+  const handleClickMyGroups = () => {
+    history.push("/my_groups/");
   };
   const handleClickHabits = () => {
     history.push("/habits/");
@@ -25,7 +25,11 @@ export const Dashboard = () => {
 
   return (
     <>
-      <Button handleClick={handleClickGroups} type="click" title="Grupos" />
+      <Button
+        handleClick={handleClickMyGroups}
+        type="click"
+        title="Meus Grupos"
+      />
       <Button handleClick={handleClickHabits} type="click" title="Hábitos" />
       <Button
         handleClick={handleClickUpdUser}

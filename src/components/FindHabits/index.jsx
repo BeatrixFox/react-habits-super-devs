@@ -1,15 +1,14 @@
-import Button from "../Button";
+import Button from "../Button/index";
 import { useContext, useState } from "react";
+import { HabitsContext } from "../../Providers/Habits";
 import { Container } from "./styles";
-import { GroupsContext } from "../../Providers/Groups";
 
-const FindGroup = () => {
+const FindHabits = () => {
   const [text, setText] = useState("");
-  const { getOneGroup, groups } = useContext(GroupsContext);
+  const { getOneHabit, oneHabit } = useContext(HabitsContext);
 
   const handlerClickFinding = (text) => {
-    const oneTime = groups.filter((group) => group.name === text);
-    getOneGroup(oneTime.id);
+    getOneHabit(text);
   };
 
   return (
@@ -22,10 +21,11 @@ const FindGroup = () => {
       <Button
         title="Procurar"
         type="click"
-        handleClick={() => handlerClickFinding(text)}
+        handlerClick={() => handlerClickFinding(text)}
       />
+      <p>CardHabit {oneHabit}</p>
     </Container>
   );
 };
 
-export default FindGroup;
+export default FindHabits;

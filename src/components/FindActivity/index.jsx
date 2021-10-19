@@ -2,7 +2,7 @@ import Button from "../Button/index";
 import { useContext, useState } from "react";
 import { ActivitiesHabitsApiContext } from "../../Providers/activitiesHabitsApi";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
-import { Container } from "./style";
+import { Container } from "./styles";
 
 const FindActivity = () => {
   const [text, setText] = useState("");
@@ -20,7 +20,7 @@ const FindActivity = () => {
       <input
         type="text"
         value={text}
-        onChange={() => setText((event) => event.target.value)}
+        onChange={(event) => setText(event.target.value)}
       />
       <Button
         title="Procurar"
