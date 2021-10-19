@@ -62,7 +62,7 @@ function Header() {
 
       <h1>{titleMessage()}</h1>
 
-      <Logout onClick={() => handleLogout()}>
+      <Logout onClick={handleLogout}>
         <LogoutOutlinedIcon />
       </Logout>
     </HeaderDiv>
