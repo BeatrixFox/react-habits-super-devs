@@ -5,6 +5,7 @@ import { useContext } from "react";
 import Select from "react-select";
 import { GoalsHabitsApiContext } from "../../Providers/goalsHabitsApi";
 import Button from "../Button/index";
+import { Container } from "./styles";
 // import context provider
 
 const optionsLevel = [

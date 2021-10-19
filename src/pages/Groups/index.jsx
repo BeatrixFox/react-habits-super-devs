@@ -1,4 +1,4 @@
-import { Container } from "./style";
+import { Container } from "./styles";
 import Button from "../../components/Button/index";
 import { Redirect } from "react-router";
 import { useContext } from "react";
