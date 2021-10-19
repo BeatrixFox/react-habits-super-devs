@@ -46,7 +46,7 @@ const Signup = () => {
 
   useEffect(() => {
     if (userSignupSuccess) {
-      history.push("login");
+      history.push("/login");
     }
   }, [userSignupSuccess]);
 
@@ -68,7 +68,7 @@ const Signup = () => {
         <input placeholder="Confirmar senha" {...register("passwordConfirm")} />
         <p>{errors.passwordConfirm?.message}</p>
 
-        <Button type={"submit"} title={"Enviar"} />
+        <Button type="submit" title="Enviar" />
       </form>
     </>
   );
