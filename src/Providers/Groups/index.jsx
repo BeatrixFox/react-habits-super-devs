@@ -23,7 +23,7 @@ export const GroupsProvider = ({ children }) => {
       .then((response) => setGroups(response.data.results))
       .catch((error) => console.log("Erro: ", error));
   };
-  const getOneGroups = (id) => {
+  const getOneGroup = (id) => {
     //não pede autenticação
     api
       .get(`groups/${id}/`)
@@ -77,7 +77,7 @@ export const GroupsProvider = ({ children }) => {
         setGroups,
         createGroup,
         updatedGroup,
-        getOneGroups,
+        getOneGroup,
         subscribeToGroup,
       }}
     >

@@ -10,10 +10,10 @@ export const Dashboard = () => {
   const history = useHistory();
 
   const handleClickGroups = () => {
-    history.push("/groups");
+    history.push("/groups/");
   };
   const handleClickHabits = () => {
-    history.push("/habits");
+    history.push("/habits/");
   };
   const handleClickUpdUser = () => {
     console.log("handleClickUpdUser");

@@ -1,12 +1,11 @@
-import { Container } from "./style";
+import { Container, Div } from "./style";
+import AtivityCard from "../ActivityCard/index";
 
-export const ListActivity = ({ activities }) => {
+const ListActivity = ({ oneGroup }) => {
   return (
     <Container>
-      {activities.map((activity) => (
-        <li key={activity.id}>
-          <p>Cardlist {activity}</p>
-        </li>
+      {oneGroup.activities.map((item) => (
+        <p>Título: {item.title}</p>
       ))}
     </Container>
   );
