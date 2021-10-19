@@ -19,21 +19,21 @@ export const GroupsProvider = ({ children }) => {
   const getGroups = () => {
     //não pede autenticação .get("groups/", config)
     api
-      .get("groups/", config)
+      .get("/groups/", config)
       .then((response) => setGroups(response.data.results))
       .catch((error) => console.log("Erro: ", error));
   };
   const getOneGroup = (id) => {
     //não pede autenticação
     api
-      .get(`groups/${id}/`)
+      .get(`/groups/${id}/`)
       .then((response) => setOneGroup(response.data))
       .catch((error) => console.log("Erro: ", error));
   };
 
   const getMyGroups = () => {
     api
-      .get("groups/subscriptions/", config)
+      .get("/groups/subscriptions/", config)
       .then((response) => setMyGroups(response.data))
       .catch((error) => console.log("Erro: ", error));
   };

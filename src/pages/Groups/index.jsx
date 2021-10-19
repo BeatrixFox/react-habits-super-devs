@@ -4,6 +4,7 @@ import { Redirect } from "react-router";
 import { useContext } from "react";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
 import ListGroup from "../../components/ListGroup/index";
+import FindGroup from "../../components/FindGroup";
 
 const Groups = () => {
   const { authorized } = useContext(UserHabitsApiContext);
@@ -28,6 +29,7 @@ const Groups = () => {
           type="click"
           title="Novo Grupo"
         />
+        <FindGroup />
         <Button handleClick={handleClickSearch} type="click" title="Procurar" />
       </Container>
     </>

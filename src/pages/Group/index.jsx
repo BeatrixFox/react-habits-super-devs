@@ -3,7 +3,9 @@ import { Redirect } from "react-router";
 import { useContext } from "react";
 import { GroupsContext } from "../../Providers/Groups/index";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
-import ListActivity from "../../components/ListActivity";
+//import FindActivity from "../../components/FindActivity/index";
+import ListActivity from "../../components/ListActivity/index";
+import ListGoals from "../../components/ListGoals/index";
 
 const Group = () => {
   const { authorized } = useContext(UserHabitsApiContext);
@@ -20,7 +22,12 @@ const Group = () => {
     <>
       <Container>
         <p>Aqui vai o componet metas</p>
+
+        <ListGoals />
+        {/* <FindGoals /> */}
         {oneGroup.activities && <ListActivity oneGroup={oneGroup} />}
+        {/* <FindActivity /> */}
+
         <p>Aqui vai o componet membros</p>
       </Container>
     </>
