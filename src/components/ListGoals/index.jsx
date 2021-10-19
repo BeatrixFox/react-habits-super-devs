@@ -1,5 +1,5 @@
 import { GoalsHabitsApiContext } from "../../Providers/goalsHabitsApi/index";
-import { Container } from "./style";
+import { Container } from "./styles";
 import { useContext } from "react";
 
 export const ListGoals = () => {

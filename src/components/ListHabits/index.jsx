@@ -1,4 +1,4 @@
-import { Container } from "./style";
+import { Container } from "./styles";
 import HabitsCard from "../../components/HabitsCard/index";
 import { HabitsContext } from "../../Providers/Habits/index";
 import { useContext } from "react";

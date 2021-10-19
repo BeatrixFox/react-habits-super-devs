@@ -1,4 +1,4 @@
-import { Container } from "./style";
+import { Container } from "./styles";
 import { Redirect } from "react-router";
 import { useContext } from "react";
 import { GroupsContext } from "../../Providers/Groups/index";
