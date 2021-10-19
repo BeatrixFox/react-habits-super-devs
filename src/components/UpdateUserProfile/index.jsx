@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
-import { Button, Modal, TextField, Box } from "@material-ui/core";
+import { Modal, TextField, Box } from "@material-ui/core";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
+import Button from "../Button/index";
 import jwtDecode from "jwt-decode";
 
 const style = {
@@ -18,10 +19,7 @@ const style = {
     border: "2px solid #007aff",
     borderRadius: "10px",
     boxShadow: 24,
-    p: {
-        xs: 1,
-        sm: 9,
-    },
+    p: 4
 };
 
 const UpdateUserProfile = () => {
@@ -40,39 +38,44 @@ const UpdateUserProfile = () => {
 
     return (
         <div>
-            <Button onClick={handleOpen}>UPDATE PROFILE</Button>
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-                <Box sx={style}>
-                    <h1>Atualizar seu nome de usuário</h1>
-                    <TextField
-                        fullWidth
-                        label="Novo username"
-                        margin="normal"
-                        variant="filled"
-                        size="small"
-                        color="primary"
-                        onChange={(e) => setNewUserName(e.target.value)}
-                    />
+            <Button
+                title="Ataulizar Cadastro"
+                handleClick={handleOpen}
+            ></Button>
 
-                    <div>
-                        <Button
+                <Modal
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                >
+            
+                    <Box sx={style}>
+                        <h1>Atualizar seu nome de usuário</h1>
+                        <TextField
                             fullWidth
+                            label="Novo username"
+                            margin="normal"
+                            variant="filled"
+                            size="small"
                             color="primary"
-                            variant="contained"
-                            onClick={() =>
-                                userProfileUpdate(newUserName, decoded.user_id)
-                            }
-                        >
-                            ENVIAR
-                        </Button>
-                    </div>
-                </Box>
-            </Modal>
+                            onChange={(e) => setNewUserName(e.target.value)}
+                        />
+
+                        <div>
+                            <Button
+                                title="Enviar"
+                                handleClick={() =>
+                                    userProfileUpdate(
+                                        newUserName,
+                                        decoded.user_id
+                                    )
+                                }
+                            ></Button>
+                        </div>
+                    </Box>
+            
+                </Modal>
         </div>
     );
 };
