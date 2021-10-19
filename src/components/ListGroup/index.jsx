@@ -8,7 +8,7 @@ import GroupsCard from "../../components/GroupsCard/index";
 
 import { useLocation } from "react-router-dom";
 
-export const ListGroup = () => {
+const ListGroup = () => {
   const location = useLocation();
 
   const locationPath = location.pathname;

@@ -1,32 +1,53 @@
 import { Container } from "./style";
 import { Redirect } from "react-router";
 import { useContext } from "react";
+import { GroupsContext } from "../../Providers/Groups/index";
+import { GoalsHabitsApiContext } from "../../Providers/goalsHabitsApi/index";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
+import FindGoals from "../../components/FindGoals/index";
 import FindActivity from "../../components/FindActivity/index";
 import ListActivity from "../../components/ListActivity/index";
-import FindGoals from "../../components/FindGoals/index";
 import ListGoals from "../../components/ListGoals/index";
-//import { GroupsContext } from "../../Providers/Groups/index";
 
 const Group = () => {
   const { authorized } = useContext(UserHabitsApiContext);
-
+  const { oneGroup } = useContext(GroupsContext);
+  const { groupedGoals } = useContext(GoalsHabitsApiContext);
+  //const activities = [...oneGroup.activities];
   //TODO precisa trabalhar os params para usar :id
   //const { oneGroup } = useContext(GroupsContext);
 
-  // if (!authorized) {
-  //   return <Redirect to="/login" />;
-  // }
+  if (!authorized) {
+    return <Redirect to="/login" />;
+  }
 
   return (
     <>
       <Container>
         <p>Aqui vai o componet metas</p>
+
         <ListGoals />
-        <FindGoals />
-        <p>Aqui vai o componet atividades</p>
-        <ListActivity />
-        <FindActivity />
+        <div>
+          Buscar Metas:
+          <FindGoals />
+        </div>
+        <div>
+          Buscar atividades:
+          {<FindActivity />}
+        </div>
+        <div>
+          Listar Metas:
+          {/* */}
+        </div>
+        <div>
+          Listar atividades:
+          {!!oneGroup.activities && <ListActivity oneGroup={oneGroup} />}
+        </div>
+        <div>
+          Listar membros da gangue:
+          {/* */}
+        </div>
+
         <p>Aqui vai o componet membros</p>
       </Container>
     </>

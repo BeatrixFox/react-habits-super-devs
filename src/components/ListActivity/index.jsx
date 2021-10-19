@@ -1,4 +1,5 @@
-import { Container } from "./style";
+import { Container, Div } from "./style";
+import AtivityCard from "../ActivityCard/index";
 
 import { ActivitiesHabitsApiContext } from "../../Providers/activitiesHabitsApi";
 

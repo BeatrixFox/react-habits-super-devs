@@ -6,15 +6,15 @@ import { useContext } from "react";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
 import UpdateUserProfile from '../../components/UpdateUserProfile/index';
 
-export const Dashboard = () => {
+const Dashboard = () => {
   const { authorized } = useContext(UserHabitsApiContext);
   const history = useHistory();
 
   const handleClickMyGroups = () => {
-    history.push("/my_groups");
+    history.push("/my_groups/");
   };
   const handleClickHabits = () => {
-    history.push("/habits");
+    history.push("/habits/");
   };
   const handleClickUpdUser = () => {
     console.log("handleClickUpdUser");
