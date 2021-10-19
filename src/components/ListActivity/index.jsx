@@ -1,9 +1,15 @@
 import { Container } from "./style";
 
-export const ListActivity = ({ activities }) => {
+import { ActivitiesHabitsApiContext } from "../../Providers/activitiesHabitsApi";
+
+import { useContext } from "react";
+
+export const ListActivity = () => {
+  const { groupActivities } = useContext(ActivitiesHabitsApiContext);
+
   return (
     <Container>
-      {activities.map((activity) => (
+      {groupActivities.map((activity) => (
         <li key={activity.id}>
           <p>Cardlist {activity}</p>
         </li>
