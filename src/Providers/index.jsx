@@ -1,21 +1,21 @@
 import { HabitsProvider } from "./Habits/index";
 import { ActivitiesHabitsApiProvider } from "./activitiesHabitsApi/index";
 import { GoalsHabitsApiProvider } from "./goalsHabitsApi/index";
-import { UserHabitsApiProvider } from "./userHabitsApi/index";
+import { UserContext, UserProvider } from "./User/index";
 import { GroupsProvider } from "./Groups/index";
 
 const Providers = ({ children }) => {
-    return (
-        <ActivitiesHabitsApiProvider>
+  return (
+    <UserProvider>
+      <ActivitiesHabitsApiProvider>
         <GoalsHabitsApiProvider>
-          <UserHabitsApiProvider>
-            <GroupsProvider>
-              <HabitsProvider>{children}</HabitsProvider>
-            </GroupsProvider>
-          </UserHabitsApiProvider>
+          <GroupsProvider>
+            <HabitsProvider>{children}</HabitsProvider>
+          </GroupsProvider>
         </GoalsHabitsApiProvider>
       </ActivitiesHabitsApiProvider>
-    );
+    </UserProvider>
+  );
 };
 
 export default Providers;

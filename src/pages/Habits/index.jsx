@@ -4,19 +4,15 @@ import { useContext } from "react";
 import ListHabits from "../../components/ListHabits";
 import { HabitsContext } from "../../Providers/Habits/index";
 import { Redirect } from "react-router";
-import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
+import { UserContext } from "../../Providers/User";
 import AddHabits from "../../components/AddHabits";
 import { useEffect } from "react";
 
 export const Habits = () => {
-  const { authorized } = useContext(UserHabitsApiContext);
+  const { authorized } = useContext(UserContext);
   const { habits, getHabits } = useContext(HabitsContext);
 
   // console.log(habits);
-
-  useEffect(() => {
-    /*habits !== [] &&*/ getHabits();
-  }, []);
 
   const handleClickAddHabit = () => {
     //Modal para add habits

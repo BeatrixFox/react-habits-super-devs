@@ -5,7 +5,7 @@ import Select from "react-select";
 import Button from "../Button";
 import { useContext, useState } from "react";
 import { HabitsContext } from "../../Providers/Habits";
-import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
+import { UserContext } from "../../Providers/User";
 import { Modal, Box, Paper } from "@material-ui/core";
 import { Input, Form } from "./styles";
 
@@ -63,7 +63,7 @@ export const AddHabits = () => {
   //===============================
 
   const { createHabit } = useContext(HabitsContext);
-  const { userId } = useContext(UserHabitsApiContext);
+  const { userId } = useContext(UserContext);
 
   const schema = yup.object().shape({
     title: yup.string().required("Campo obrigatório"),

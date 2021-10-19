@@ -3,13 +3,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router";
 import { useContext, useEffect } from "react";
-import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
+import { UserContext } from "../../Providers/User";
 import Button from "../../components/Button/index";
 
 const Signup = () => {
   const history = useHistory();
 
-  const { userSignup, userSignupSuccess } = useContext(UserHabitsApiContext);
+  const { userSignup, userSignupSuccess } = useContext(UserContext);
 
   const passRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
