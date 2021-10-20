@@ -7,17 +7,17 @@ import { ActivitiesHabitsApiContext } from "../../Providers/activitiesHabitsApi"
 import { useContext } from "react";
 
 export const ListActivity = ({oneGroup}) => {
-  const { groupActivities, getGroupActivities, updateActivity } = useContext(ActivitiesHabitsApiContext);  
+  const { groupActivities, getGroupActivities, updateActivity, deleteActivity } = useContext(ActivitiesHabitsApiContext);  
 
   useEffect(() => {
     getGroupActivities(oneGroup.id)
-  }, [oneGroup.id, updateActivity])
+  }, [oneGroup.id, updateActivity, deleteActivity])
   
   return (
     <Container>
       {groupActivities?.map((activity) => (
         <li key={activity.id}>
-          <AtivityCard item={activity}>Cardlist {activity}</AtivityCard>
+          <AtivityCard item={activity} />
         </li>
       ))}
     </Container>

@@ -29,21 +29,8 @@ const FindGoals = ({groupId}) => {
     const handleOpen = () => {
         console.log(groupId)
         setOpen(true)
-        getGroupGoals(groupId)
-        // getOneGoal(groupId)
-        // setGoalGot('')
-        // console.log(groupedGoals)
-        
-    };
-
-    // const handlerClickFinding = (text) => {
-    // //   console.log(groupedGoals)
-    // //     const goals = groupedGoals.goals;
-    // //     const oneGoal = goals?.filter((goal) => goal.title === text);
-    // //     getGroupGoals(oneGoal?.id);
-    
-    // console.log(groupId)
-    // };
+        getGroupGoals(groupId)    
+    };    
 
     return (
         <Container>
