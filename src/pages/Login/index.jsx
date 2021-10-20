@@ -5,6 +5,7 @@ import { useHistory } from "react-router";
 import { useContext, useEffect, useState } from "react";
 import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
 import Button from "./../../components/Button/index";
+import { Form, Section } from "./styles";
 
 const Login = () => {
   const history = useHistory();
@@ -40,15 +41,27 @@ const Login = () => {
   }, [userLogin]);
 
   return (
-    <form onSubmit={handleSubmit(onSubmitForm)}>
-      <input placeholder="Nome de usuário" {...register("username")} />
-      <p>{errors.username?.message}</p>
+    <>
+      <Form onSubmit={handleSubmit(onSubmitForm)}>
+        <div>
+          <input placeholder="Nome de usuário" {...register("username")} />
+          <p>{errors.username?.message}</p>
 
-      <input placeholder="Senha" {...register("password")} />
-      <p>{errors.password?.message}</p>
+          <input placeholder="Senha" {...register("password")} />
+          <p>{errors.password?.message}</p>
+        </div>
 
-      <Button type="submit" title="Enviar"></Button>
-    </form>
+        <Button type="submit" title="Enviar"></Button>
+      </Form>
+      <Section>
+        <p>Não possui uma conta?</p>
+        <Button
+          handleClick={() => history.push("/signup")}
+          type="click"
+          title="Cadastre-se!"
+        />
+      </Section>
+    </>
   );
 };
 
