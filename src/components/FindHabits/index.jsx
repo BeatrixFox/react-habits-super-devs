@@ -3,6 +3,7 @@ import { Modal, TextField, Box } from "@material-ui/core";
 import { useContext, useState } from "react";
 import { HabitsContext } from "../../Providers/Habits";
 import { Container } from "./styles";
+import { HabitsCard } from "../HabitsCard";
 
 const style = {
   position: "absolute",
@@ -31,9 +32,11 @@ const FindHabits = () => {
   const { getOneHabit, oneHabit } = useContext(HabitsContext);
 
   const handleClickFinding = (text) => {
-    getOneHabit(text);
-    setText("");
-    handleClose();
+    const teste = text;
+    text = "";
+    getOneHabit(teste);
+    //setText("");
+    //handleClose();
   };
   return (
     <Container>
@@ -61,7 +64,14 @@ const FindHabits = () => {
             title="Procurar"
             handleClick={() => handleClickFinding(text)}
           />
-          <p>CardHabit {console.log(oneHabit)}</p>
+          <p>
+            CardHabit{" "}
+            {oneHabit.map((habit) => (
+              <li key={habit.id}>
+                <HabitsCard item={habit} />
+              </li>
+            ))}
+          </p>
         </Box>
       </Modal>
     </Container>

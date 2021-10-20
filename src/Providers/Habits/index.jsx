@@ -34,7 +34,7 @@ export const HabitsProvider = ({ children }) => {
       })
       .catch((error) => console.log("Erro: ", error));
   };
-
+  console.log("oneHabit no provider: ", oneHabit);
   useEffect(() => {
     getHabits();
   }, [checkMove, config]);
@@ -73,6 +73,7 @@ export const HabitsProvider = ({ children }) => {
     <HabitsContext.Provider
       value={{
         habits,
+        oneHabit,
         setHabits,
         getHabits,
         createHabit,
