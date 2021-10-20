@@ -7,7 +7,7 @@ export const HabitsContext = createContext([]);
 export const HabitsProvider = ({ children }) => {
   const [habits, setHabits] = useState([]);
   const [oneHabit, setOneHabit] = useState([]);
-  const [checkMove, setCheckMove] = useState(false);
+  const [checkMove, setCheckMove] = useState(false);  
 
   const { config } = useContext(UserContext);
 
@@ -52,11 +52,15 @@ export const HabitsProvider = ({ children }) => {
       })
       .catch((error) => console.log(error));
   };
-  const updatedHabit = (date) => {
+  const updatedHabit = (id, how_much_achieved) => {  
     api
-      .patch(`/habits/${date.id}/`, date, config)
+      .patch(`/habits/${id}/`, {
+        "how_much_achieved": how_much_achieved < 100 ? how_much_achieved + 5 : how_much_achieved = 100,
+        "achieved": how_much_achieved > 90 ? true : false
+      }, config)
       .then((response) => {
         console.log(response);
+        setCheckMove(!checkMove);
       })
       .catch((error) => console.log(error));
   };

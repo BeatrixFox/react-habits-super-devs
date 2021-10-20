@@ -6,10 +6,11 @@ import { HabitsContext } from "../../Providers/Habits";
 import { toast } from "react-toastify";
 
 export const HabitsCard = ({ item }) => {
-  const { deleteHabit } = useContext(HabitsContext);
+  const { deleteHabit, updatedHabit } = useContext(HabitsContext);
 
-  const handleClickUpdate = (id) => {
-    console.log(`handleClickUpdate id ${id}`);
+  const handleClickUpdate = (id, how_much_achieved) => {
+    updatedHabit(id, how_much_achieved);
+    console.log(id, how_much_achieved)
   };
 
   const handleClickDelete = (id) => {
@@ -24,10 +25,10 @@ export const HabitsCard = ({ item }) => {
         <span>Categoria: {item.category}</span>
         <span>Dificuldade: {item.difficulty}</span>
         <span>Frequência: {item.frequency}</span>
-        <span>Status: {item.achieved}</span>
-        <span>Contagem regressiva: {item.how_much_achieved}</span>
+        <span>Status: {item.achieved ? 'Concluído' : 'Em progresso'}</span>
+        <span>Progresso: {item.how_much_achieved}</span>
         <Button
-          handleClick={() => handleClickUpdate(item.id)}
+          handleClick={() => handleClickUpdate(item.id, item.how_much_achieved)}
           type="onClick"
           title="Atualizar"
         />

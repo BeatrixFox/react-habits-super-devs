@@ -9,8 +9,6 @@ import { UserContext } from "../../Providers/User";
 import { Modal, Box, Paper } from "@material-ui/core";
 import { Input, Form } from "./styles";
 
-// ================================================
-
 const style = {
   position: "absolute",
   top: "50%",
@@ -33,8 +31,6 @@ const style = {
   },
 };
 
-//======================================================
-
 const optionsCategory = [
   { value: "hardSkill", label: "HardSkills" },
   { value: "softSkill", label: "SoftSkills" },
@@ -54,13 +50,13 @@ const optionsFrequency = [
 ];
 
 export const AddHabits = () => {
-  //===============================
+
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  //===============================
+
 
   const { createHabit } = useContext(HabitsContext);
   const { userId } = useContext(UserContext);
@@ -81,7 +77,7 @@ export const AddHabits = () => {
 
   const onSubmitForm = (userData) => {
     userData.achieved = false;
-    userData.how_much_achieved = 30;
+    userData.how_much_achieved = 0;
 
     createHabit({
       title: userData.title,
