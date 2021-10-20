@@ -26,7 +26,9 @@ const ListGroup = () => {
     return (
       <Container>
         {myGroups.map((group) => (
-          <GroupsCard key={group.id} item={group} />
+          <div key={group.id}>
+            <GroupsCard group={group} />
+          </div>
         ))}
         <Button
           handleClick={handleClickBackPage}

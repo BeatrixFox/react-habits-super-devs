@@ -54,7 +54,7 @@ export const GoalsHabitsApiProvider = ({ children }) => {
 
   const getOneGoal = (goalId) => {
     api
-      .get(`/goals/${goalId}/`)
+      .get(`/goals/${goalId}/`, config)
       .then((response) => setGoal(response.data))
       .catch((err) => {
         toast.error("Meta não encontrada");
@@ -62,14 +62,14 @@ export const GoalsHabitsApiProvider = ({ children }) => {
       });
   };
 
-  const getGoals = (groupId = 21, groupPage = 1) => {
+  const getGoals = (groupId) => {
     api
-      .get(`/goals/group/${groupId}/`)
+      .get(`/goals/?group=${groupId}`)
       .then((response) => {
         setGoals(response.data.results);
       })
       .catch((err) => {
-        toast.error("Meta não encontrada");
+        //toast.error("Meta não encontrada");
         console.log(err);
       });
   };

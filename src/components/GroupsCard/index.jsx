@@ -3,21 +3,20 @@ import { Div, Container } from "./styles";
 import { GroupsContext } from "../../Providers/Groups/index";
 import { useContext } from "react";
 
-const GroupsCard = ({ item }) => {
+const GroupsCard = ({ group }) => {
   const history = useHistory();
   const { getOneGroup } = useContext(GroupsContext);
-  const handleClick = (item) => {
-    getOneGroup(item);
+  const handleClick = (group) => {
+    getOneGroup(group.id);
     history.push("/group");
   };
   return (
     <Container>
-      <span>{item.title}</span>
       <Div>
-        <span>Nome: {item.name}</span>
-        <span>Descrição: {item.description}</span>
-        <span>Categoria: {item.category}</span>
-        <button onClick={() => handleClick(item)}>++</button>
+        <span>Nome: {group.name}</span>
+        <span>Descrição: {group.description}</span>
+        <span>Categoria: {group.category}</span>
+        <button onClick={() => handleClick(group)}>++</button>
       </Div>
     </Container>
   );

@@ -9,11 +9,11 @@ const ListGoals = () => {
   const { goals, deleteGoal, updateGoal, getGoals } = useContext(
     GoalsHabitsApiContext
   );
-  console.log("oneGroup: ", oneGroup);
 
-  // useEffect(() => {
-  //   getGoal(21);
-  // }, []);
+  useEffect(() => {
+    getGoals(oneGroup.id);
+  }, []);
+
   const handleDelete = (goalId) => {
     deleteGoal(goalId);
   };
@@ -22,10 +22,15 @@ const ListGoals = () => {
   };
 
   return (
-    <>
-      <h3>METAS</h3>
-      {console.log(goals)}
-    </>
+    <Container>
+      <h4>Listar metas do grupo:</h4>
+      <ul>
+        {goals.map((goal) => {
+          return <li key={goal.id}>{goal.title}</li>;
+        })}
+      </ul>
+      <span>{console.log(goals)}</span>
+    </Container>
   );
 };
 

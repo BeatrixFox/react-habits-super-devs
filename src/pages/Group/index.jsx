@@ -13,13 +13,13 @@ import ListGoals from "../../components/ListGoals/index";
 import ListMembers from "../../components/ListMembers";
 import Button from "../../components/Button/index";
 
-const Group = ({ item }) => {
+const Group = () => {
   const history = useHistory();
   const { authorized } = useContext(UserContext);
   const { oneGroup, subscribeToGroup, unsubscribeToGroup } =
     useContext(GroupsContext);
   const { goals } = useContext(GoalsHabitsApiContext);
-  console.log("item: ", item);
+
   const handlerClickSubscribe = () => {
     subscribeToGroup(oneGroup.id);
   };
@@ -47,10 +47,10 @@ const Group = ({ item }) => {
           {/* <FindGoals /> */}
           <p>====================</p>
         </div>
-        <div>          
+        <div>
           {!!oneGroup.activities && <ListActivity oneGroup={oneGroup} />}
         </div>
-        <div>          
+        <div>
           {/* <FindActivity /> */}
           <AddActivity groupId={oneGroup.id} />
         </div>
