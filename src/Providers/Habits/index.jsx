@@ -1,12 +1,13 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../services/api";
+import { UserHabitsApiContext } from "../../Providers/userHabitsApi/index";
 
 export const HabitsContext = createContext([]);
 
 export const HabitsProvider = ({ children }) => {
+  const { userId } = useContext(UserHabitsApiContext);
   const [habits, setHabits] = useState([]);
   const [oneHabit, setOneHabit] = useState([]);
-
   const [accessToken] = useState(
     JSON.parse(localStorage.getItem("@Habit:access")) || ""
   );
@@ -27,10 +28,14 @@ export const HabitsProvider = ({ children }) => {
       .get("/habits/personal/", config)
       .then((response) => {
         const listHabits = response.data;
-        const refreshListHabits = listHabits.filter(
-          (oneItemList) => oneItemList.title === titleHabit
-        );
-        setOneHabit(refreshListHabits);
+        const search = listHabits
+          .filter((oneItemList) => {
+            return oneItemList.title === titleHabit;
+          })
+          .filter((item) => {
+            return item.user === userId;
+          });
+        setOneHabit(search);
       })
       .catch((error) => console.log("Erro: ", error));
   };
