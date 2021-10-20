@@ -54,7 +54,7 @@ export const AddActivity = ({groupId}) => {
             `${year}-${month}-${day}T${hour}:${min}Z`,
             groupId,
         );
-
+        setOpen(!open)
         toast.success("Atividade adicionada com sucesso");
     };
 
