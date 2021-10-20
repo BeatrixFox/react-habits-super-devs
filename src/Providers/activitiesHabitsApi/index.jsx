@@ -25,7 +25,7 @@ export const ActivitiesHabitsApiProvider = ({ children }) => {
         config
       )
       .then((response) => setActivityCreated(response.data))
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err));      
   };
 
   const updateActivity = (newTitle, activityId) => {

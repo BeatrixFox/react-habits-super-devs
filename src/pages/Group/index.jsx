@@ -47,13 +47,11 @@ const Group = ({ item }) => {
           {/* <FindGoals /> */}
           <p>====================</p>
         </div>
-        <div>
-          Listar atividades:
+        <div>          
           {!!oneGroup.activities && <ListActivity oneGroup={oneGroup} />}
         </div>
-        <div>
-          Buscar atividades:
-          {<FindActivity />}
+        <div>          
+          {/* <FindActivity /> */}
           <AddActivity groupId={oneGroup.id} />
         </div>
 
