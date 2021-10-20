@@ -7,6 +7,7 @@ import { GroupsContext } from "../../Providers/Groups/index";
 import GroupsCard from "../../components/GroupsCard/index";
 
 import { useLocation } from "react-router-dom";
+import FindGoals from "../FindGoals";
 
 import Button from "../Button/index";
 
@@ -30,7 +31,7 @@ const ListGroup = () => {
     return (
       <Container>
         {myGroups.map((group) => (
-          <GroupsCard item={group} />
+          <GroupsCard key={group.id} item={group} />
         ))}
         <Button
           handleClick={handleClickBackPage}
@@ -50,7 +51,12 @@ const ListGroup = () => {
     return (
       <Container>
         {groups.map((group) => (
-          <GroupsCard item={group} />
+          <div key={group.id}>
+
+          
+          <GroupsCard  item={group} />
+          <FindGoals groupId={group.id} />
+          </div>
         ))}
         <Button
           handleClick={handleClickBackPage}

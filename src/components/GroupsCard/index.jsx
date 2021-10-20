@@ -11,13 +11,13 @@ const GroupsCard = ({ item }) => {
     history.push("/group");
   };
   return (
-    <Container key={item.id}>
+    <Container >
       <span>{item.title}</span>
       <Div>
         <span>Nome: {item.name}</span>
         <span>Descrição: {item.description}</span>
         <span>Categoria: {item.category}</span>
-        <button onClick={() => handleClick(item)}>+</button>
+        {/* <button onClick={() => handleClick(item)}>+</button> */}
       </Div>
     </Container>
   );
