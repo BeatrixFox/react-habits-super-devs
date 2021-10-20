@@ -40,12 +40,9 @@ const Group = () => {
         <p>{oneGroup.description}</p>
         <p>Aqui vai o componet metas</p>
         <div>
-          <p>====================</p>
-          <p>Listar Metas:</p>
           <ListGoals />
           {/* <AddGoals /> */}
           {/* <FindGoals /> */}
-          <p>====================</p>
         </div>
         <div>
           {!!oneGroup.activities && <ListActivity oneGroup={oneGroup} />}
