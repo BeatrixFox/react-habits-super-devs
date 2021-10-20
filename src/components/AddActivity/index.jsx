@@ -1,14 +1,16 @@
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
 import { toast } from "react-toastify";
 import Button from "../Button/index";
 import { Container } from "./styles";
+import { useContext } from "react";
+import { ActivitiesHabitsApiContext } from "../../Providers/activitiesHabitsApi";
 
 // import context provider
 
-export const AddActivity = () => {
+export const AddActivity = (groupId) => {
+  const { createActivity } = useContext(ActivitiesHabitsApiContext);
   const schema = yup.object().shape({
     title: yup.string().required("Campo obrigatório"),
   });
@@ -27,9 +29,12 @@ export const AddActivity = () => {
     let year = data.getFullYear();
     let min = data.getMinutes();
 
-    userData.realization_time = `${year}-${month}-${day}T${hour}:${min}Z`;
-    userData.group = "user.group";
-    console.log("addHabitContext([...habitsContext, userData]");
+    createActivity({
+      title: userData.title,
+      realization_time: `${year}-${month}-${day}T${hour}:${min}Z`,
+      group: groupId,
+    });
+
     toast.success("Habito adicionado com sucesso");
   };
 

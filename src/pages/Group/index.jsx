@@ -7,6 +7,8 @@ import { UserContext } from "../../Providers/User/index";
 import FindGoals from "../../components/FindGoals/index";
 import FindActivity from "../../components/FindActivity/index";
 import ListActivity from "../../components/ListActivity/index";
+import AddActivity from "../../components/AddActivity/index";
+import AddGoals from "../../components/AddGoals/index";
 import ListGoals from "../../components/ListGoals/index";
 import Button from "../../components/Button/index";
 
@@ -41,24 +43,24 @@ const Group = () => {
         <h1>{oneGroup.name}</h1>
         <p>{oneGroup.description}</p>
         <p>Aqui vai o componet metas</p>
-
-        <ListGoals />
-        <div>
-          
-          <FindGoals />
-        </div>
-        <div>
-          Buscar atividades:
-          {<FindActivity />}
-        </div>
         <div>
           Listar Metas:
-          {/* */}
+          {<ListGoals />}
+          <AddGoals />
+        </div>
+        <div>
+          <FindGoals />
         </div>
         <div>
           Listar atividades:
           {!!oneGroup.activities && <ListActivity oneGroup={oneGroup} />}
         </div>
+        <div>
+          Buscar atividades:
+          {<FindActivity />}
+          <AddActivity groupId={oneGroup.id} />
+        </div>
+
         <div>
           Listar membros da gangue:
           <ul>
