@@ -12,15 +12,13 @@ import AddGoals from "../../components/AddGoals/index";
 import ListGoals from "../../components/ListGoals/index";
 import Button from "../../components/Button/index";
 
-const Group = () => {
+const Group = ({ item }) => {
   const history = useHistory();
   const { authorized } = useContext(UserContext);
   const { oneGroup, subscribeToGroup, unsubscribeToGroup } =
     useContext(GroupsContext);
   const { goals } = useContext(GoalsHabitsApiContext);
-
-  console.log(oneGroup);
-
+  console.log("item: ", item);
   const handlerClickSubscribe = () => {
     subscribeToGroup(oneGroup.id);
   };
@@ -41,10 +39,12 @@ const Group = () => {
         <p>{oneGroup.description}</p>
         <p>Aqui vai o componet metas</p>
         <div>
-          Listar Metas:
+          <p>====================</p>
+          <p>Listar Metas:</p>
           <ListGoals />
-          <AddGoals />
-          <FindGoals />
+          {/* <AddGoals /> */}
+          {/* <FindGoals /> */}
+          <p>====================</p>
         </div>
         <div>
           Listar atividades:

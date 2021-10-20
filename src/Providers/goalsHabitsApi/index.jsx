@@ -62,9 +62,9 @@ export const GoalsHabitsApiProvider = ({ children }) => {
       });
   };
 
-  const getGroupGoals = (groupId, groupPage = 1) => {
+  const getGoals = (groupId = 21, groupPage = 1) => {
     api
-      .get(`/goals/?group=${groupId}&page=${groupPage}`)
+      .get(`/goals/group/${groupId}/`)
       .then((response) => {
         setGoals(response.data.results);
       })
@@ -84,7 +84,7 @@ export const GoalsHabitsApiProvider = ({ children }) => {
         deleteGoal,
         getOneGoal,
         goal,
-        getGroupGoals,
+        getGoals,
         goals,
         setGoal,
       }}

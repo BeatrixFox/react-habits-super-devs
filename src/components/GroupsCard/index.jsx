@@ -5,9 +5,9 @@ import { useContext } from "react";
 
 const GroupsCard = ({ item }) => {
   const history = useHistory();
-  const { oneGroup, getOneGroup } = useContext(GroupsContext);
+  const { getOneGroup } = useContext(GroupsContext);
   const handleClick = (item) => {
-    getOneGroup(item.id);
+    getOneGroup(item);
     history.push("/group");
   };
   return (
@@ -17,7 +17,7 @@ const GroupsCard = ({ item }) => {
         <span>Nome: {item.name}</span>
         <span>Descrição: {item.description}</span>
         <span>Categoria: {item.category}</span>
-        <button onClick={() => handleClick(item)}>+</button>
+        <button onClick={() => handleClick(item)}>++</button>
       </Div>
     </Container>
   );

@@ -1,11 +1,19 @@
-import { GoalsHabitsApiContext } from "../../Providers/goalsHabitsApi/index";
 import { Container, Div } from "./styles";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Button from "../Button/index";
+import { GoalsHabitsApiContext } from "../../Providers/goalsHabitsApi/index";
+import { GroupsContext } from "../../Providers/Groups";
 
 const ListGoals = () => {
-  const { goals, deleteGoal, updateGoal } = useContext(GoalsHabitsApiContext);
+  const { oneGroup } = useContext(GroupsContext);
+  const { goals, deleteGoal, updateGoal, getGoals } = useContext(
+    GoalsHabitsApiContext
+  );
+  console.log("oneGroup: ", oneGroup);
 
+  // useEffect(() => {
+  //   getGoal(21);
+  // }, []);
   const handleDelete = (goalId) => {
     deleteGoal(goalId);
   };
@@ -14,27 +22,10 @@ const ListGoals = () => {
   };
 
   return (
-    <Container>
+    <>
       <h3>METAS</h3>
-      {goals?.map((goal) => (
-        <Div key={goal.id}>
-          <p>Meta: {goal.title}</p>
-          <p>Dificuldade: {goal.difficulty}</p>
-          <p>Status: {goal.how_much_achieved}%</p>
-          <p>Meta Atingida: {goal.achieved ? "Sim" : "Não"}</p>
-          <Button
-            type="onCLick"
-            title="delete"
-            handleClick={() => handleDelete(goal.id)}
-          ></Button>
-          <Button
-            type="onCLick"
-            title="update"
-            handleClick={() => handleUpdate(goal.id)}
-          ></Button>
-        </Div>
-      ))}
-    </Container>
+      {console.log(goals)}
+    </>
   );
 };
 

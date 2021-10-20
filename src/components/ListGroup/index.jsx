@@ -1,9 +1,6 @@
 import { useContext } from "react";
-
 import { Container } from "./styles";
-
 import { GroupsContext } from "../../Providers/Groups/index";
-
 import GroupsCard from "../../components/GroupsCard/index";
 
 import { useLocation } from "react-router-dom";
@@ -13,9 +10,7 @@ import Button from "../Button/index";
 
 const ListGroup = () => {
   const location = useLocation();
-
   const locationPath = location.pathname;
-
   const { groups, myGroups, page, setPage } = useContext(GroupsContext);
 
   const handleClickNextPage = () => {
@@ -52,9 +47,7 @@ const ListGroup = () => {
       <Container>
         {groups.map((group) => (
           <div key={group.id}>
-
-          
-          <GroupsCard  item={group} />          
+            <GroupsCard item={group} />
           </div>
         ))}
         <Button
