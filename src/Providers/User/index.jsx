@@ -53,6 +53,7 @@ export const UserProvider = ({ children }) => {
       const decoded = jwtDecode(token);
       setUser(decoded);
       setUserId(decoded?.user_id);
+      setAuthorized(true);
     }
   }, [accessToken]);
 

@@ -1,4 +1,3 @@
-import Button from "../../components/Button/index";
 import { Container } from "./styles";
 import { useContext } from "react";
 import ListHabits from "../../components/ListHabits";
@@ -6,7 +5,7 @@ import { HabitsContext } from "../../Providers/Habits/index";
 import { Redirect } from "react-router";
 import { UserContext } from "../../Providers/User";
 import AddHabits from "../../components/AddHabits";
-import { useEffect } from "react";
+import FindHabits from "../../components/FindHabits/index";
 
 export const Habits = () => {
   const { authorized } = useContext(UserContext);
@@ -18,10 +17,6 @@ export const Habits = () => {
     //Modal para add habits
     console.log("handleClickAddHabit");
   };
-  const handleClickSearch = () => {
-    //Modal para procurar habito
-    console.log("handleClickSearch");
-  };
 
   if (!authorized) {
     return <Redirect to="/login" />;
@@ -30,9 +25,9 @@ export const Habits = () => {
   return (
     <>
       <Container>
+        <FindHabits />
         <ListHabits />
         <AddHabits />
-        <Button handleClick={handleClickSearch} type="click" title="Procurar" />
       </Container>
     </>
   );

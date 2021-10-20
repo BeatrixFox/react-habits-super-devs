@@ -12,13 +12,14 @@ export const HeaderDiv = styled.header`
     font-family: sans-serif;
     display: flex;
     position: absolute;
-    left: 50%;
+    left: 60%;
     transform: translateX(-50%);
     font-size: 4vw;
 
     &:hover {
       font-size: 5vw;
       transition: all 0.5s;
+      text-align: right;
     }
   }
 
@@ -49,10 +50,21 @@ export const HeaderDiv = styled.header`
 
   @media only screen and (min-width: 800px) {
     h1 {
-      font-size: 4.5vw;
+      font-size: 40px;
 
       &:hover {
-        font-size: 5vw;
+        font-size: 45px;
+        transition: all 0.5s;
+      }
+    }
+  }
+
+  @media only screen and (min-width: 1000px) {
+    h1 {
+      font-size: 50px;
+
+      &:hover {
+        font-size: 55px;
         transition: all 0.5s;
       }
     }

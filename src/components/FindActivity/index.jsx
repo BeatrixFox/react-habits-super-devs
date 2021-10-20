@@ -25,7 +25,7 @@ const FindActivity = () => {
       <Button
         title="Procurar"
         type="click"
-        handlerClick={() => handlerClickFinding(text)}
+        handleClick={() => handlerClickFinding(text)}
       />
     </Container>
   );

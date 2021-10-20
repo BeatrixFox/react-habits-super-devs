@@ -29,28 +29,15 @@ const FindGoals = ({groupId}) => {
     const handleOpen = () => {
         console.log(groupId)
         setOpen(true)
-        getGroupGoals(groupId)
-        // getOneGoal(groupId)
-        // setGoalGot('')
-        // console.log(groupedGoals)
-        
-    };
-
-    // const handlerClickFinding = (text) => {
-    // //   console.log(groupedGoals)
-    // //     const goals = groupedGoals.goals;
-    // //     const oneGoal = goals?.filter((goal) => goal.title === text);
-    // //     getGroupGoals(oneGoal?.id);
-    
-    // console.log(groupId)
-    // };
+        getGroupGoals(groupId)    
+    };    
 
     return (
         <Container>
             <Button
                 handleClick={handleOpen}
                 type={"submit"}
-                title={"Buscar Metas"}
+                title={"Listar Metas"}
             ></Button>
             <Modal
                 open={open}
@@ -58,25 +45,7 @@ const FindGoals = ({groupId}) => {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={style}>
-                {/* <h2>Encontre uma meta</h2>
-                    <Input
-                        type="text"
-                        value={text}
-                        onChange={(event) => setText(event.target.value)}
-                    />
-                    <Button
-                        title="Procurar"
-                        type="click"
-                        handleClick={() => handlerClickFinding(text)}
-                    /> */}
-                    {/* <h2>Meta encontrada</h2>
-                    <p>{goalGot?.title ? `Meta: ${goalGot.title}` : 'Não encontrado' }</p>
-                    <p>{goalGot?.difficulty ? `Dificuldade: ${goalGot?.difficulty}` : null}</p>
-                    <p>{goalGot?.achieved ? `Alcançado: ${goalGot?.achieved}` : null}</p>
-                    <p>{goalGot?.how_much_achieved ? `Quanto alcançou: ${goalGot?.how_much_achieved}` : null }</p>
-                    <p>{goalGot?.group ? `Grupo:  ${goalGot?.group}` : null }</p> */}
-
+                <Box sx={style}>                
                     <ListGoals />
                 </Box>
             </Modal>
