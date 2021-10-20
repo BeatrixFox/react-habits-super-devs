@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
 	// a definir paleta de cores.
 	--background-page: var(--platinum);
 	--background-header: var(--st-patricks-blue);
+	--background-card-member: #DC5151;
 	/* --background-cards: */
 	/* --background-button-normal: */
 	/* --background-button-normal-hover: */

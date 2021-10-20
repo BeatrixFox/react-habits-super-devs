@@ -54,10 +54,10 @@ function Header() {
       </Link>
       <div>
         <ButtonHeader>
-          <Link to="/dashboard/">Perfil</Link>
+          <Link to="/dashboard">Perfil</Link>
         </ButtonHeader>
         <ButtonHeader>
-          <Link to="/habits/"> Hábitos </Link>
+          <Link to="/habits"> Hábitos </Link>
         </ButtonHeader>
         <ButtonHeader>
           <Link to="/groups"> Grupos </Link>

@@ -12,13 +12,14 @@ export const HeaderDiv = styled.header`
     font-family: sans-serif;
     display: flex;
     position: absolute;
-    left: 50%;
+    left: 60%;
     transform: translateX(-50%);
     font-size: 4vw;
 
     &:hover {
       font-size: 5vw;
       transition: all 0.5s;
+      text-align: right;
     }
   }
 

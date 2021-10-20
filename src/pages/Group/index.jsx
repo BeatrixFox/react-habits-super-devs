@@ -8,6 +8,7 @@ import FindGoals from "../../components/FindGoals/index";
 import FindActivity from "../../components/FindActivity/index";
 import ListActivity from "../../components/ListActivity/index";
 import ListGoals from "../../components/ListGoals/index";
+import ListMembers from "../../components/ListMembers";
 import Button from "../../components/Button/index";
 
 const Group = () => {
@@ -60,16 +61,8 @@ const Group = () => {
           {!!oneGroup.activities && <ListActivity oneGroup={oneGroup} />}
         </div>
         <div>
-          Listar membros da gangue:
-          <ul>
-            {oneGroup.users_on_group &&
-              oneGroup.users_on_group.map((itemUser) => (
-                <li key={itemUser.id}>{itemUser.username}</li>
-              ))}
-          </ul>
+          <ListMembers />
         </div>
-
-        <p>Aqui vai o componet membros</p>
         <Button title="Inscrever-se" handleClick={handlerClickSubscribe} />
         <Button title="Deixar grupo" handleClick={handlerClickUnsubscribe} />
       </Container>
