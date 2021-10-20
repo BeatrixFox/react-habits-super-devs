@@ -49,16 +49,17 @@ function Header() {
       <a href="/">
         <AssignmentTurnedInOutlinedIcon />
       </a>
-
-      <ButtonHeader>
-        <Link to="/dashboard/">Perfil</Link>
-      </ButtonHeader>
-      <ButtonHeader>
-        <Link to="/habits/"> Hábitos </Link>
-      </ButtonHeader>
-      <ButtonHeader>
-        <Link to="/groups"> Grupos </Link>
-      </ButtonHeader>
+      <div>
+        <ButtonHeader>
+          <Link to="/dashboard/">Perfil</Link>
+        </ButtonHeader>
+        <ButtonHeader>
+          <Link to="/habits/"> Hábitos </Link>
+        </ButtonHeader>
+        <ButtonHeader>
+          <Link to="/groups"> Grupos </Link>
+        </ButtonHeader>
+      </div>
 
       <h1>{titleMessage()}</h1>
 
