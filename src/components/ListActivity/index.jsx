@@ -1,18 +1,23 @@
 import { Container, Div } from "./styles";
 import AtivityCard from "../ActivityCard/index";
+import { useEffect } from "react";
 
 import { ActivitiesHabitsApiContext } from "../../Providers/activitiesHabitsApi";
 
 import { useContext } from "react";
 
-export const ListActivity = () => {
-  const { groupActivities } = useContext(ActivitiesHabitsApiContext);
+export const ListActivity = ({oneGroup}) => {
+  const { groupActivities, getGroupActivities, updateActivity } = useContext(ActivitiesHabitsApiContext);  
 
+  useEffect(() => {
+    getGroupActivities(oneGroup.id)
+  }, [oneGroup.id, updateActivity])
+  
   return (
     <Container>
-      {groupActivities.map((activity) => (
+      {groupActivities?.map((activity) => (
         <li key={activity.id}>
-          <p>Cardlist {activity}</p>
+          <AtivityCard item={activity}>Cardlist {activity}</AtivityCard>
         </li>
       ))}
     </Container>
