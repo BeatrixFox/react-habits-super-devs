@@ -1,5 +1,8 @@
 import { Div, Container } from "./styles";
 import { useEffect, useState } from "react";
+import { ActivitiesHabitsApiContext } from "../../Providers/activitiesHabitsApi";
+import { useContext } from "react";
+import Button from "../Button";
 
 import { Modal, Box, Paper, TextField } from "@material-ui/core";
 import Button from "../Button/index";
@@ -23,7 +26,7 @@ const style = {
 const AtivityCard = ({ item }) => {
     const { getOneActivity, oneActivity, updateActivity, deleteActivity } =
         useContext(ActivitiesHabitsApiContext);
-
+ 
     const [showUpdate, setShowUpdate] = useState(false);
     const [newActivityTitle, setNewActivityTitle] = useState("");
     const [open, setOpen] = useState(false);
@@ -35,10 +38,11 @@ const AtivityCard = ({ item }) => {
     };
 
     return (
-        <Container>
-            <Div>
-                <span>Título: {item.title}</span>
-
+      <Container key={item.id}>
+        <span>{item.title}</span>
+        <Div>
+          <span>Título: {item.title}</span>
+          <span>Prazo: {item.realization_time}</span>       
                 <Button
                     handleClick={handleOpen}
                     type={"submit"}
@@ -67,7 +71,7 @@ const AtivityCard = ({ item }) => {
                                 <Button
                                     title="delete"
                                     handleClick={() =>
-                                        deleteActivity(oneActivity.id)
+                                    deleteActivity(oneActivity.id)
                                     }
                                 />
                             </>
