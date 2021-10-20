@@ -1,8 +1,8 @@
 import { Div, Container } from "./styles";
 
-const AtivityCard = ({ item }) => {
+const AtivityCard = ({ item }) => { 
   return (
-    <Container key={item.id}>
+    <Container>
       <span>{item.title}</span>
       <Div>
         <span>Título: {item.title}</span>

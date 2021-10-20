@@ -45,7 +45,7 @@ const Group = () => {
         <p>Aqui vai o componet metas</p>
         <div>
           Listar Metas:
-          {<ListGoals />}
+          <ListGoals />
           <AddGoals />
         </div>
         <div>
