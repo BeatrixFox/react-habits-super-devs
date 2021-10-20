@@ -18,7 +18,8 @@ const ListHabits = () => {
   } else {
     return (
       <Container>
-        {habits?.map((habit) => (
+        {/*{oneHabit?.map((habit) => (*/}
+        {oneHabit?.map((habit) => (
           <li key={habit.id}>
             <HabitsCard item={habit} />
           </li>
