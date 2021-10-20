@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Modal, TextField, Box } from "@material-ui/core";
 import { UserContext } from "../../Providers/User";
 import Button from "../Button/index";
@@ -27,14 +27,17 @@ const UpdateUserProfile = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const { userProfileUpdate } = useContext(UserContext);
+  const { userProfileUpdate, accessToken } = useContext(UserContext);
   const [newUserName, setNewUserName] = useState("");
+  const [decoded, setDecoded] = useState({});
 
-  const [access] = useState(
-    JSON.parse(localStorage.getItem("@Habit:access")) || ""
-  );
+  //const [access] = useState(
+  //  JSON.parse(localStorage.getItem("@Habit:access")) || ""
+  //);
 
-  const decoded = jwtDecode(access);
+  useEffect(() => {
+    setDecoded(jwtDecode(accessToken));
+  }, [accessToken]);
 
   return (
     <div>

@@ -41,7 +41,6 @@ export const HabitsProvider = ({ children }) => {
       .post("/habits/", data, config)
       .then((response) => {
         setCheckMove(!checkMove);
-        //setHabits([...habits, response.data]);
       })
       .catch((error) => console.log(error));
   };
@@ -50,9 +49,6 @@ export const HabitsProvider = ({ children }) => {
       .delete(`/habits/${id}/`, config)
       .then((response) => {
         setCheckMove(!checkMove);
-        //const refreshHabits = habits.filter((habit) => habit.id !== id);
-        //setHabits(refreshHabits);
-        //console.log(habits);
       })
       .catch((error) => console.log(error));
   };
@@ -75,6 +71,7 @@ export const HabitsProvider = ({ children }) => {
         deleteHabit,
         updatedHabit,
         getOneHabit,
+        oneHabit,
       }}
     >
       {children}
