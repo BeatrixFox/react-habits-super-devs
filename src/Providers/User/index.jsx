@@ -54,7 +54,7 @@ export const UserProvider = ({ children }) => {
       setUser(decoded);
       setUserId(decoded?.user_id);
     }
-  }, [authorized]);
+  }, [accessToken]);
 
   const userProfileUpdate = (newUser, userId) => {
     api.patch(

@@ -1,19 +1,22 @@
 import AssignmentTurnedInOutlinedIcon from "@mui/icons-material/AssignmentTurnedInOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
-
+import { UserContext } from "../../Providers/User";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import { HeaderDiv, ButtonHeader, Logout } from "./styles";
+import { useContext } from "react";
 
 function Header() {
   const history = useHistory();
+  const { setAuthorized } = useContext(UserContext);
 
   const handleLogout = () => {
     const confirmLogout = window.confirm("Deseja mesmo sair?");
     if (confirmLogout) {
+      toast.info("Logout efetuado");
       localStorage.clear();
+      setAuthorized(false);
       history.push("/");
-      window.location.reload();
     }
   };
 
@@ -46,9 +49,9 @@ function Header() {
   };
   return (
     <HeaderDiv>
-      <a href="/">
+      <Link to="/">
         <AssignmentTurnedInOutlinedIcon />
-      </a>
+      </Link>
       <div>
         <ButtonHeader>
           <Link to="/dashboard/">Perfil</Link>
