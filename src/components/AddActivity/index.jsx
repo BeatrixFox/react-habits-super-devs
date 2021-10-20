@@ -31,7 +31,7 @@ export const AddActivity = (groupId) => {
 
     createActivity({
       title: userData.title,
-      realization_time: `${year}-${month}-${day}T${hour}:${min}Z`,
+      realization_time: `${year}-${month}-${day}T${hour}:${min}`,
       group: groupId,
     });
 
