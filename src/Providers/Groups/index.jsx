@@ -44,7 +44,7 @@ export const GroupsProvider = ({ children }) => {
 
   useEffect(() => {
     config.headers && getMyGroups();
-    getGroups();
+    config.headers && getGroups();
   }, [checkMove, config, page]);
 
   const createGroup = (data) => {

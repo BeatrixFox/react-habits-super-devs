@@ -10,7 +10,7 @@ export const HabitsCard = ({ item }) => {
 
   const handleClickUpdate = (id, how_much_achieved) => {
     updatedHabit(id, how_much_achieved);
-    console.log(id, how_much_achieved)
+    console.log(id, how_much_achieved);
   };
 
   const handleClickDelete = (id) => {
@@ -25,16 +25,16 @@ export const HabitsCard = ({ item }) => {
         <span>Categoria: {item.category}</span>
         <span>Dificuldade: {item.difficulty}</span>
         <span>Frequência: {item.frequency}</span>
-        <span>Status: {item.achieved ? 'Concluído' : 'Em progresso'}</span>
+        <span>Status: {item.achieved ? "Concluído" : "Em progresso"}</span>
         <span>Progresso: {item.how_much_achieved}</span>
         <Button
           handleClick={() => handleClickUpdate(item.id, item.how_much_achieved)}
-          type="onClick"
+          type="click"
           title="Atualizar"
         />
         <Button
           handleClick={() => handleClickDelete(item.id)}
-          type="onClick"
+          type="click"
           title="Deletar"
         />
       </Div>

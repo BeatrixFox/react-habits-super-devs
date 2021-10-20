@@ -20,7 +20,7 @@ export const Section = styled.section`
 `;
 
 export const Img = styled.img`
-  width: 90%;
+  width: 70%;
 
   &:hover {
     opacity: 80%;
