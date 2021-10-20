@@ -25,7 +25,7 @@ export const ActivitiesHabitsApiProvider = ({ children }) => {
         config
       )
       .then((response) => setActivityCreated(response.data))
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err));      
   };
 
   const updateActivity = (newTitle, activityId) => {
@@ -43,7 +43,7 @@ export const ActivitiesHabitsApiProvider = ({ children }) => {
 
   const deleteActivity = (activityId) => {
     api
-      .delete(`/activities/${activityId}`, config)
+      .delete(`/activities/${activityId}/`, config)
       .then((response) => console.log("ok"))
       .catch((err) => console.log(err));
   };
@@ -57,7 +57,7 @@ export const ActivitiesHabitsApiProvider = ({ children }) => {
 
   const getOneActivity = (activityId) => {
     api
-      .get(`/activities/${activityId}`)
+      .get(`/activities/${activityId}/`)
       .then((response) => setOneActivity(response.data))
       .catch((err) => console.log(err));
   };

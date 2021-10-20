@@ -4,16 +4,36 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import Button from "../Button/index";
 import { Container } from "./styles";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ActivitiesHabitsApiContext } from "../../Providers/activitiesHabitsApi";
+import { Modal, Box, Paper } from "@material-ui/core";
 
 // import context provider
 
-export const AddActivity = (groupId) => {
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 300,
+  bgcolor: "background.paper",
+  border: "2px solid #007aff",
+  borderRadius: "10px",
+  boxShadow: 24,
+  p: 4,
+};
+
+export const AddActivity = ({ groupId }) => {
   const { createActivity } = useContext(ActivitiesHabitsApiContext);
   const schema = yup.object().shape({
     title: yup.string().required("Campo obrigatório"),
   });
+
+  const [open, setOpen] = useState(false);
+  const handleClose = () => setOpen(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
   const {
     register,
@@ -29,22 +49,39 @@ export const AddActivity = (groupId) => {
     let year = data.getFullYear();
     let min = data.getMinutes();
 
-    createActivity({
-      title: userData.title,
-      realization_time: `${year}-${month}-${day}T${hour}:${min}`,
-      group: groupId,
-    });
+    createActivity(
+      userData.title,
+      `${year}-${month}-${day}T${hour}:${min}Z`,
+      groupId
+    );
 
-    toast.success("Habito adicionado com sucesso");
+    toast.success("Atividade adicionada com sucesso");
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmitForm)}>
-      <input placeholder="Nome do novo hábito" {...register("title")} />
-      <p>{errors.title?.message}</p>
+    <Container>
+      <Button
+        handleClick={handleOpen}
+        type={"submit"}
+        title={"Criar atividade"}
+      ></Button>
 
-      <Button type="submit" title={"Adcionar"}></Button>
-    </form>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <form onSubmit={handleSubmit(onSubmitForm)}>
+            <input placeholder="Nome Atividade" {...register("title")} />
+            <p>{errors.title?.message}</p>
+
+            <Button type="submit" title="Adcionar"></Button>
+          </form>
+        </Box>
+      </Modal>
+    </Container>
   );
 };
 
