@@ -28,7 +28,7 @@ const Group = () => {
 
         <ListGoals />
         <div>
-          Buscar Metas:
+          
           <FindGoals />
         </div>
         <div>

@@ -1,6 +1,7 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import api from "../../services/api";
 import { UserContext } from "../User";
+import { toast } from "react-toastify";
 
 export const HabitsContext = createContext([]);
 
@@ -53,6 +54,7 @@ export const HabitsProvider = ({ children }) => {
         //const refreshHabits = habits.filter((habit) => habit.id !== id);
         //setHabits(refreshHabits);
         //console.log(habits);
+        
       })
       .catch((error) => console.log(error));
   };

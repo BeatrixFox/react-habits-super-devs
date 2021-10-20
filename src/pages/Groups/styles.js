@@ -10,4 +10,10 @@ export const Container = styled.div`
   opacity: 70%;
   width: 80vw;
   height: 80vh;
+  margin: 0 auto;
+
+  @media only screen and (min-width: 1100px) {
+    
+    width: 800px;
+  }
 `;
