@@ -69,8 +69,9 @@ export const GroupsProvider = ({ children }) => {
   };
   const subscribeToGroup = (id) => {
     api
-      .get(`groups/${id}/subscribe/`)
+      .post(`groups/${id}/subscribe/`, null, config)
       .then((response) => {
+        setCheckMove(!checkMove);
         toast.success("Inscrição feita");
         console.log("Adicionado");
       })

@@ -11,10 +11,10 @@ const Dashboard = () => {
   const history = useHistory();
 
   const handleClickMyGroups = () => {
-    history.push("/my_groups/");
+    history.push("/my_groups");
   };
   const handleClickHabits = () => {
-    history.push("/habits/");
+    history.push("/habits");
   };
   const handleClickUpdUser = () => {
     console.log("handleClickUpdUser");
