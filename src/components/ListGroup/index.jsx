@@ -54,8 +54,7 @@ const ListGroup = () => {
           <div key={group.id}>
 
           
-          <GroupsCard  item={group} />
-          <FindGoals groupId={group.id} />
+          <GroupsCard  item={group} />          
           </div>
         ))}
         <Button
