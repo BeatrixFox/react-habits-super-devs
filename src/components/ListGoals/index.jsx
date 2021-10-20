@@ -3,10 +3,8 @@ import { Container, Div } from "./styles";
 import { useContext } from "react";
 import Button from "../Button/index";
 
-export const ListGoals = () => {
-  const { groupedGoals, deleteGoal, updateGoal } = useContext(
-    GoalsHabitsApiContext
-  );
+const ListGoals = () => {
+  const { goals, deleteGoal, updateGoal } = useContext(GoalsHabitsApiContext);
 
   const handleDelete = (goalId) => {
     deleteGoal(goalId);
@@ -18,7 +16,7 @@ export const ListGoals = () => {
   return (
     <Container>
       <h3>METAS</h3>
-      {groupedGoals?.map((goal) => (
+      {goals?.map((goal) => (
         <Div key={goal.id}>
           <p>Meta: {goal.title}</p>
           <p>Dificuldade: {goal.difficulty}</p>
