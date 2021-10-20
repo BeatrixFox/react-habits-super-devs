@@ -21,9 +21,8 @@ const style = {
 };
 
 const AtivityCard = ({ item }) => {
-    const { getOneActivity, oneActivity, updateActivity } = useContext(
-        ActivitiesHabitsApiContext
-    );
+    const { getOneActivity, oneActivity, updateActivity, deleteActivity } =
+        useContext(ActivitiesHabitsApiContext);
 
     const [showUpdate, setShowUpdate] = useState(false);
     const [newActivityTitle, setNewActivityTitle] = useState("");
@@ -58,10 +57,20 @@ const AtivityCard = ({ item }) => {
                         <p>ID do grupo: {oneActivity.group}</p>
 
                         {!showUpdate ? (
-                            <Button
-                                title="Atualizar"
-                                handleClick={() => setShowUpdate(!showUpdate)}
-                            />
+                            <>
+                                <Button
+                                    title="Atualizar"
+                                    handleClick={() =>
+                                        setShowUpdate(!showUpdate)
+                                    }
+                                />
+                                <Button
+                                    title="delete"
+                                    handleClick={() =>
+                                        deleteActivity(oneActivity.id)
+                                    }
+                                />
+                            </>
                         ) : (
                             <>
                                 <TextField
