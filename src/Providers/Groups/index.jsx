@@ -48,9 +48,7 @@ export const GroupsProvider = ({ children }) => {
       .post("groups/", data, config)
       .then((response) => {
         setCheckMove(!checkMove);
-        //setGroups([...groups, response.data]);
         toast.success("Grupo criado com sucesso");
-        //console.log(response);
       })
       .catch((error) => {
         toast.error("Grupo não pode ser criado. Tente novamente");
@@ -69,12 +67,22 @@ export const GroupsProvider = ({ children }) => {
   };
   const subscribeToGroup = (id) => {
     api
-      .get(`groups/${id}/subscribe/`)
+      .post(`groups/${id}/subscribe/`, null, config)
       .then((response) => {
+        setCheckMove(!checkMove);
         toast.success("Inscrição feita");
-        console.log("Adicionado");
       })
       .catch((error) => console.log("Erro: ", error));
+  };
+
+  const unsubscribeToGroup = (id) => {
+    api
+      .delete(`groups/${id}/unsubscribe/`, config)
+      .then((response) => {
+        setCheckMove(!checkMove);
+        toast.info("Inscrição desfeita");
+      })
+      .catch((error) => toast.error("Operação já efetuada"));
   };
 
   return (
@@ -88,6 +96,7 @@ export const GroupsProvider = ({ children }) => {
         updatedGroup,
         getOneGroup,
         subscribeToGroup,
+        unsubscribeToGroup,
       }}
     >
       {children}
