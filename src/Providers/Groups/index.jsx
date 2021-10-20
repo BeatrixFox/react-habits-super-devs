@@ -1,3 +1,4 @@
+import { Category } from "@mui/icons-material";
 import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import api from "../../services/api";
@@ -12,11 +13,13 @@ export const GroupsProvider = ({ children }) => {
   const [myGroups, setMyGroups] = useState([]);
   const [oneGroup, setOneGroup] = useState([]);
   const [checkMove, setCheckMove] = useState(false);
+  const [page, setPage] = useState(1);
 
   const getGroups = () => {
+    console.log(page);
     //não pede autenticação .get("groups/", config)
     api
-      .get("/groups/", config)
+      .get(`/groups/?page=${page}`, config)
       .then((response) => setGroups(response.data.results))
       .catch((error) => console.log("Erro: ", error));
   };
@@ -41,14 +44,15 @@ export const GroupsProvider = ({ children }) => {
   useEffect(() => {
     /*groups !== [] &&*/ getGroups();
     /*myGroups !== [] &&*/ getMyGroups();
-  }, [checkMove, config]);
+  }, [checkMove, config, page]);
 
   const createGroup = (data) => {
+    console.log(data);
     api
       .post("groups/", data, config)
       .then((response) => {
         setCheckMove(!checkMove);
-        toast.success("Grupo criado com sucesso");
+        toast.success("Grupo criado com sucesso, volte ao seu perfil");
       })
       .catch((error) => {
         toast.error("Grupo não pode ser criado. Tente novamente");
@@ -91,12 +95,14 @@ export const GroupsProvider = ({ children }) => {
         groups,
         myGroups,
         oneGroup,
+        page,
         setGroups,
         createGroup,
         updatedGroup,
         getOneGroup,
         subscribeToGroup,
         unsubscribeToGroup,
+        setPage,
       }}
     >
       {children}
