@@ -4,10 +4,11 @@ import { useForm, Controller } from "react-hook-form";
 import Select from "react-select";
 import Button from "../Button";
 import { useContext, useState } from "react";
-import { HabitsContext } from "../../Providers/Habits";
-import { UserContext } from "../../Providers/User";
+import { GroupsContext } from "../../Providers/Groups";
 import { Modal, Box, Paper } from "@material-ui/core";
 import { Input, Form } from "./styles";
+
+// ================================================
 
 const style = {
   position: "absolute",
@@ -31,41 +32,32 @@ const style = {
   },
 };
 
+//======================================================
+
 const optionsCategory = [
   { value: "hardSkill", label: "HardSkills" },
   { value: "softSkill", label: "SoftSkills" },
   { value: "saude", label: "Saúde" },
 ];
 
-const optionsLevel = [
-  { value: "facil", label: "Fácil" },
-  { value: "medio", label: "Médio" },
-  { value: "dificil", label: "Difícil" },
-];
-
-const optionsFrequency = [
-  { value: "diaria", label: "Diária" },
-  { value: "semanal", label: "Semanal" },
-  { value: "quinzenal", label: "Quinzenal" },
-];
-
-export const AddHabits = () => {
-
+export const NewGroup = () => {
+  //===============================
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  //===============================
 
-
-  const { createHabit } = useContext(HabitsContext);
-  const { userId } = useContext(UserContext);
+  const { createGroup } = useContext(GroupsContext);
 
   const schema = yup.object().shape({
-    title: yup.string().required("Campo obrigatório"),
+    name: yup.string().required("Campo obrigatório"),
+    description: yup
+      .string()
+      .max(200, "Máx de 200 caracteres")
+      .required("Campo obrigatório"),
     category: yup.object().required("Campo obrigatório"),
-    difficulty: yup.object().required("Campo obrigatório"),
-    frequency: yup.object().required("Campo obrigatório"),
   });
 
   const {
@@ -76,17 +68,10 @@ export const AddHabits = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmitForm = (userData) => {
-    userData.achieved = false;
-    userData.how_much_achieved = 0;
-
-    createHabit({
-      title: userData.title,
+    createGroup({
+      name: userData.name,
+      description: userData.description,
       category: userData.category.value,
-      difficulty: userData.difficulty.value,
-      frequency: userData.frequency.value,
-      achieved: userData.achieved,
-      how_much_achieved: userData.how_much_achieved,
-      user: userId,
     });
 
     handleClose();
@@ -97,7 +82,7 @@ export const AddHabits = () => {
       <Button
         handleClick={handleOpen}
         type={"submit"}
-        title={"Novo hábito"}
+        title={"Novo Grupo"}
       ></Button>
       <Modal
         open={open}
@@ -107,8 +92,13 @@ export const AddHabits = () => {
       >
         <Box sx={style}>
           <Form onSubmit={handleSubmit(onSubmitForm)}>
-            <h3>ADICIONE UM NOVO HÁBITO</h3>
-            <Input placeholder="Nome do novo hábito" {...register("title")} />
+            <h3>Novo Grupo</h3>
+            <Input placeholder="Nome do novo grupo" {...register("name")} />
+            <p>{errors.name?.message}</p>
+            <Input
+              placeholder="Descrição do grupo"
+              {...register("description")}
+            />
             <p>{errors.title?.message}</p>
 
             <Controller
@@ -120,23 +110,6 @@ export const AddHabits = () => {
             />
             <p>{errors.category?.message}</p>
 
-            <Controller
-              name="difficulty"
-              control={control}
-              render={({ field }) => (
-                <Select {...field} options={optionsLevel} />
-              )}
-            />
-            <p>{errors.difficulty?.message}</p>
-
-            <Controller
-              name="frequency"
-              control={control}
-              render={({ field }) => (
-                <Select {...field} options={optionsFrequency} />
-              )}
-            />
-            <p>{errors.frequency?.message}</p>
             <div>
               <Button type={"submit"} title={"adicionar"}></Button>
             </div>
@@ -147,4 +120,4 @@ export const AddHabits = () => {
   );
 };
 
-export default AddHabits;
+export default NewGroup;

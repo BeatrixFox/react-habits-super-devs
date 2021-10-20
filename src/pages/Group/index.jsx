@@ -1,5 +1,5 @@
 import { Container } from "./styles";
-import { Redirect } from "react-router";
+import { Redirect, useHistory } from "react-router";
 import { useContext } from "react";
 import { GroupsContext } from "../../Providers/Groups/index";
 import { GoalsHabitsApiContext } from "../../Providers/goalsHabitsApi/index";
@@ -11,8 +11,10 @@ import ListGoals from "../../components/ListGoals/index";
 import Button from "../../components/Button/index";
 
 const Group = () => {
+  const history = useHistory();
   const { authorized } = useContext(UserContext);
-  const { oneGroup, subscribeToGroup } = useContext(GroupsContext);
+  const { oneGroup, subscribeToGroup, unsubscribeToGroup } =
+    useContext(GroupsContext);
   const { groupedGoals } = useContext(GoalsHabitsApiContext);
   //const activities = [...oneGroup.activities];
   //TODO precisa trabalhar os params para usar :id
@@ -22,6 +24,11 @@ const Group = () => {
 
   const handlerClickSubscribe = () => {
     subscribeToGroup(oneGroup.id);
+  };
+
+  const handlerClickUnsubscribe = () => {
+    unsubscribeToGroup(oneGroup.id);
+    history.push("/my_groups");
   };
 
   if (!authorized) {
@@ -37,7 +44,7 @@ const Group = () => {
 
         <ListGoals />
         <div>
-          Buscar Metas:
+          
           <FindGoals />
         </div>
         <div>
@@ -64,6 +71,7 @@ const Group = () => {
 
         <p>Aqui vai o componet membros</p>
         <Button title="Inscrever-se" handleClick={handlerClickSubscribe} />
+        <Button title="Deixar grupo" handleClick={handlerClickUnsubscribe} />
       </Container>
     </>
   );

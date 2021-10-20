@@ -11,7 +11,7 @@ const GroupsCard = ({ item }) => {
     history.push("/group");
   };
   return (
-    <Container key={item.id}>
+    <Container>
       <span>{item.title}</span>
       <Div>
         <span>Nome: {item.name}</span>
