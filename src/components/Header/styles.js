@@ -50,10 +50,21 @@ export const HeaderDiv = styled.header`
 
   @media only screen and (min-width: 800px) {
     h1 {
-      font-size: 4.5vw;
+      font-size: 40px;
 
       &:hover {
-        font-size: 5vw;
+        font-size: 45px;
+        transition: all 0.5s;
+      }
+    }
+  }
+
+  @media only screen and (min-width: 1000px) {
+    h1 {
+      font-size: 50px;
+
+      &:hover {
+        font-size: 55px;
         transition: all 0.5s;
       }
     }

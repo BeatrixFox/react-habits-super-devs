@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { UserContext } from "../../Providers/User";
 import ListGroup from "../../components/ListGroup/index";
 import FindGroup from "../../components/FindGroup";
+import NewGroup from "../../components/NewGroup";
 
 const Groups = () => {
   const { authorized } = useContext(UserContext);
@@ -24,11 +25,7 @@ const Groups = () => {
     <>
       <Container>
         <ListGroup />
-        <Button
-          handleClick={handleClickAddGroup}
-          type="click"
-          title="Novo Grupo"
-        />
+        <NewGroup />
         <FindGroup />
         {/* <Button handleClick={handleClickSearch} type="click" title="Procurar" /> */}
       </Container>

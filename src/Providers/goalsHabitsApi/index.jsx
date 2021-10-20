@@ -1,5 +1,5 @@
-import { createContext, useContext, useState } from "react";
-
+import { createContext, useContext, useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import api from "../../services/api";
 import { UserContext } from "../User";
 
@@ -12,6 +12,7 @@ export const GoalsHabitsApiProvider = ({ children }) => {
   const [goalUpdated, setGoalUpdated] = useState();
   const [goalGot, setGoalGot] = useState();
   const [groupedGoals, setGroupedGoals] = useState([]);
+ 
 
   const createGoal = (title, difficulty, how_much_achieved, group) => {
     api
@@ -29,23 +30,26 @@ export const GoalsHabitsApiProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const updateGoal = () => {
+  const updateGoal = (goalId) => {
     api
       .patch(
-        "/goals/",
+        `/goals/${goalId}/`,
         {
           achieved: true,
         },
         config
       )
-      .then((response) => setGoalUpdated(response.data))
+      .then((response) => {
+        toast.success('Meta concluida com sucesso!')
+        // setGoalUpdated(response.data)
+      })
       .catch((err) => console.log(err));
   };
 
   const deleteGoal = (goalId) => {
     api
       .delete(`/goals/${goalId}/`, config)
-      .then((response) => console.log("ok"))
+      .then((response) => toast.success('Deletado com sucesso!'))
       .catch((err) => console.log(err));
   };
 
@@ -53,17 +57,24 @@ export const GoalsHabitsApiProvider = ({ children }) => {
     api
       .get(`/goals/${goalId}/`)
       .then((response) => setGoalGot(response.data))
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        toast.error('Meta não encontrada')
+        console.log(err)});
   };
 
   const getGroupGoals = (groupId, groupPage = 1) => {
     api
       .get(`/goals/?group=${groupId}&page=${groupPage}`)
-      .then((response) =>
-        setGroupedGoals(...groupedGoals, response.data.results)
+      .then((response) => {        
+        setGroupedGoals(response.data.results)        
+      }
+        
       )
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        toast.error('Meta não encontrada')
+        console.log(err)});
   };
+
 
   return (
     <GoalsHabitsApiContext.Provider
@@ -77,6 +88,7 @@ export const GoalsHabitsApiProvider = ({ children }) => {
         goalGot,
         getGroupGoals,
         groupedGoals,
+        setGoalGot
       }}
     >
       {children}
