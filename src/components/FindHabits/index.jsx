@@ -27,14 +27,14 @@ const FindHabits = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [text, setText] = useState();
+  const [text, setText] = useState("");
   const { getOneHabit, oneHabit } = useContext(HabitsContext);
 
   const handleClickFinding = (text) => {
-    console.log("text: ", text);
     getOneHabit(text);
+    setText("");
+    handleClose();
   };
-  console.log("oneHabit: ", oneHabit);
   return (
     <Container>
       <Button title="Procurar hábitos" handleClick={handleOpen}></Button>
@@ -53,6 +53,7 @@ const FindHabits = () => {
             variant="filled"
             size="small"
             color="primary"
+            value={text}
             onChange={(e) => setText(e.target.value)}
           />
           <Button
@@ -60,7 +61,7 @@ const FindHabits = () => {
             title="Procurar"
             handleClick={() => handleClickFinding(text)}
           />
-          <p>CardHabit {oneHabit}</p>
+          <p>CardHabit {console.log(oneHabit)}</p>
         </Box>
       </Modal>
     </Container>

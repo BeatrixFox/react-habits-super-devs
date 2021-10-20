@@ -3,17 +3,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router";
 import { useContext, useEffect, useState } from "react";
-import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
+import { UserContext } from "../../Providers/User";
 import Button from "./../../components/Button/index";
 
 const Login = () => {
+  const { userLogin, userId, authorized } = useContext(UserContext);
   const history = useHistory();
-
-  const [accessToken] = useState(
-    JSON.parse(localStorage.getItem("@Habit:access")) || ""
-  );
-
-  const { userLogin, userId } = useContext(UserHabitsApiContext);
 
   const schema = yup.object().shape({
     username: yup.string().required("Campo obrigatório"),
@@ -33,11 +28,15 @@ const Login = () => {
     userLogin(userData);
   };
 
-  useEffect(() => {
-    if (userId) {
-      history.push("/dashboard");
-    }
-  }, [userLogin]);
+  //useEffect(() => {
+  //  if (userId) {
+  //    history.push("/dashboard");
+  //  }
+  //}, [userLogin]);
+
+  if (authorized) {
+    history.push("/dashboard");
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmitForm)}>

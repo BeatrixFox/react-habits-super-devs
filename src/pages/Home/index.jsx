@@ -3,17 +3,17 @@ import Button from "../../components/Button/index";
 import { Link, Redirect } from "react-router-dom";
 import { Section, Img, Div } from "./styles";
 import { useContext } from "react";
-import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
+import { UserContext } from "../../Providers/User";
 
 const Home = () => {
-  const { authorized } = useContext(UserHabitsApiContext);
+  const { authorized } = useContext(UserContext);
 
   if (authorized) {
     return <Redirect to="/dashboard" />;
   }
 
   return (
-    <Section>      
+    <Section>
       <div>
         <figure>
           <Img src={HomeImg} alt="background" />

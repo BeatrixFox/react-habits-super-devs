@@ -1,21 +1,17 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import api from "../../services/api";
+import { UserContext } from "../User/index";
 
 export const GroupsContext = createContext([]);
 
 export const GroupsProvider = ({ children }) => {
+  const { config } = useContext(UserContext);
+
   const [groups, setGroups] = useState([]);
   const [myGroups, setMyGroups] = useState([]);
   const [oneGroup, setOneGroup] = useState([]);
-
-  const [accessToken] = useState(
-    JSON.parse(localStorage.getItem("@Habit:access")) || ""
-  );
-
-  const config = {
-    headers: { Authorization: `Bearer ${accessToken}` },
-  };
+  const [checkMove, setCheckMove] = useState(false);
 
   const getGroups = () => {
     //não pede autenticação .get("groups/", config)
@@ -45,15 +41,16 @@ export const GroupsProvider = ({ children }) => {
   useEffect(() => {
     /*groups !== [] &&*/ getGroups();
     /*myGroups !== [] &&*/ getMyGroups();
-  }, []);
+  }, [checkMove, config]);
 
   const createGroup = (data) => {
     api
       .post("groups/", data, config)
       .then((response) => {
-        setGroups([...groups, response.data]);
+        setCheckMove(!checkMove);
+        //setGroups([...groups, response.data]);
         toast.success("Grupo criado com sucesso");
-        console.log(response);
+        //console.log(response);
       })
       .catch((error) => {
         toast.error("Grupo não pode ser criado. Tente novamente");
@@ -72,8 +69,9 @@ export const GroupsProvider = ({ children }) => {
   };
   const subscribeToGroup = (id) => {
     api
-      .get(`groups/${id}/subscribe/`)
+      .post(`groups/${id}/subscribe/`, null, config)
       .then((response) => {
+        setCheckMove(!checkMove);
         toast.success("Inscrição feita");
         console.log("Adicionado");
       })

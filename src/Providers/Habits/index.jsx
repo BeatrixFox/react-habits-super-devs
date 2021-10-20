@@ -1,20 +1,15 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 import api from "../../services/api";
-import { UserHabitsApiContext } from "../../Providers/userHabitsApi/index";
+import { UserContext } from "../User";
 
 export const HabitsContext = createContext([]);
 
 export const HabitsProvider = ({ children }) => {
-  const { userId } = useContext(UserHabitsApiContext);
+  const { userId } = useContext(UserContext);
   const [habits, setHabits] = useState([]);
   const [oneHabit, setOneHabit] = useState([]);
-  const [accessToken] = useState(
-    JSON.parse(localStorage.getItem("@Habit:access")) || ""
-  );
-
-  const config = {
-    headers: { Authorization: `Bearer ${accessToken}` },
-  };
+  const [checkMove, setCheckMove] = useState(false);
+  const { config } = useContext(UserContext);
 
   const getHabits = () => {
     api
@@ -40,16 +35,17 @@ export const HabitsProvider = ({ children }) => {
       .catch((error) => console.log("Erro: ", error));
   };
 
-  //useEffect(() => {
-  /*habits !== [] &&*/ //getHabits();
-  //}, []);
+  useEffect(() => {
+    getHabits();
+  }, [checkMove, config]);
 
   const createHabit = (data) => {
-    console.log(data);
+    console.log(data, config);
     api
       .post("/habits/", data, config)
       .then((response) => {
-        setHabits([...habits, response.data]);
+        setCheckMove(!checkMove);
+        //setHabits([...habits, response.data]);
       })
       .catch((error) => console.log(error));
   };
@@ -57,9 +53,10 @@ export const HabitsProvider = ({ children }) => {
     api
       .delete(`/habits/${id}/`, config)
       .then((response) => {
-        const refreshHabits = habits.filter((habit) => habit.id !== id);
-        setHabits(refreshHabits);
-        console.log(habits);
+        setCheckMove(!checkMove);
+        //const refreshHabits = habits.filter((habit) => habit.id !== id);
+        //setHabits(refreshHabits);
+        //console.log(habits);
       })
       .catch((error) => console.log(error));
   };

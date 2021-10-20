@@ -3,18 +3,18 @@ import { Img } from "./styles";
 import Button from "../../components/Button/index.jsx";
 import { Redirect, useHistory } from "react-router";
 import { useContext } from "react";
-import { UserHabitsApiContext } from "../../Providers/userHabitsApi";
+import { UserContext } from "../../Providers/User";
 import UpdateUserProfile from "../../components/UpdateUserProfile/index";
 
 const Dashboard = () => {
-  const { authorized } = useContext(UserHabitsApiContext);
+  const { authorized } = useContext(UserContext);
   const history = useHistory();
 
   const handleClickMyGroups = () => {
-    history.push("/my_groups/");
+    history.push("/my_groups");
   };
   const handleClickHabits = () => {
-    history.push("/habits/");
+    history.push("/habits");
   };
   const handleClickUpdUser = () => {
     console.log("handleClickUpdUser");
