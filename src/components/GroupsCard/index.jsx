@@ -10,14 +10,14 @@ const GroupsCard = ({ group }) => {
     getOneGroup(group.id);
     history.push("/group");
   };
-  console.log(group)
+  console.log(group);
   return (
     <Container>
       <Div>
-        <span>Nome: {group.name}</span>
+        <p>{group.name}</p>
         <span>Descrição: {group.description}</span>
         <span>Categoria: {group.category}</span>
-        <button onClick={() => handleClick(group)}>++</button>
+        <button onClick={() => handleClick(group)}>Mais Detalhes</button>
       </Div>
     </Container>
   );
