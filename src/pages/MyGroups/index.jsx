@@ -4,6 +4,7 @@ import { Redirect } from "react-router";
 import { UserContext } from "../../Providers/User";
 import { useContext } from "react";
 import ListGroup from "../../components/ListGroup/index";
+import FindGroup from "../../components/FindGroup";
 
 export const MyGroups = () => {
   const { authorized } = useContext(UserContext);
@@ -20,11 +21,7 @@ export const MyGroups = () => {
     <>
       <Container>
         <ListGroup />
-        <Button
-          handleClick={handleClickSearch}
-          type="onClick"
-          title="Procurar"
-        />
+        <FindGroup />
       </Container>
     </>
   );
