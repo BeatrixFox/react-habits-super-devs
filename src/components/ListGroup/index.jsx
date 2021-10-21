@@ -49,7 +49,7 @@ const ListGroup = () => {
       <Container>
         {groups.map((group) => (
           <div key={group.id}>
-            <GroupsCard item={group} />
+            <GroupsCard group={group} />
           </div>
         ))}
         <Button
