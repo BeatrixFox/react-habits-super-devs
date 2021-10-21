@@ -1,7 +1,7 @@
 import { Div, Container } from "./styles";
 import { useState, useContext } from "react";
 import { GoalsHabitsApiContext } from "../../Providers/goalsHabitsApi";
-import { Modal, Box, TextField } from "@material-ui/core";
+import { Modal, Box } from "@material-ui/core";
 import Button from "../Button/index";
 
 const style = {
@@ -18,21 +18,19 @@ const style = {
 };
 
 const GoalCard = ({ item }) => {
-  const { getOneGoal, goal, updateGoal, deleteGoal } = useContext(
+  const { getOneGoal, updateGoal, deleteGoal } = useContext(
     GoalsHabitsApiContext
   );
-  //  console.log("goal no GoalCard", goal);
-  const [showUpdate, setShowUpdate] = useState(false);
+
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
   const handleOpen = () => {
     setOpen(true);
-    setShowUpdate(false);
     getOneGoal(item.id);
   };
 
   return (
-    <Container key={item.id}>      
+    <Container key={item.id}>
       <Div>
         <span>Título: {item.title}</span>
         <Button
@@ -51,7 +49,7 @@ const GoalCard = ({ item }) => {
             <p>Dificuldade: {item.difficulty}</p>
             <p>Estatus: {item.achieved ? "Concluído" : "Não concluido"}</p>
             <Button title="Atualizar" handleClick={() => updateGoal(item.id)} />
-            <Button title="delete" handleClick={() => deleteGoal(item.id)} />
+            <Button title="Delete" handleClick={() => deleteGoal(item.id)} />
           </Box>
         </Modal>
       </Div>

@@ -19,7 +19,6 @@ const style = {
 };
 
 const FindGoals = ({ groupId }) => {
-  const [text, setText] = useState("");
   const { getGroupGoals } = useContext(GoalsHabitsApiContext);
 
   const [open, setOpen] = useState(false);

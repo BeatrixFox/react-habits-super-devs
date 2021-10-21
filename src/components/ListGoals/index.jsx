@@ -1,9 +1,7 @@
-import { Container, Div } from "./styles";
+import { Container } from "./styles";
 import { useContext, useEffect } from "react";
-import Button from "../Button/index";
 import { GoalsHabitsApiContext } from "../../Providers/goalsHabitsApi/index";
 import { GroupsContext } from "../../Providers/Groups";
-import { Link } from "react-router-dom";
 import GoalCard from "../GoalCard/index";
 
 const ListGoals = () => {
@@ -24,7 +22,6 @@ const ListGoals = () => {
           return (
             <li key={goal.id}>
               <GoalCard item={goal} />
-              {/* <button onClick={() => handleClick(goal.id)}>{goal.title}</button> */}
             </li>
           );
         })}

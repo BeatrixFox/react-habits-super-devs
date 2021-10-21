@@ -2,10 +2,7 @@ import { Container } from "./styles";
 import { Redirect, useHistory } from "react-router";
 import { useContext } from "react";
 import { GroupsContext } from "../../Providers/Groups/index";
-import { GoalsHabitsApiContext } from "../../Providers/goalsHabitsApi/index";
 import { UserContext } from "../../Providers/User/index";
-import FindGoals from "../../components/FindGoals/index";
-import FindActivity from "../../components/FindActivity/index";
 import ListActivity from "../../components/ListActivity/index";
 import AddActivity from "../../components/AddActivity/index";
 import AddGoals from "../../components/AddGoals/index";
@@ -18,7 +15,6 @@ const Group = () => {
   const { authorized } = useContext(UserContext);
   const { oneGroup, subscribeToGroup, unsubscribeToGroup } =
     useContext(GroupsContext);
-  const { goals } = useContext(GoalsHabitsApiContext);
 
   const handlerClickSubscribe = () => {
     subscribeToGroup(oneGroup.id);
@@ -37,16 +33,16 @@ const Group = () => {
     <>
       <Container>
         <h1>{oneGroup.name}</h1>
-        <p>{oneGroup.description}</p>        
+        <p>{oneGroup.description}</p>
 
         <div>
           <ListGoals />
-          <AddGoals groupId={oneGroup.id} />          
+          <AddGoals groupId={oneGroup.id} />
         </div>
         <div>
           {!!oneGroup.activities && <ListActivity oneGroup={oneGroup} />}
         </div>
-        <div>          
+        <div>
           <AddActivity groupId={oneGroup.id} />
         </div>
 

@@ -3,19 +3,16 @@ import Button from "../Button/index";
 
 import { useContext } from "react";
 import { HabitsContext } from "../../Providers/Habits";
-import { toast } from "react-toastify";
 
-export const HabitsCard = ({ item }) => {
+const HabitsCard = ({ item }) => {
   const { deleteHabit, updatedHabit } = useContext(HabitsContext);
 
   const handleClickUpdate = (id, how_much_achieved) => {
     updatedHabit(id, how_much_achieved);
-    console.log(id, how_much_achieved);
   };
 
   const handleClickDelete = (id) => {
     deleteHabit(id);
-    // toast.success("Hábito Removido com Sucesso.");
   };
 
   return (

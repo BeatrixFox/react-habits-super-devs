@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
 import api from "../../services/api";
 import { UserContext } from "../User";
@@ -55,7 +55,6 @@ export const GoalsHabitsApiProvider = ({ children }) => {
         setGoal(response.data);
       })
       .catch((err) => {
-        toast.error("Meta não encontrada");
         console.log(err);
       });
   };
@@ -67,7 +66,6 @@ export const GoalsHabitsApiProvider = ({ children }) => {
         setGoals(response.data.results);
       })
       .catch((err) => {
-        //toast.error("Meta não encontrada");
         console.log(err);
       });
   };
