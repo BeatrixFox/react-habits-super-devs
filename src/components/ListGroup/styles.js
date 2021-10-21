@@ -6,7 +6,7 @@ export const Container = styled.div`
   padding: 5px;
   margin: 20px auto;
   border-radius: 25px;
-  background: var(--baby-blue-eyes);
+  background: var(--st-patricks-blue);
 
   @media only screen and (min-width: 400px) {
     width: 400px;

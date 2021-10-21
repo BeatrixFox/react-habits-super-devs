@@ -7,10 +7,19 @@ export const Div = styled.div`
   border: 1px solid black;
   width: 85%;
   margin: 10px auto;
-  p {
-  }
 
+  background: var(--baby-blue-eyes);
+  p {
+    text-align: center;
+    padding: 10px;
+  }
   & span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 20px;
+    white-space: nowrap;
+    max-width: 90%;
+    margin: 2px 10px;
   }
   /* border: 1px black solid; */
 `;
