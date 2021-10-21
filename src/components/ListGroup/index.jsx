@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-import { useContext, useEffect } from "react";
-
-=======
 import { useContext } from "react";
->>>>>>> 8f4e76a750a188c6723e48cdc8318729b822eb59
 import { Container } from "./styles";
 import { GroupsContext } from "../../Providers/Groups/index";
 import GroupsCard from "../../components/GroupsCard/index";
