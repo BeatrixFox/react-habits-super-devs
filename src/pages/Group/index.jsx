@@ -45,7 +45,7 @@ const Group = () => {
         </div>
         <div>
           <ListGoals />
-          {/* <AddGoals /> */}
+          <AddGoals groupId={oneGroup.id} />
           {/* <FindGoals /> */}
         </div>
         <div>

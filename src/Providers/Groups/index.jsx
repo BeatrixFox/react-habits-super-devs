@@ -15,7 +15,8 @@ export const GroupsProvider = ({ children }) => {
   const [page, setPage] = useState(1);
 
   const getGroups = () => {
-    //não pede autenticação .get("groups/", config)
+    console.log(page);
+
     api
       .get(`/groups/?page=${page}`, config)
       .then((response) => {
@@ -24,11 +25,13 @@ export const GroupsProvider = ({ children }) => {
       })
       .catch((error) => console.log("Erro: ", error));
   };
-  const getOneGroup = (id = 21) => {
-    //não pede autenticação
+  const getOneGroup = (id) => {
     api
       .get(`/groups/${id}/`)
-      .then((response) => setOneGroup(response.data))
+      .then((response) => {
+        setOneGroup(response.data);
+        console.log(response.data);
+      })
       .catch((error) => {
         toast.error("Grupo não encontrado");
         console.log("Erro: ", error);
