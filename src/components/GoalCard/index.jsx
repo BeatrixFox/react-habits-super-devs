@@ -49,7 +49,6 @@ const GoalCard = ({ item }) => {
           aria-describedby="modal-modal-description"
         >
           <Box sx={style}>
-            <p>id: {item.id}</p>
             <p>Título: {item.title}</p>
             <p>Dificuldade: {item.difficulty}</p>
             <p>Progresso: {item.how_much_achieved}</p>
@@ -75,6 +74,7 @@ const GoalCard = ({ item }) => {
                   value={newGoalTitle}
                   onChange={(e) => setNewGoalTitle(e.target.value)}
                 />
+
                 <Button
                   title="Enviar"
                   handleClick={() => {

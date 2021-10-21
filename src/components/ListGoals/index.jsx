@@ -8,23 +8,13 @@ import GoalCard from "../GoalCard/index";
 
 const ListGoals = () => {
   const { oneGroup } = useContext(GroupsContext);
-  const { goals, deleteGoal, updateGoal, getGoals } = useContext(
+  const { goals, getGoals, updateGoal, deleteGoal } = useContext(
     GoalsHabitsApiContext
   );
 
   useEffect(() => {
     getGoals(oneGroup.id);
   }, [oneGroup.id, updateGoal, deleteGoal]);
-
-  const handleDelete = (goalId) => {
-    deleteGoal(goalId);
-  };
-  const handleUpdate = (goalId) => {
-    updateGoal(goalId);
-  };
-  const handleClick = (id) => {
-    console.log(id);
-  };
 
   return (
     <Container>
