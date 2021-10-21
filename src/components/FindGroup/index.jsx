@@ -38,9 +38,10 @@ const FindGroup = () => {
   const handlerClickFinding = (text) => {
     const oneTime = groups.filter((group) => group.name === text);
     // console.log(oneTime.id);
-    getOneGroup(oneTime.id);
+    getOneGroup(oneTime[0].id);
   };
 
+  console.log(oneGroup);
   return (
     <Container>
       <Button title="Procurar Grupo" handleClick={handleOpen} />

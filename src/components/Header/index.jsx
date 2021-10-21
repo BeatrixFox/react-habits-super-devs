@@ -31,7 +31,7 @@ function Header() {
         return "Meus Hábitos";
       case "/login":
         return "Login";
-      case "/cadastro":
+      case "/signup":
         return "Cadastro";
       case "/dashboard":
         return "Painel do SuperDev";
@@ -58,6 +58,9 @@ function Header() {
         </ButtonHeader>
         <ButtonHeader>
           <Link to="/habits"> Hábitos </Link>
+        </ButtonHeader>
+        <ButtonHeader>
+          <Link to="/my_groups"> Meus Grupos </Link>
         </ButtonHeader>
         <ButtonHeader>
           <Link to="/groups"> Grupos </Link>
