@@ -17,17 +17,18 @@ export const GroupsProvider = ({ children }) => {
 
   const getGroups = () => {
     console.log(page);
-    //não pede autenticação .get("groups/", config)
     api
       .get(`/groups/?page=${page}`, config)
       .then((response) => setGroups(response.data.results))
       .catch((error) => console.log("Erro: ", error));
   };
-  const getOneGroup = (id = 21) => {
-    //não pede autenticação
+  const getOneGroup = (id) => {
     api
       .get(`/groups/${id}/`)
-      .then((response) => setOneGroup(response.data))
+      .then((response) => {
+        setOneGroup(response.data);
+        console.log(response.data);
+      })
       .catch((error) => {
         toast.error("Grupo não encontrado");
         console.log("Erro: ", error);
