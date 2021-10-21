@@ -35,6 +35,7 @@ const FindGroup = ({ isMyGroups }) => {
 
   //////////////////////////////////////////////////////endModal
 
+<<<<<<< HEAD
   const handlerClickFinding = (groupToSearch) => {
     let search = "";
     isMyGroups ? (search = myGroups) : (search = groups);
@@ -43,6 +44,17 @@ const FindGroup = ({ isMyGroups }) => {
     setFound(oneTime);
     setGroupToSearch("");
   };
+=======
+    const handlerClickFinding = (groupToSearch) => {        
+        let search = "";
+        isMyGroups ? (search = myGroups) : (search = groups);
+        const oneTime = search
+            .filter((group) => group.name === groupToSearch)
+            
+        setFound(oneTime);
+        setGroupToSearch("");
+    };
+>>>>>>> bfa72beb02a0a8f54bafd1dca18832c93f1a0d83
 
   return (
     <Container>
