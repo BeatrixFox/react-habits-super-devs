@@ -12,6 +12,19 @@ const GlobalStyle = createGlobalStyle`
 	list-style: none;
 }
 :root {
+/* 
+	@media only screen and (min-width: 450px) {
+  }
+
+  @media only screen and (min-width: 600px) {
+  }
+
+  @media only screen and (min-width: 768px) {
+  }
+
+  @media only screen and (min-width: 1000px) {
+  } */
+
 	// a definir paleta de cores.
 	--background-page: var(--platinum);
 	--background-header: var(--st-patricks-blue);

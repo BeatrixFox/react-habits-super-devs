@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Section = styled.section`
   display: flex;
   flex-direction: column-reverse;
+  height: fit-content;
 
   div.imgBox {
     width: min-content;
