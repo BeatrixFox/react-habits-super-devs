@@ -12,6 +12,7 @@ import AddGoals from "../../components/AddGoals/index";
 import ListGoals from "../../components/ListGoals/index";
 import ListMembers from "../../components/ListMembers";
 import Button from "../../components/Button/index";
+import FindGroup from "../../components/FindGroup";
 
 const Group = () => {
   const history = useHistory();
@@ -39,6 +40,9 @@ const Group = () => {
         <h1>{oneGroup.name}</h1>
         <p>{oneGroup.description}</p>
         <p>Aqui vai o componet metas</p>
+        <div>
+          <FindGroup />
+        </div>
         <div>
           <ListGoals />
           {/* <AddGoals /> */}

@@ -10,6 +10,7 @@ const GroupsCard = ({ group }) => {
     getOneGroup(group.id);
     history.push("/group");
   };
+  console.log(group)
   return (
     <Container>
       <Div>
