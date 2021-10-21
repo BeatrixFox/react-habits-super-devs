@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Container } from "./styles";
+import { BtnNavegation, Container, SectionBtn } from "./styles";
 import { GroupsContext } from "../../Providers/Groups/index";
 import GroupsCard from "../../components/GroupsCard/index";
 
@@ -30,16 +30,14 @@ const ListGroup = () => {
             <GroupsCard group={group} />
           </div>
         ))}
-        <Button
-          handleClick={handleClickBackPage}
-          type="click"
-          title="Pagina Anterior"
-        ></Button>
-        <Button
-          handleClick={handleClickNextPage}
-          type="click"
-          title="Pagina Posterior"
-        ></Button>
+        <SectionBtn>
+          <BtnNavegation onClick={handleClickBackPage} type="click">
+            Pagina Anterior
+          </BtnNavegation>
+          <BtnNavegation onClick={handleClickNextPage} type="click">
+            Pagina Posterior
+          </BtnNavegation>
+        </SectionBtn>
       </Container>
     );
   }
