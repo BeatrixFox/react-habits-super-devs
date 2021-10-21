@@ -17,23 +17,24 @@ export const GoalsHabitsApiProvider = ({ children }) => {
     api
       .post("/goals/", data, config)
       .then((response) => {
-        setGoals([...goals, response.data]);
+        setGoalCreated(response.data);
+        toast.success("Meta adicionada com sucesso!");
       })
       .catch((err) => console.log(err));
   };
 
-  const updateGoal = (goalId) => {
+  const updateGoal = (newTitle, goalId) => {
     api
       .patch(
         `/goals/${goalId}/`,
         {
-          achieved: true,
+          title: newTitle,
         },
         config
       )
       .then((response) => {
-        toast.success("Meta concluida com sucesso!");
-        // setGoalUpdated(response.data)
+        setGoalUpdated(response.data);
+        toast.success("Meta atualizada com sucesso!");
       })
       .catch((err) => console.log(err));
   };
@@ -41,14 +42,18 @@ export const GoalsHabitsApiProvider = ({ children }) => {
   const deleteGoal = (goalId) => {
     api
       .delete(`/goals/${goalId}/`, config)
-      .then((response) => toast.success("Deletado com sucesso!"))
+      .then((response) => {
+        toast.success("Deletado com sucesso!");
+      })
       .catch((err) => console.log(err));
   };
 
   const getOneGoal = (goalId) => {
     api
       .get(`/goals/${goalId}/`, config)
-      .then((response) => setGoal(response.data))
+      .then((response) => {
+        setGoal(response.data);
+      })
       .catch((err) => {
         toast.error("Meta não encontrada");
         console.log(err);
