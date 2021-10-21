@@ -14,7 +14,7 @@ const ListGoals = () => {
 
   useEffect(() => {
     getGoals(oneGroup.id);
-  });
+  }, [oneGroup.id, updateGoal, deleteGoal]);
 
   const handleDelete = (goalId) => {
     deleteGoal(goalId);
