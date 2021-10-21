@@ -2,11 +2,7 @@ import { useContext } from "react";
 import { BtnNavegation, Container, SectionBtn } from "./styles";
 import { GroupsContext } from "../../Providers/Groups/index";
 import GroupsCard from "../../components/GroupsCard/index";
-
 import { useLocation } from "react-router-dom";
-import FindGoals from "../FindGoals";
-
-import Button from "../Button/index";
 
 const ListGroup = () => {
   const location = useLocation();

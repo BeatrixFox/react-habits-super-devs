@@ -5,10 +5,8 @@ import Select from "react-select";
 import Button from "../Button";
 import { useContext, useState } from "react";
 import { GroupsContext } from "../../Providers/Groups";
-import { Modal, Box, Paper } from "@material-ui/core";
+import { Modal, Box } from "@material-ui/core";
 import { Input, Form } from "./styles";
-
-// ================================================
 
 const style = {
   position: "absolute",
@@ -32,8 +30,6 @@ const style = {
   },
 };
 
-//======================================================
-
 const optionsCategory = [
   { value: "hardSkill", label: "HardSkills" },
   { value: "softSkill", label: "SoftSkills" },
@@ -41,13 +37,9 @@ const optionsCategory = [
 ];
 
 export const NewGroup = () => {
-  //===============================
-
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  //===============================
 
   const { createGroup } = useContext(GroupsContext);
 

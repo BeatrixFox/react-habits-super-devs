@@ -1,5 +1,5 @@
 import { useHistory } from "react-router";
-import { Div, Container } from "./styles";
+import { Container } from "./styles";
 import { GroupsContext } from "../../Providers/Groups/index";
 import { useContext } from "react";
 
