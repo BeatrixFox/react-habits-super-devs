@@ -1,12 +1,11 @@
 import { Container } from "./styles";
-import Button from "../../components/Button/index";
 import { Redirect } from "react-router";
 import { UserContext } from "../../Providers/User";
 import { useContext } from "react";
 import ListGroup from "../../components/ListGroup/index";
 import FindGroup from "../../components/FindGroup";
 
-export const MyGroups = () => {
+const MyGroups = () => {
   const { authorized } = useContext(UserContext);
 
   if (!authorized) {
@@ -17,7 +16,7 @@ export const MyGroups = () => {
     <>
       <Container>
         <ListGroup />
-        <FindGroup isMyGroups />
+        <FindGroup />
       </Container>
     </>
   );
