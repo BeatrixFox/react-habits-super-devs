@@ -18,7 +18,7 @@ export const GroupsProvider = ({ children }) => {
     api
       .get(`/groups/?page=${page}`, config)
       .then((response) => {
-        setGroups(...groups, response.data.results);
+        setGroups(response.data.results);
       })
       .catch((error) => console.log("Erro: ", error));
   };
@@ -38,7 +38,7 @@ export const GroupsProvider = ({ children }) => {
   const getMyGroups = () => {
     api
       .get("/groups/subscriptions/", config)
-      .then((response) => setMyGroups(...myGroups, response.data))
+      .then((response) => setMyGroups(response.data))
       .catch((error) => console.log("Erro: ", error));
   };
 
