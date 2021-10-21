@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import { GoalsHabitsApiContext } from "../../Providers/goalsHabitsApi";
 import { Modal, Box, TextField } from "@material-ui/core";
 import Button from "../Button/index";
+import AuxButton from "../AuxButton";
 
 const style = {
   position: "absolute",
@@ -32,29 +33,27 @@ const GoalCard = ({ item }) => {
   };
 
   return (
-    <Container key={item.id}>      
-      <Div>
-        <span>Título: {item.title}</span>
-        <Button
-          handleClick={handleOpen}
-          type={"submit"}
-          title={"INFO"}
-        ></Button>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-            <p>Título: {item.title}</p>
-            <p>Dificuldade: {item.difficulty}</p>
-            <p>Estatus: {item.achieved ? "Concluído" : "Não concluido"}</p>
-            <Button title="Atualizar" handleClick={() => updateGoal(item.id)} />
-            <Button title="delete" handleClick={() => deleteGoal(item.id)} />
-          </Box>
-        </Modal>
-      </Div>
+    <Container key={item.id}>
+      <span>Título: {item.title}</span>
+      <AuxButton
+        handleClick={handleOpen}
+        type={"submit"}
+        title={"INFO"}
+      ></AuxButton>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <p>Título: {item.title}</p>
+          <p>Dificuldade: {item.difficulty}</p>
+          <p>Estatus: {item.achieved ? "Concluído" : "Não concluido"}</p>
+          <Button title="Atualizar" handleClick={() => updateGoal(item.id)} />
+          <Button title="delete" handleClick={() => deleteGoal(item.id)} />
+        </Box>
+      </Modal>
     </Container>
   );
 };

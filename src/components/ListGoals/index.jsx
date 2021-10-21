@@ -5,6 +5,7 @@ import { GoalsHabitsApiContext } from "../../Providers/goalsHabitsApi/index";
 import { GroupsContext } from "../../Providers/Groups";
 import { Link } from "react-router-dom";
 import GoalCard from "../GoalCard/index";
+import { Content } from "../ListActivity/styles";
 
 const ListGoals = () => {
   const { oneGroup } = useContext(GroupsContext);
@@ -18,8 +19,8 @@ const ListGoals = () => {
 
   return (
     <Container>
-      <h4>Listar metas do grupo:</h4>
-      <ul>
+      <h4>Metas</h4>
+      <Content>
         {goals.map((goal) => {
           return (
             <li key={goal.id}>
@@ -28,7 +29,7 @@ const ListGoals = () => {
             </li>
           );
         })}
-      </ul>
+      </Content>
     </Container>
   );
 };
