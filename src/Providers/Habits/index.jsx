@@ -6,95 +6,93 @@ import { toast } from "react-toastify";
 export const HabitsContext = createContext([]);
 
 export const HabitsProvider = ({ children }) => {
-  const { userId } = useContext(UserContext);
-  const [habits, setHabits] = useState([]);
-  const [oneHabit, setOneHabit] = useState([]);
-  const [checkMove, setCheckMove] = useState(false);
+    const { userId } = useContext(UserContext);
+    const [habits, setHabits] = useState([]);
+    const [oneHabit, setOneHabit] = useState([]);
+    const [checkMove, setCheckMove] = useState(false);
 
-  const { config } = useContext(UserContext);
+    const { config } = useContext(UserContext);
 
-  const getHabits = () => {
-    api
-      .get("/habits/personal/", config)
-      .then((response) => setHabits(response.data))
-      .catch((error) => console.log("Erro: ", error));
-  };
+    const getHabits = () => {
+        api.get("/habits/personal/", config)
+            .then((response) => setHabits(response.data))
+            .catch((error) => console.log("Erro: ", error));
+    };
 
-  const getOneHabit = (titleHabit) => {
-    api
-      .get("/habits/personal/", config)
-      .then((response) => {
-        const listHabits = response.data;
-        const search = listHabits
-          .filter((oneItemList) => {
-            return oneItemList.title === titleHabit;
-          })
-          .filter((item) => {
-            return item.user === userId;
-          });
-        setOneHabit(search);
-      })
-      .catch((error) => ("Erro: ", error));
-  };
+    const getOneHabit = (titleHabit) => {
+        api.get("/habits/personal/", config)
+            .then((response) => {
+                const listHabits = response.data;
+                const search = listHabits
+                    .filter((oneItemList) => {
+                        return oneItemList.title === titleHabit;
+                    })
+                    .filter((item) => {
+                        return item.user === userId;
+                    });
+                setOneHabit(search);
+            })
+            .catch((error) => `Erro: ${error}`);
+    };
 
-  useEffect(() => {
-    getHabits();
-  }, [checkMove, config]);
+    useEffect(() => {
+        getHabits(); // eslint-disable-next-line
+    }, [checkMove, config]);
 
-  const createHabit = (data) => {
-    console.log(data, config);
-    api
-      .post("/habits/", data, config)
-      .then((response) => {
-        setCheckMove(!checkMove);
-        toast.success("Hábito adicionado com sucesso!");
-      })
-      .catch((error) => console.log(error));
-  };
-  const deleteHabit = (id) => {
-    api
-      .delete(`/habits/${id}/`, config)
-      .then((response) => {
-        setCheckMove(!checkMove);
-        toast.success("Hábito removido com sucesso!");
-      })
-      .catch((error) => console.log(error));
-  };
-  const updatedHabit = (id, how_much_achieved) => {
-    api
-      .patch(
-        `/habits/${id}/`,
-        {
-          how_much_achieved:
-            how_much_achieved < 100
-              ? how_much_achieved + 5
-              : (how_much_achieved = 100),
-          achieved: how_much_achieved > 90 ? true : false,
-        },
-        config
-      )
-      .then((response) => {
-        setCheckMove(!checkMove);
-        toast.success("Hábito atualizado com sucesso!");
-      })
-      .catch((error) => console.log(error));
-  };
+    const createHabit = (data) => {
+        console.log(data, config);
+        api.post("/habits/", data, config)
+            .then((response) => {
+                setCheckMove(!checkMove);
+                toast.success("Hábito adicionado com sucesso!");
+            })
+            .catch((error) => console.log(error));
+    };
+    const deleteHabit = (id) => {
+        api.delete(`/habits/${id}/`, config)
+            .then((response) => {
+                setCheckMove(!checkMove);
+                toast.success("Hábito removido com sucesso!");
+            })
+            .catch((error) => console.log(error));
+    };
+    const updatedHabit = (id, how_much_achieved) => {
+        api.patch(
+            `/habits/${id}/`,
+            {
+                how_much_achieved:
+                    how_much_achieved < 100
+                        ? how_much_achieved + 5
+                        : (how_much_achieved = 100),
+                achieved: how_much_achieved > 90 ? true : false,
+            },
+            config
+        )
+            .then((response) => {
+                setCheckMove(!checkMove);
+                if (!response.data.achieved) {
+                    toast.success("Hábito atualizado com sucesso!");
+                } else {
+                    toast.error("Hábito já concluído!");
+                }
+            })
+            .catch((error) => console.log(error));
+    };
 
-  return (
-    <HabitsContext.Provider
-      value={{
-        habits,
-        oneHabit,
-        setHabits,
-        getHabits,
-        createHabit,
-        deleteHabit,
-        updatedHabit,
-        getOneHabit,
-        oneHabit,
-      }}
-    >
-      {children}
-    </HabitsContext.Provider>
-  );
+    return (
+        <HabitsContext.Provider
+            value={{
+                habits,
+                oneHabit,
+                setHabits,
+                getHabits,
+                createHabit,
+                deleteHabit,
+                updatedHabit,
+                getOneHabit,
+            }}
+        >
+            {children}
+        </HabitsContext.Provider>
+    );
 };

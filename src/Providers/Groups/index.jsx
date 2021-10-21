@@ -42,7 +42,7 @@ export const GroupsProvider = ({ children }) => {
 
   useEffect(() => {
     config.headers && getMyGroups();
-    config.headers && getGroups();
+    config.headers && getGroups(); // eslint-disable-next-line
   }, [checkMove, config, page]);
 
   const createGroup = (data) => {

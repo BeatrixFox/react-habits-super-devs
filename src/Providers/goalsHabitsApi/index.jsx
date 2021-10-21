@@ -60,6 +60,7 @@ export const GoalsHabitsApiProvider = ({ children }) => {
   };
 
   const getGoals = (groupId) => {
+    console.log(groupId)
     api
       .get(`/goals/?group=${groupId}`)
       .then((response) => {

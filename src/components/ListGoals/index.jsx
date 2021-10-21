@@ -11,7 +11,7 @@ const ListGoals = () => {
   );
 
   useEffect(() => {
-    getGoals(oneGroup.id);
+    getGoals(oneGroup.id); // eslint-disable-next-line
   }, [oneGroup.id, updateGoal, deleteGoal]);
 
   return (
