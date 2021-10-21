@@ -8,58 +8,65 @@ import Button from "./../../components/Button/index";
 import { Form, Section } from "./styles";
 
 const Login = () => {
-  const { userLogin, userId, authorized } = useContext(UserContext);
-  const history = useHistory();
+    const { userLogin, userId, authorized } = useContext(UserContext);
+    const history = useHistory();
 
-  const schema = yup.object().shape({
-    username: yup.string().required("Campo obrigatório"),
-    password: yup
-      .string()
-      .min(6, "Min. de 6 caracteres")
-      .required("Campo obrigatório"),
-  });
+    const schema = yup.object().shape({
+        username: yup.string().required("Campo obrigatório"),
+        password: yup
+            .string()
+            .min(6, "Min. de 6 caracteres")
+            .required("Campo obrigatório"),
+    });
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({ resolver: yupResolver(schema) });
 
-  const onSubmitForm = (userData) => {
-    userLogin(userData);
-  };
+    const onSubmitForm = (userData) => {
+        userLogin(userData);
+    };
 
-  const handleClickReturnSignup = () => {
-    history.push("/signup");
-  };
+    const handleClickReturnSignup = () => {
+        history.push("/signup");
+    };
 
-  if (authorized) {
-    history.push("/dashboard");
-  }
+    if (authorized) {
+        history.push("/dashboard");
+    }
 
-  return (
-    <>
-      <Form onSubmit={handleSubmit(onSubmitForm)}>
-        <div>
-          <input placeholder="Nome de usuário" {...register("username")} />
-          <p>{errors.username?.message}</p>
+    return (
+        <>
+            <Form onSubmit={handleSubmit(onSubmitForm)}>
+                <div>
+                    <input
+                        placeholder="Nome de usuário"
+                        {...register("username")}
+                    />
+                    <p>{errors.username?.message}</p>
 
-          <input placeholder="Senha" {...register("password")} />
-          <p>{errors.password?.message}</p>
-        </div>
+                    <input
+                        type="password"
+                        placeholder="Senha"
+                        {...register("password")}
+                    />
+                    <p>{errors.password?.message}</p>
+                </div>
 
-        <Button type="submit" title="Enviar"></Button>
-      </Form>
-      <Section>
-        <p>Não possui uma conta?</p>
-        <Button
-          handleClick={handleClickReturnSignup}
-          type="click"
-          title="Cadastre-se!"
-        />
-      </Section>
-    </>
-  );
+                <Button type="submit" title="Enviar"></Button>
+            </Form>
+            <Section>
+                <p>Não possui uma conta?</p>
+                <Button
+                    handleClick={handleClickReturnSignup}
+                    type="click"
+                    title="Cadastre-se!"
+                />
+            </Section>
+        </>
+    );
 };
 
 export default Login;
