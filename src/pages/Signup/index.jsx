@@ -49,19 +49,19 @@ const Signup = () => {
   return (
     <Container>
       <form onSubmit={handleSubmit(onSubmitForm)}>
-        <input placeholder="Nome de usuário" {...register("username")} />
+        <input placeholder="Nome de usuário*" {...register("username")} />
         <p>{errors.username?.message}</p>
 
-        <input placeholder="Email" {...register("email")} />
+        <input placeholder="Email*" {...register("email")} />
         <p>{errors.email?.message}</p>
 
-        <input placeholder="Confirmar email" {...register("emailConfirm")} />
+        <input placeholder="Confirmar email*" {...register("emailConfirm")} />
         <p>{errors.emailConfirm?.message}</p>
 
-        <input placeholder="Senha" {...register("password")} />
+        <input type='password' placeholder="Senha*" {...register("password")} />
         <p>{errors.password?.message}</p>
 
-        <input placeholder="Confirmar senha" {...register("passwordConfirm")} />
+        <input type='password' placeholder="Confirmar senha*" {...register("passwordConfirm")} />
         <p>{errors.passwordConfirm?.message}</p>
 
         <Button type="submit" title="Enviar" />

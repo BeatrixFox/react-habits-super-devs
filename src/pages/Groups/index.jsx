@@ -18,8 +18,10 @@ const Groups = () => {
     <>
       <Container>
         <ListGroup />
-        <NewGroup />
-        <FindGroup />
+        <section>
+          <NewGroup />
+          <FindGroup />
+        </section>
       </Container>
     </>
   );

@@ -5,42 +5,30 @@ export const HeaderDiv = styled.header`
   align-items: center;
   background-color: var(--background-header);
   width: 100%;
-  height: 20vh;
+  height: 22vh;
+  position: sticky;
 
   h1 {
-    color: var(--font-color-header);
-    font-family: sans-serif;
-    display: flex;
-    position: absolute;
-    left: 60%;
-    transform: translateX(-50%);
-    font-size: 3vw;
-
-    &:hover {
-      font-size: 4vw;
-      transition: all 0.5s;
-      text-align: right;
-    }
+    display: none;
   }
 
   a {
     text-decoration: none;
     color: var(--platinum);
+    font-size: small;
   }
 
-  div {
+  a.logoLink {
     position: relative;
-    align-self: flex-end;
+    display: flex;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10px;
   }
 
-  svg {
-    width: 80px;
-    height: 80px;
-    margin: 15px;
-    color: var(--platinum);
-    position: relative;
-    left: 0;
-    font-weight: 100;
+  a.logoLink img {
+    height: 90px;
+    margin: 0px ​0px 10px 15px;
 
     &:hover {
       color: var(--baby-blue-eyes);
@@ -48,24 +36,84 @@ export const HeaderDiv = styled.header`
     }
   }
 
-  @media only screen and (min-width: 800px) {
+  div {
+    position: absolute;
+    max-height: 30px;
+    display: flex;
+    flex-direction: row;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  div button {
+    margin: 0px 5px;
+    width: max-content;
+  }
+
+  @media only screen and (min-width: 450px) {
+    h1 {
+      color: var(--font-color-header);
+      font-family: sans-serif;
+      display: flex;
+      position: absolute;
+      left: 51%;
+      transform: translateX(-50%);
+      font-size: 26px;
+      width: min-content;
+      text-align: center;
+    }
+
+    a.logoLink {
+      left: 0;
+      transform: unset;
+      margin: 0 15px;
+    }
+
+    div {
+      left: auto;
+      transform: translateX(30px);
+    }
+
+    div button {
+      margin: 0 15px;
+    }
+  }
+
+  @media only screen and (min-width: 600px) {
+    h1 {
+      font-size: 32px;
+      width: max-content;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
     h1 {
       font-size: 40px;
-
-      &:hover {
-        font-size: 45px;
-        transition: all 0.5s;
-      }
     }
   }
 
   @media only screen and (min-width: 1000px) {
     h1 {
-      font-size: 50px;
+      font-size: 46px;
 
       &:hover {
         font-size: 55px;
         transition: all 0.5s;
+      }
+    }
+
+    a.logoLink img {
+      height: 100px;
+      margin-left: 15px;
+
+      &:hover {
+        transition: all 2s;
+        transform: rotateZ(360deg);
+
+        &::after {
+          transition: all 0.5s;
+        }
       }
     }
   }
@@ -92,7 +140,7 @@ export const ButtonHeader = styled.button`
 
     &::after {
       opacity: 1;
-      transition: all 0.5s;
+      transition: all 1.5s;
     }
   }
 `;
@@ -101,17 +149,33 @@ export const Logout = styled.button`
   cursor: pointer;
   position: absolute;
   right: 0;
-  margin: 20px;
+  top: 0;
+  margin: 15px;
   background-color: var(--background-header);
   border: none;
+  color: var(--platinum);
+
+  p {
+    text-align: center;
+    font-size: small;
+  }
 
   svg {
-    width: 35px;
-    height: 35px;
-
     &:hover {
       width: 45px;
       height: 45px;
     }
+  }
+
+  @media only screen and (min-width: 450px) {
+    svg {
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  @media only screen and (min-width: 600px) {
+    top: auto;
+    margin: 30px;
   }
 `;

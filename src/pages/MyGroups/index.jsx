@@ -21,7 +21,7 @@ export const MyGroups = () => {
     <>
       <Container>
         <ListGroup />
-        <FindGroup />
+        <FindGroup isMyGroups/>
       </Container>
     </>
   );
