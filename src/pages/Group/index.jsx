@@ -41,8 +41,8 @@ const Group = () => {
         <p>Aqui vai o componet metas</p>
         <div>
           <ListGoals />
-          {/* <AddGoals />
-          <FindGoals /> */}
+          <AddGoals groupId={oneGroup.id} />
+          {/* <FindGoals /> */}
         </div>
         <div>
           {!!oneGroup.activities && <ListActivity oneGroup={oneGroup} />}
