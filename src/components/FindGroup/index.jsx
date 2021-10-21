@@ -26,7 +26,7 @@ const style = {
 const FindGroup = () => {
   const [text, setText] = useState("");
   const { getOneGroup, groups, oneGroup } = useContext(GroupsContext);
-  const [ found, setFound ] = useState([])
+  const [found, setFound] = useState([]);
   //////////////////////////////////////////////////////modal
 
   const [open, setOpen] = useState(false);
@@ -38,12 +38,11 @@ const FindGroup = () => {
   const handlerClickFinding = (text) => {
     const oneTime = groups.filter((group) => group.name === text);
     // console.log(oneTime.id);
-    setFound(...found, oneTime)
-    console.log(groups)
-    console.log(oneTime)
+    setFound(...found, oneTime);
+    console.log(groups);
+    console.log(oneTime);
   };
 
-  console.log(oneGroup);
   return (
     <Container>
       <Button title="Procurar Grupo" handleClick={handleOpen} />
