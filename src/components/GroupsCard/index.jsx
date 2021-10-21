@@ -13,12 +13,10 @@ const GroupsCard = ({ group }) => {
   console.log(group);
   return (
     <Container>
-      <Div>
-        <p>{group.name}</p>
-        <span>Descrição: {group.description}</span>
-        <span>Categoria: {group.category}</span>
-        <button onClick={() => handleClick(group)}>Mais Detalhes</button>
-      </Div>
+      <p>{group.name}</p>
+      <span>Descrição: {group.description}</span>
+      <span>Categoria: {group.category}</span>
+      <button onClick={() => handleClick(group)}>Mais Detalhes</button>
     </Container>
   );
 };

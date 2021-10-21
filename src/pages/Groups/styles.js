@@ -11,9 +11,15 @@ export const Container = styled.div`
   width: 80vw;
   height: 80vh;
   margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 
   @media only screen and (min-width: 1100px) {
-    
-    width: 800px;
+    height: 100vh;
+    width: 90vw;
+    section {
+      margin: 50px 10px;
+    }
   }
 `;
