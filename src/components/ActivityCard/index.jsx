@@ -1,9 +1,7 @@
 import { Div, Container } from "./styles";
-import { useEffect, useState } from "react";
+import { useState, useContext } from "react";
 import { ActivitiesHabitsApiContext } from "../../Providers/activitiesHabitsApi";
-import { useContext } from "react";
-
-import { Modal, Box, Paper, TextField } from "@material-ui/core";
+import { Modal, Box, TextField } from "@material-ui/core";
 import Button from "../Button/index";
 
 const style = {

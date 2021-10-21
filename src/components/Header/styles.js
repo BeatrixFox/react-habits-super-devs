@@ -5,7 +5,7 @@ export const HeaderDiv = styled.header`
   align-items: center;
   background-color: var(--background-header);
   width: 100%;
-  height: 140px;
+  height: 20vh;
 
   h1 {
     color: var(--font-color-header);
@@ -14,10 +14,10 @@ export const HeaderDiv = styled.header`
     position: absolute;
     left: 60%;
     transform: translateX(-50%);
-    font-size: 4vw;
+    font-size: 3vw;
 
     &:hover {
-      font-size: 5vw;
+      font-size: 4vw;
       transition: all 0.5s;
       text-align: right;
     }

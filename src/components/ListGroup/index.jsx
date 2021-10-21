@@ -22,28 +22,6 @@ const ListGroup = () => {
     console.log(page);
   };
 
-  if (locationPath === "/my_groups") {
-    return (
-      <Container>
-        {myGroups.map((group) => (
-          <div key={group.id}>
-            <GroupsCard group={group} />
-          </div>
-        ))}
-        <Button
-          handleClick={handleClickBackPage}
-          type="click"
-          title="Pagina Anterior"
-        ></Button>
-        <Button
-          handleClick={handleClickNextPage}
-          type="click"
-          title="Pagina Posterior"
-        ></Button>
-      </Container>
-    );
-  }
-
   if (locationPath === "/groups") {
     return (
       <Container>
@@ -62,6 +40,16 @@ const ListGroup = () => {
           type="click"
           title="Pagina Posterior"
         ></Button>
+      </Container>
+    );
+  }
+  if (locationPath === "/my_groups") {
+    return (
+      <Container>
+        <div>Renderizou barra my groups</div>
+        {myGroups.map((group) => (
+          <GroupsCard key={group.id} item={group} />
+        ))}
       </Container>
     );
   }

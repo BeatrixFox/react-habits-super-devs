@@ -5,6 +5,7 @@ import { useHistory } from "react-router";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../Providers/User";
 import Button from "../../components/Button/index";
+import { Container } from "./styles";
 
 const Signup = () => {
   const history = useHistory();
@@ -51,7 +52,7 @@ const Signup = () => {
   }, [userSignupSuccess]);
 
   return (
-    <>
+    <Container>
       <form onSubmit={handleSubmit(onSubmitForm)}>
         <input placeholder="Nome de usuário" {...register("username")} />
         <p>{errors.username?.message}</p>
@@ -70,7 +71,7 @@ const Signup = () => {
 
         <Button type="submit" title="Enviar" />
       </form>
-    </>
+    </Container>
   );
 };
 
