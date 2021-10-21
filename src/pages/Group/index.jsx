@@ -18,12 +18,7 @@ const Group = () => {
   const { authorized } = useContext(UserContext);
   const { oneGroup, subscribeToGroup, unsubscribeToGroup } =
     useContext(GroupsContext);
-  const { groupedGoals } = useContext(GoalsHabitsApiContext);
-  //const activities = [...oneGroup.activities];
-  //TODO precisa trabalhar os params para usar :id
-  //const { oneGroup } = useContext(GroupsContext);
-
-  console.log(oneGroup);
+  const { goals } = useContext(GoalsHabitsApiContext);
 
   const handlerClickSubscribe = () => {
     subscribeToGroup(oneGroup.id);
@@ -45,17 +40,14 @@ const Group = () => {
         <p>{oneGroup.description}</p>
         <p>Aqui vai o componet metas</p>
         <div>
-          Listar Metas:
           <ListGoals />
-          <AddGoals />
+          {/* <AddGoals /> */}
+          {/* <FindGoals /> */}
         </div>
         <div>
-          <FindGoals />
-        </div>
-        <div>          
           {!!oneGroup.activities && <ListActivity oneGroup={oneGroup} />}
         </div>
-        <div>          
+        <div>
           {/* <FindActivity /> */}
           <AddActivity groupId={oneGroup.id} />
         </div>

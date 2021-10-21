@@ -10,9 +10,8 @@ export const GoalsHabitsApiProvider = ({ children }) => {
 
   const [goalCreated, setGoalCreated] = useState();
   const [goalUpdated, setGoalUpdated] = useState();
-  const [goalGot, setGoalGot] = useState();
-  const [groupedGoals, setGroupedGoals] = useState([]);
- 
+  const [goal, setGoal] = useState();
+  const [goals, setGoals] = useState([]);
 
   const createGoal = (title, difficulty, how_much_achieved, group) => {
     api
@@ -40,7 +39,7 @@ export const GoalsHabitsApiProvider = ({ children }) => {
         config
       )
       .then((response) => {
-        toast.success('Meta concluida com sucesso!')
+        toast.success("Meta concluida com sucesso!");
         // setGoalUpdated(response.data)
       })
       .catch((err) => console.log(err));
@@ -49,32 +48,31 @@ export const GoalsHabitsApiProvider = ({ children }) => {
   const deleteGoal = (goalId) => {
     api
       .delete(`/goals/${goalId}/`, config)
-      .then((response) => toast.success('Deletado com sucesso!'))
+      .then((response) => toast.success("Deletado com sucesso!"))
       .catch((err) => console.log(err));
   };
 
   const getOneGoal = (goalId) => {
     api
-      .get(`/goals/${goalId}/`)
-      .then((response) => setGoalGot(response.data))
+      .get(`/goals/${goalId}/`, config)
+      .then((response) => setGoal(response.data))
       .catch((err) => {
-        toast.error('Meta não encontrada')
-        console.log(err)});
+        toast.error("Meta não encontrada");
+        console.log(err);
+      });
   };
 
-  const getGroupGoals = (groupId, groupPage = 1) => {
+  const getGoals = (groupId) => {
     api
-      .get(`/goals/?group=${groupId}&page=${groupPage}`)
-      .then((response) => {        
-        setGroupedGoals(response.data.results)        
-      }
-        
-      )
+      .get(`/goals/?group=${groupId}`)
+      .then((response) => {
+        setGoals(response.data.results);
+      })
       .catch((err) => {
-        toast.error('Meta não encontrada')
-        console.log(err)});
+        //toast.error("Meta não encontrada");
+        console.log(err);
+      });
   };
-
 
   return (
     <GoalsHabitsApiContext.Provider
@@ -85,10 +83,10 @@ export const GoalsHabitsApiProvider = ({ children }) => {
         goalUpdated,
         deleteGoal,
         getOneGoal,
-        goalGot,
-        getGroupGoals,
-        groupedGoals,
-        setGoalGot
+        goal,
+        getGoals,
+        goals,
+        setGoal,
       }}
     >
       {children}

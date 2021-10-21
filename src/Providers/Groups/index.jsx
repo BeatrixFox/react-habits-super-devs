@@ -24,7 +24,7 @@ export const GroupsProvider = ({ children }) => {
       })
       .catch((error) => console.log("Erro: ", error));
   };
-  const getOneGroup = (id) => {
+  const getOneGroup = (id = 21) => {
     //não pede autenticação
     api
       .get(`/groups/${id}/`)
