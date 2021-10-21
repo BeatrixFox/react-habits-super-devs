@@ -5,7 +5,7 @@ export const HeaderDiv = styled.header`
   align-items: center;
   background-color: var(--background-header);
   width: 100%;
-  height: 20vh;
+  height: 22vh;
   position: sticky;
 
   h1 {
