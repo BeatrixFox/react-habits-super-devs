@@ -30,7 +30,7 @@ export const UserProvider = ({ children }) => {
         setSignupSuccess(response.data);
       })
       .catch((err) => {
-        toast.error(`erro ao criar --- ${err}`);
+        toast.error(`erro ao criar`);
       });
   };
 
@@ -38,11 +38,11 @@ export const UserProvider = ({ children }) => {
     api
       .post("/sessions/", userData)
       .then((response) => {
-        const { access } = response.data;        
-        toast.success('Login efetuado com sucesso!');
+        const { access } = response.data;
         localStorage.setItem("@Habit:access", JSON.stringify(access));
         setAccessToken(access);
         setAuthorized(true);
+        toast.success("Login efetuado com sucesso!");
       })
       .catch((err) => toast.error(`Falha! Senha ou email incorreto => ${err}`));
   };
@@ -61,21 +61,25 @@ export const UserProvider = ({ children }) => {
   }, [accessToken]);
 
   const userProfileUpdate = (newUser, userId) => {
-    api.patch(
-      `/users/${userId}/`,
-      {
-        username: newUser,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
+    api
+      .patch(
+        `/users/${userId}/`,
+        {
+          username: newUser,
         },
-      }
-    ).then((response) => 
-      toast.success(`Usuário alterado. Olá ${response.data.username}`)
-      ).catch((err) => {
-        console.log(err)
-        toast.error('Nome inválido')})
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      )
+      .then((response) =>
+        toast.success(`Usuário alterado. Olá ${response.data.username}`)
+      )
+      .catch((err) => {
+        console.log(err);
+        toast.error("Nome inválido");
+      });
   };
 
   return (

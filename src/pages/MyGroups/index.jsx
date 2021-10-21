@@ -5,7 +5,7 @@ import { useContext } from "react";
 import ListGroup from "../../components/ListGroup/index";
 import FindGroup from "../../components/FindGroup";
 
-const MyGroups = () => {
+export const MyGroups = () => {
   const { authorized } = useContext(UserContext);
 
   if (!authorized) {
@@ -16,7 +16,7 @@ const MyGroups = () => {
     <>
       <Container>
         <ListGroup />
-        <FindGroup />
+        <FindGroup isMyGroups />
       </Container>
     </>
   );

@@ -26,10 +26,10 @@ export const GroupsProvider = ({ children }) => {
     api
       .get(`/groups/${id}/`)
       .then((response) => {
+        toast.success("Grupo adicionado com sucesso!");
         setOneGroup(response.data);
       })
       .catch((error) => {
-        toast.error("Grupo não encontrado");
         console.log("Erro: ", error);
       });
   };
@@ -63,7 +63,7 @@ export const GroupsProvider = ({ children }) => {
       api
         .patch(`groups/${date.id}/`, date, config)
         .then((response) => {
-          console.log("Atualizado com sucesso!");
+          toast.success("Grupo atualizado com sucesso!");
         })
         .catch((error) => console.log(error));
     }

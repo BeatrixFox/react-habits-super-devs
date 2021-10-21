@@ -1,6 +1,7 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import api from "../../services/api";
 import { UserContext } from "../User";
+import { toast } from "react-toastify";
 
 export const HabitsContext = createContext([]);
 
@@ -46,6 +47,7 @@ export const HabitsProvider = ({ children }) => {
       .post("/habits/", data, config)
       .then((response) => {
         setCheckMove(!checkMove);
+        toast.success("Hábito adicionado com sucesso!");
       })
       .catch((error) => console.log(error));
   };
@@ -54,6 +56,7 @@ export const HabitsProvider = ({ children }) => {
       .delete(`/habits/${id}/`, config)
       .then((response) => {
         setCheckMove(!checkMove);
+        toast.success("Hábito removido com sucesso!");
       })
       .catch((error) => console.log(error));
   };
@@ -72,6 +75,7 @@ export const HabitsProvider = ({ children }) => {
       )
       .then((response) => {
         setCheckMove(!checkMove);
+        toast.success("Hábito atualizado com sucesso!");
       })
       .catch((error) => console.log(error));
   };

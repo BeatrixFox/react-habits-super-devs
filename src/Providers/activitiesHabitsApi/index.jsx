@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { toast } from "react-toastify";
 
 import api from "../../services/api";
 import { UserContext } from "../User";
@@ -24,7 +25,10 @@ export const ActivitiesHabitsApiProvider = ({ children }) => {
         },
         config
       )
-      .then((response) => setActivityCreated(response.data))
+      .then((response) => {
+        setActivityCreated(response.data);
+        toast.success("Atividade adicionada com sucesso!");
+      })
       .catch((err) => console.log(err));
   };
 
@@ -37,14 +41,17 @@ export const ActivitiesHabitsApiProvider = ({ children }) => {
         },
         config
       )
-      .then((response) => setUpdatedActivity(response.data))
+      .then((response) => {
+        toast.success("Atividade atualizada com sucesso!");
+        setUpdatedActivity(response.data);
+      })
       .catch((err) => console.log(err));
   };
 
   const deleteActivity = (activityId) => {
     api
       .delete(`/activities/${activityId}/`, config)
-      .then((response) => console.log("Deletado com sucesso!"))
+      .then((response) => toast.success("Atividade removida com sucesso!"))
       .catch((err) => console.log(err));
   };
 
