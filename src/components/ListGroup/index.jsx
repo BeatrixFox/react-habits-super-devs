@@ -27,7 +27,7 @@ const ListGroup = () => {
       <Container>
         {groups.map((group) => (
           <div key={group.id}>
-            <GroupsCard item={group} />
+            <GroupsCard group={group} />
           </div>
         ))}
         <Button
@@ -48,7 +48,7 @@ const ListGroup = () => {
       <Container>
         <div>Renderizou barra my groups</div>
         {myGroups.map((group) => (
-          <GroupsCard key={group.id} item={group} />
+          <GroupsCard key={group.id} group={group} />
         ))}
       </Container>
     );
