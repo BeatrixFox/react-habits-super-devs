@@ -42,14 +42,14 @@ const Login = () => {
             <Form onSubmit={handleSubmit(onSubmitForm)}>
                 <div>
                     <input
-                        placeholder="Nome de usuário"
+                        placeholder="Nome de usuário*"
                         {...register("username")}
                     />
                     <p>{errors.username?.message}</p>
 
                     <input
                         type="password"
-                        placeholder="Senha"
+                        placeholder="Senha*"
                         {...register("password")}
                     />
                     <p>{errors.password?.message}</p>
