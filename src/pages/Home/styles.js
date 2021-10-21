@@ -1,27 +1,60 @@
 import styled from "styled-components";
-import backgroundHome from "../../assets/img/homeImg.png";
 
 export const Section = styled.section`
-  background-image: url(${backgroundHome});
-  background-size: 45vw;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: 30% 95%;
-  opacity: 70%;
-  width: 100vw;
-  height: 80vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column-reverse;
 
-  @media only screen and (min-width: 800px) {
-    flex-direction: row;
-    justify-content: flex-end;
-    background-position: 60px 50%;
+  div.imgBox {
+    width: min-content;
+    position: absolute;
+    align-self: center;
+    bottom: 0;
   }
-  @media only screen and (min-width: 1024px) {
-    background-position: 60px 32px;
+
+  div.imgBox img {
+    height: 320px;
+  }
+
+  @media only screen and (min-width: 450px) {
+    div.imgBox img {
+      height: 360px;
+    }
+  }
+
+  @media only screen and (min-width: 600px) {
+    div.imgBox img {
+      height: 420px;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: center;
+
+    div.imgBox {
+      position: relative;
+      height: fit-content;
+      margin-top: 40px;
+    }
+    div.imgBox img {
+      height: 470px;
+    }
+  }
+
+  @media only screen and (min-width: 850px) {
+    div.imgBox img {
+      height: 520px;
+    }
+  }
+
+  @media only screen and (min-width: 1000px) {
+    div.imgBox {
+      margin-right: 60px;
+    }
+
+    div.imgBox img {
+      height: 650px;
+    }
   }
 `;
 
@@ -31,23 +64,29 @@ export const Div = styled.div`
   justify-content: space-around;
   position: relative;
   align-items: center;
-  height: 100px;
-  width: 300px;
+  margin-top: 25px;
 
-  @media only screen and (min-width: 400px) {
-  }
-  @media only screen and (min-width: 800px) {
-    height: 250px;
-    margin-right: 15%;
+  @media only screen and (min-width: 768px) {
+    display: flex;
+    align-self: center;
+    height: 175px;
+    width: 280px;
+
     & div.login {
       position: absolute;
-      right: 0;
       top: 0;
+      right: 0;
     }
+
     & div.signup {
       position: absolute;
+      bottom: 0;
       left: 0;
-      bottom: 35%;
     }
+  }
+
+  @media only screen and (min-width: 1000px) {
+    height: 200px;
+    width: 320px;
   }
 `;
