@@ -16,9 +16,6 @@ const Dashboard = () => {
   const handleClickHabits = () => {
     history.push("/habits");
   };
-  const handleClickUpdUser = () => {
-    console.log("handleClickUpdUser");
-  };
 
   if (!authorized) {
     return <Redirect to="/login" />;

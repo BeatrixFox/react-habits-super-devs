@@ -43,13 +43,8 @@ const Signup = () => {
   const onSubmitForm = ({ username, email, password }) => {
     const user = { username, email, password };
     userSignup(user);
+    history.push("/login");
   };
-
-  useEffect(() => {
-    if (userSignupSuccess) {
-      history.push("/login");
-    }
-  }, [userSignupSuccess]);
 
   return (
     <Container>

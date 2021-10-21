@@ -15,12 +15,9 @@ export const GroupsProvider = ({ children }) => {
   const [page, setPage] = useState(1);
 
   const getGroups = () => {
-    console.log(page);
-
     api
       .get(`/groups/?page=${page}`, config)
       .then((response) => {
-        console.log(page);
         setGroups(response.data.results);
       })
       .catch((error) => console.log("Erro: ", error));
@@ -51,7 +48,6 @@ export const GroupsProvider = ({ children }) => {
   }, [checkMove, config, page]);
 
   const createGroup = (data) => {
-    console.log(data);
     api
       .post("groups/", data, config)
       .then((response) => {

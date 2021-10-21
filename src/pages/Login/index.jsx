@@ -29,11 +29,9 @@ const Login = () => {
     userLogin(userData);
   };
 
-  //useEffect(() => {
-  //  if (userId) {
-  //    history.push("/dashboard");
-  //  }
-  //}, [userLogin]);
+  const handleClickReturnSignup = () => {
+    history.push("/signup");
+  };
 
   if (authorized) {
     history.push("/dashboard");
@@ -55,7 +53,7 @@ const Login = () => {
       <Section>
         <p>Não possui uma conta?</p>
         <Button
-          handleClick={() => history.push("/signup")}
+          handleClick={handleClickReturnSignup}
           type="click"
           title="Cadastre-se!"
         />

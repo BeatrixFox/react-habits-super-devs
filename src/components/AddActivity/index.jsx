@@ -6,9 +6,7 @@ import Button from "../Button/index";
 import { Container } from "./styles";
 import { useContext, useState } from "react";
 import { ActivitiesHabitsApiContext } from "../../Providers/activitiesHabitsApi";
-import { Modal, Box, Paper } from "@material-ui/core";
-
-// import context provider
+import { Modal, Box } from "@material-ui/core";
 
 const style = {
   position: "absolute",
@@ -54,9 +52,8 @@ export const AddActivity = ({ groupId }) => {
       `${year}-${month}-${day}T${hour}:${min}Z`,
       groupId
     );
-    setOpen(!open)
+    setOpen(!open);
     toast.success("Atividade adicionada com sucesso");
-    
   };
 
   return (
