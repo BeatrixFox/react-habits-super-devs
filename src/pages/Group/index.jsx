@@ -38,19 +38,16 @@ const Group = () => {
     <>
       <Container>
         <h1>{oneGroup.name}</h1>
-        <p>{oneGroup.description}</p>
-        <p>Aqui vai o componet metas</p>
+        <p>{oneGroup.description}</p>        
 
         <div>
           <ListGoals />
-          <AddGoals groupId={oneGroup.id} />
-          {/* <FindGoals /> */}
+          <AddGoals groupId={oneGroup.id} />          
         </div>
         <div>
           {!!oneGroup.activities && <ListActivity oneGroup={oneGroup} />}
         </div>
-        <div>
-          {/* <FindActivity /> */}
+        <div>          
           <AddActivity groupId={oneGroup.id} />
         </div>
 

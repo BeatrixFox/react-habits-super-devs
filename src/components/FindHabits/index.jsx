@@ -35,8 +35,7 @@ const FindHabits = () => {
     const teste = text;
     text = "";
     getOneHabit(teste);
-    //setText("");
-    //handleClose();
+   
   };
   return (
     <Container>
@@ -64,8 +63,7 @@ const FindHabits = () => {
             title="Procurar"
             handleClick={() => handleClickFinding(text)}
           />
-          <p>
-            CardHabit{" "}
+          <p>            
             {oneHabit.map((habit) => (
               <li key={habit.id}>
                 <HabitsCard item={habit} />

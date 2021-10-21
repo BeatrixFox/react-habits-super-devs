@@ -32,8 +32,7 @@ const GoalCard = ({ item }) => {
   };
 
   return (
-    <Container key={item.id}>
-      <span>{item.title}</span>
+    <Container key={item.id}>      
       <Div>
         <span>Título: {item.title}</span>
         <Button
