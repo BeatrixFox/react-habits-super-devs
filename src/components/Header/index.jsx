@@ -1,6 +1,7 @@
 import AssignmentTurnedInOutlinedIcon from "@mui/icons-material/AssignmentTurnedInOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import { UserContext } from "../../Providers/User";
+import { GroupsContext } from "../../Providers/Groups";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import { HeaderDiv, ButtonHeader, Logout } from "./styles";
@@ -9,6 +10,7 @@ import { useContext } from "react";
 function Header() {
   const history = useHistory();
   const { setAuthorized } = useContext(UserContext);
+  const { oneGroup } = useContext(GroupsContext);
 
   const handleLogout = () => {
     const confirmLogout = window.confirm("Deseja mesmo sair?");
@@ -40,8 +42,7 @@ function Header() {
       case "/groups":
         return "Grupos";
       case "/group":
-        //TODO aqui precisamos chamar o nome do grupo
-        return "Grupo Selecionado";
+        return `${oneGroup.name}`;
 
       default:
         break;

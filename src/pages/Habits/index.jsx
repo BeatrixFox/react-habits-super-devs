@@ -11,13 +11,6 @@ export const Habits = () => {
   const { authorized } = useContext(UserContext);
   const { habits, getHabits } = useContext(HabitsContext);
 
-  // console.log(habits);
-
-  const handleClickAddHabit = () => {
-    //Modal para add habits
-    console.log("handleClickAddHabit");
-  };
-
   if (!authorized) {
     return <Redirect to="/login" />;
   }
