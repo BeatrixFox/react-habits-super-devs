@@ -42,6 +42,7 @@ const AddGoals = ({ groupId }) => {
   };
 
   const {
+    reset,
     register,
     control,
     handleSubmit,
@@ -56,7 +57,8 @@ const AddGoals = ({ groupId }) => {
       group: groupId,
     };
     createGoal(data);
-    toast.success("Atividade adicionada com sucesso");
+    setOpen(!open);
+    reset();
   };
 
   return (

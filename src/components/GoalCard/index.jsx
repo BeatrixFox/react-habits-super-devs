@@ -23,7 +23,6 @@ const GoalCard = ({ item }) => {
   );
   //  console.log("goal no GoalCard", goal);
   const [showUpdate, setShowUpdate] = useState(false);
-  const [newGoalTitle, setNewGoalTitle] = useState("");
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
   const handleOpen = () => {
@@ -51,39 +50,9 @@ const GoalCard = ({ item }) => {
           <Box sx={style}>
             <p>Título: {item.title}</p>
             <p>Dificuldade: {item.difficulty}</p>
-            <p>Progresso: {item.how_much_achieved}</p>
-            <p>Estatus: {item.achieved}</p>
-
-            {!showUpdate ? (
-              <>
-                <Button
-                  title="Atualizar"
-                  handleClick={() => setShowUpdate(!showUpdate)}
-                />
-                <Button
-                  title="delete"
-                  handleClick={() => deleteGoal(item.id)}
-                />
-              </>
-            ) : (
-              <>
-                <TextField
-                  fullWidth
-                  variant="standard"
-                  label="Novo nome"
-                  value={newGoalTitle}
-                  onChange={(e) => setNewGoalTitle(e.target.value)}
-                />
-
-                <Button
-                  title="Enviar"
-                  handleClick={() => {
-                    setOpen(!open);
-                    updateGoal(newGoalTitle, item.id);
-                  }}
-                ></Button>
-              </>
-            )}
+            <p>Estatus: {item.achieved ? "Concluído" : "Não concluido"}</p>
+            <Button title="Atualizar" handleClick={() => updateGoal(item.id)} />
+            <Button title="delete" handleClick={() => deleteGoal(item.id)} />
           </Box>
         </Modal>
       </Div>
