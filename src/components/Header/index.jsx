@@ -6,6 +6,7 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import { HeaderDiv, ButtonHeader, Logout } from "./styles";
 import { useContext } from "react";
+import logoSuperDevs from "../../assets/img/logoSuperDevss.png";
 
 function Header() {
   const history = useHistory();
@@ -50,8 +51,8 @@ function Header() {
   };
   return (
     <HeaderDiv>
-      <Link to="/">
-        <AssignmentTurnedInOutlinedIcon />
+      <Link className="logoLink" to="/">
+        <img src={logoSuperDevs} alt="Logo SuperDev's" />
       </Link>
       <div>
         <ButtonHeader>
@@ -72,6 +73,7 @@ function Header() {
 
       <Logout onClick={handleLogout}>
         <LogoutOutlinedIcon />
+        <p>Sair</p>
       </Logout>
     </HeaderDiv>
   );
