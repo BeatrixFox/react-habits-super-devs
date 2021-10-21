@@ -38,8 +38,8 @@ export const UserProvider = ({ children }) => {
     api
       .post("/sessions/", userData)
       .then((response) => {
-        const { access } = response.data;
-        toast.success("Login efetuado com sucesso!");
+        const { access } = response.data;        
+        toast.success('Login efetuado com sucesso!');
         localStorage.setItem("@Habit:access", JSON.stringify(access));
         setAccessToken(access);
         setAuthorized(true);
@@ -71,7 +71,11 @@ export const UserProvider = ({ children }) => {
           Authorization: `Bearer ${accessToken}`,
         },
       }
-    );
+    ).then((response) => 
+      toast.success(`Usuário alterado. Olá ${response.data.username}`)
+      ).catch((err) => {
+        console.log(err)
+        toast.error('Nome inválido')})
   };
 
   return (
