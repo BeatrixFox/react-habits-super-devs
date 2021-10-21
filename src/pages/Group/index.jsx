@@ -12,7 +12,6 @@ import AddGoals from "../../components/AddGoals/index";
 import ListGoals from "../../components/ListGoals/index";
 import ListMembers from "../../components/ListMembers";
 import Button from "../../components/Button/index";
-import FindGroup from "../../components/FindGroup";
 
 const Group = () => {
   const history = useHistory();
