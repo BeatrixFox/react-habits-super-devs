@@ -13,14 +13,14 @@ export const GoalsHabitsApiProvider = ({ children }) => {
   const [goal, setGoal] = useState();
   const [goals, setGoals] = useState([]);
 
-  const createGoal = (title, difficulty, how_much_achieved, group) => {
+  const createGoal = (title, difficulty, group) => {
     api
       .post(
         "/goals/",
         {
           title: title,
           difficulty: difficulty,
-          how_much_achieved: how_much_achieved,
+          how_much_achieved: 0,
           group: group,
         },
         config
