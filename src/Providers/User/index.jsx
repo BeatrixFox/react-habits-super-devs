@@ -54,6 +54,9 @@ export const UserProvider = ({ children }) => {
       setUser(decoded);
       setUserId(decoded?.user_id);
       setAuthorized(true);
+      setConfig({
+        headers: { Authorization: `Bearer ${accessToken}` },
+      });
     }
   }, [accessToken]);
 

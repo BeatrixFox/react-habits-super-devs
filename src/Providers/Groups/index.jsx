@@ -1,4 +1,3 @@
-import { Category } from "@mui/icons-material";
 import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import api from "../../services/api";
@@ -16,11 +15,13 @@ export const GroupsProvider = ({ children }) => {
   const [page, setPage] = useState(1);
 
   const getGroups = () => {
-    console.log(page);
     //não pede autenticação .get("groups/", config)
     api
       .get(`/groups/?page=${page}`, config)
-      .then((response) => setGroups(response.data.results))
+      .then((response) => {
+        console.log(page);
+        setGroups(response.data.results);
+      })
       .catch((error) => console.log("Erro: ", error));
   };
   const getOneGroup = (id = 21) => {
@@ -42,8 +43,8 @@ export const GroupsProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    /*groups !== [] &&*/ getGroups();
-    /*myGroups !== [] &&*/ getMyGroups();
+    config.headers && getMyGroups();
+    config.headers && getGroups();
   }, [checkMove, config, page]);
 
   const createGroup = (data) => {

@@ -43,6 +43,7 @@ const FindGroup = () => {
     console.log(oneTime)
   };
 
+  console.log(oneGroup);
   return (
     <Container>
       <Button title="Procurar Grupo" handleClick={handleOpen} />

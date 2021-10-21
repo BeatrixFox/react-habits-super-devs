@@ -1,7 +1,7 @@
 import HomeImg from "../../assets/img/homeImg.png";
 import Button from "../../components/Button/index";
 import { Link, Redirect } from "react-router-dom";
-import { Section, Img, Div } from "./styles";
+import { Section, Div } from "./styles";
 import { useContext } from "react";
 import { UserContext } from "../../Providers/User";
 
@@ -14,12 +14,6 @@ const Home = () => {
 
   return (
     <Section>
-      <div>
-        <figure>
-          <Img src={HomeImg} alt="background" />
-        </figure>
-      </div>
-
       <Div>
         <div className="login">
           <Link to="/login">
