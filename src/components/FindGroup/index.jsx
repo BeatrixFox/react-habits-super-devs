@@ -73,13 +73,13 @@ const FindGroup = () => {
             handleClick={() => handlerClickFinding(text)}
           />
 
-          <p>
+          <ul>
             {found.map((group) => (
               <li key={group.id}>
                 <GroupsCard group={group} />
               </li>
             ))}
-          </p>
+          </ul>
         </Box>
       </Modal>
     </Container>

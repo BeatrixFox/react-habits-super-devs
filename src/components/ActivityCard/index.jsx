@@ -22,6 +22,7 @@ const AtivityCard = ({ item }) => {
     useContext(ActivitiesHabitsApiContext);
 
   const [showUpdate, setShowUpdate] = useState(false);
+  const [ activityDate, setActivitydate ] = useState({ year: '', month: '', day: ''})
   const [newActivityTitle, setNewActivityTitle] = useState("");
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
@@ -29,14 +30,17 @@ const AtivityCard = ({ item }) => {
     setOpen(true);
     setShowUpdate(false);
     getOneActivity(item.id);
-  };
 
+    setActivitydate({ year: oneActivity.realization_time?.slice(0,4) + ' ',
+                      month: oneActivity.realization_time?.slice(5,7) + '/',
+                      day: oneActivity.realization_time?.slice(8,10) + '/',
+    })
+  };
+  
   return (
-    <Container key={item.id}>
-      <span>{item.title}</span>
+    <Container key={item.id}>     
       <Div>
-        <span>Título: {item.title}</span>
-        <span>Prazo: {item.realization_time}</span>
+        <p>Título da Atividade: {item.title}</p>        
         <Button
           handleClick={handleOpen}
           type={"submit"}
@@ -51,7 +55,7 @@ const AtivityCard = ({ item }) => {
           <Box sx={style}>
             <p>ID: {oneActivity.id}</p>
             <p>Título: {oneActivity.title}</p>
-            <p>Tempo: {oneActivity.realization_time}</p>
+            <p>Tempo: {activityDate.day + activityDate.month + activityDate.year}</p>
             <p>ID do grupo: {oneActivity.group}</p>
 
             {!showUpdate ? (
