@@ -6,7 +6,7 @@ import { ActivitiesHabitsApiContext } from "../../Providers/activitiesHabitsApi"
 
 import { useContext } from "react";
 
-export const ListActivity = ({ oneGroup }) => {
+const ListActivity = ({ oneGroup }) => {
   const {
     groupActivities,
     getGroupActivities,

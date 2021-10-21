@@ -1,7 +1,7 @@
 import { Div, Container } from "./styles";
 import { useState, useContext } from "react";
 import { GoalsHabitsApiContext } from "../../Providers/goalsHabitsApi";
-import { Modal, Box, TextField } from "@material-ui/core";
+import { Modal, Box } from "@material-ui/core";
 import Button from "../Button/index";
 import AuxButton from "../AuxButton";
 
@@ -19,16 +19,14 @@ const style = {
 };
 
 const GoalCard = ({ item }) => {
-  const { getOneGoal, goal, updateGoal, deleteGoal } = useContext(
+  const { getOneGoal, updateGoal, deleteGoal } = useContext(
     GoalsHabitsApiContext
   );
-  //  console.log("goal no GoalCard", goal);
-  const [showUpdate, setShowUpdate] = useState(false);
+
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
   const handleOpen = () => {
     setOpen(true);
-    setShowUpdate(false);
     getOneGoal(item.id);
   };
 

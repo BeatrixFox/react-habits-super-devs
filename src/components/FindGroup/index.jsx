@@ -1,5 +1,5 @@
 import Button from "../Button";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Container } from "./styles";
 import { GroupsContext } from "../../Providers/Groups";
 import { Modal, TextField, Box } from "@material-ui/core";
@@ -27,18 +27,16 @@ const FindGroup = ({ isMyGroups }) => {
   const [groupToSearch, setGroupToSearch] = useState("");
   const { groups, myGroups } = useContext(GroupsContext);
   const [found, setFound] = useState([]);
-  //////////////////////////////////////////////////////modal
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  //////////////////////////////////////////////////////endModal
-
   const handlerClickFinding = (groupToSearch) => {
     let search = "";
     isMyGroups ? (search = myGroups) : (search = groups);
     const oneTime = search.filter((group) => group.name === groupToSearch);
+
     setFound(oneTime);
     setGroupToSearch("");
   };

@@ -1,4 +1,3 @@
-import AssignmentTurnedInOutlinedIcon from "@mui/icons-material/AssignmentTurnedInOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import { UserContext } from "../../Providers/User";
 import { GroupsContext } from "../../Providers/Groups";
@@ -24,7 +23,6 @@ function Header() {
   };
 
   const locate = useLocation();
-  console.log(locate.pathname);
 
   const titleMessage = () => {
     switch (locate.pathname) {

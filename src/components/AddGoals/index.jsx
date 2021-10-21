@@ -6,7 +6,6 @@ import Select from "react-select";
 import { GoalsHabitsApiContext } from "../../Providers/goalsHabitsApi";
 import Button from "../Button/index";
 import { Container } from "./styles";
-import { toast } from "react-toastify";
 import { Modal, Box, TextField } from "@material-ui/core";
 
 const style = {

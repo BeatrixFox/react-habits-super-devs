@@ -2,11 +2,7 @@ import { useContext } from "react";
 import { BtnNavegation, Container, SectionBtn } from "./styles";
 import { GroupsContext } from "../../Providers/Groups/index";
 import GroupsCard from "../../components/GroupsCard/index";
-
 import { useLocation } from "react-router-dom";
-import FindGoals from "../FindGoals";
-
-import Button from "../Button/index";
 
 const ListGroup = () => {
   const location = useLocation();
@@ -15,11 +11,9 @@ const ListGroup = () => {
 
   const handleClickNextPage = () => {
     setPage(page + 1);
-    console.log(page);
   };
   const handleClickBackPage = () => {
     page > 1 ? setPage(page - 1) : setPage(page);
-    console.log(page);
   };
 
   if (locationPath === "/groups") {
