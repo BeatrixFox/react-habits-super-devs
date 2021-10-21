@@ -7,11 +7,7 @@ import ListGroup from "../../components/ListGroup/index";
 import FindGroup from "../../components/FindGroup";
 
 export const MyGroups = () => {
-  const { authorized } = useContext(UserContext);
-
-  const handleClickSearch = () => {
-    console.log("handleClickSearch");
-  };
+  const { authorized } = useContext(UserContext);  
 
   if (!authorized) {
     return <Redirect to="/login" />;

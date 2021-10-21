@@ -40,7 +40,7 @@ const FindGroup = ({ isMyGroups }) => {
         isMyGroups ? (search = myGroups) : (search = groups);
         const oneTime = search
             .filter((group) => group.name === groupToSearch)
-            // .map((group) => group);
+            
         setFound(oneTime);
         setGroupToSearch("");
     };

@@ -9,8 +9,7 @@ const GroupsCard = ({ group }) => {
   const handleClick = (group) => {
     getOneGroup(group.id);
     history.push("/group");
-  };
-  console.log(group);
+  }; 
   return (
     <Container>
       <p>{group.name}</p>
