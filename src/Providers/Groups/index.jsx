@@ -26,7 +26,6 @@ export const GroupsProvider = ({ children }) => {
     api
       .get(`/groups/${id}/`)
       .then((response) => {
-        toast.success("Grupo adicionado com sucesso!");
         setOneGroup(response.data);
       })
       .catch((error) => {
