@@ -23,12 +23,12 @@ export const GoalsHabitsApiProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const updateGoal = (newTitle, goalId) => {
+  const updateGoal = (goalId) => {
     api
       .patch(
         `/goals/${goalId}/`,
         {
-          title: newTitle,
+          achieved: true,
         },
         config
       )
