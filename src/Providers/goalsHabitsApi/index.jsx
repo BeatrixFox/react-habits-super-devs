@@ -46,6 +46,7 @@ export const GoalsHabitsApiProvider = ({ children }) => {
   };
 
   const getOneGoal = (goalId) => {
+    console.log("goalId providerssssssssssssssssssssssssssssssss", goalId);
     api
       .get(`/goals/${goalId}/`, config)
       .then((response) => setGoal(response.data))
