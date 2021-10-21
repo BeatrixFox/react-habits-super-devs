@@ -10,13 +10,6 @@ import NewGroup from "../../components/NewGroup";
 const Groups = () => {
   const { authorized } = useContext(UserContext);
 
-  const handleClickAddGroup = () => {
-    console.log("handleClickAddGroup");
-  };
-  const handleClickSearch = () => {
-    console.log("handleClickSearch");
-  };
-
   if (!authorized) {
     return <Redirect to="/login" />;
   }
@@ -27,7 +20,6 @@ const Groups = () => {
         <ListGroup />
         <NewGroup />
         <FindGroup />
-        {/* <Button handleClick={handleClickSearch} type="click" title="Procurar" /> */}
       </Container>
     </>
   );

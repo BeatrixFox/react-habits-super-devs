@@ -1,4 +1,3 @@
-import HomeImg from "../../assets/img/homeImg.png";
 import Button from "../../components/Button/index";
 import { Link, Redirect } from "react-router-dom";
 import { Section, Div } from "./styles";

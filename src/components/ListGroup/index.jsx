@@ -46,7 +46,6 @@ const ListGroup = () => {
   if (locationPath === "/my_groups") {
     return (
       <Container>
-        <div>Renderizou barra my groups</div>
         {myGroups.map((group) => (
           <GroupsCard key={group.id} group={group} />
         ))}

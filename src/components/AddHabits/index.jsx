@@ -6,7 +6,7 @@ import Button from "../Button";
 import { useContext, useState } from "react";
 import { HabitsContext } from "../../Providers/Habits";
 import { UserContext } from "../../Providers/User";
-import { Modal, Box, Paper } from "@material-ui/core";
+import { Modal, Box } from "@material-ui/core";
 import { Input, Form } from "./styles";
 
 const style = {
@@ -50,13 +50,9 @@ const optionsFrequency = [
 ];
 
 export const AddHabits = () => {
-
-
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-
 
   const { createHabit } = useContext(HabitsContext);
   const { userId } = useContext(UserContext);
