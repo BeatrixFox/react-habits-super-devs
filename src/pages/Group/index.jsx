@@ -40,9 +40,7 @@ const Group = () => {
         <h1>{oneGroup.name}</h1>
         <p>{oneGroup.description}</p>
         <p>Aqui vai o componet metas</p>
-        <div>
-          <FindGroup />
-        </div>
+
         <div>
           <ListGoals />
           <AddGoals groupId={oneGroup.id} />

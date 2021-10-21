@@ -31,17 +31,13 @@ const UpdateUserProfile = () => {
   const [newUserName, setNewUserName] = useState("");
   const [decoded, setDecoded] = useState({});
 
-  //const [access] = useState(
-  //  JSON.parse(localStorage.getItem("@Habit:access")) || ""
-  //);
-
   useEffect(() => {
     setDecoded(jwtDecode(accessToken));
   }, [accessToken]);
 
   return (
     <div>
-      <Button title="Ataulizar Cadastro" handleClick={handleOpen}></Button>
+      <Button title="Atualizar Cadastro" handleClick={handleOpen}></Button>
 
       <Modal
         open={open}
