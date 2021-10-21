@@ -44,7 +44,7 @@ export const AddActivity = ({ groupId }) => {
   const onSubmitForm = (userData) => {
     const data = new Date();
     let day = data.getDate();
-    let month = data.getMonth();
+    let month = data.getMonth() + 1;
     let hour = data.getHours();
     let year = data.getFullYear();
     let min = data.getMinutes();
@@ -54,8 +54,9 @@ export const AddActivity = ({ groupId }) => {
       `${year}-${month}-${day}T${hour}:${min}Z`,
       groupId
     );
-
+    setOpen(!open)
     toast.success("Atividade adicionada com sucesso");
+    
   };
 
   return (
