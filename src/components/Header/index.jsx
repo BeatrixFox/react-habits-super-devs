@@ -24,7 +24,6 @@ function Header() {
   };
 
   const locate = useLocation();
-  console.log(locate.pathname);
 
   const titleMessage = () => {
     switch (locate.pathname) {

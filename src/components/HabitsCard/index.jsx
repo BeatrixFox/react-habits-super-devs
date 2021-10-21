@@ -10,7 +10,6 @@ export const HabitsCard = ({ item }) => {
 
   const handleClickUpdate = (id, how_much_achieved) => {
     updatedHabit(id, how_much_achieved);
-    console.log(id, how_much_achieved);
   };
 
   const handleClickDelete = (id) => {

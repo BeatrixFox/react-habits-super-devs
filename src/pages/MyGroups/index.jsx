@@ -9,10 +9,6 @@ import FindGroup from "../../components/FindGroup";
 export const MyGroups = () => {
   const { authorized } = useContext(UserContext);
 
-  const handleClickSearch = () => {
-    console.log("handleClickSearch");
-  };
-
   if (!authorized) {
     return <Redirect to="/login" />;
   }
@@ -21,7 +17,7 @@ export const MyGroups = () => {
     <>
       <Container>
         <ListGroup />
-        <FindGroup isMyGroups/>
+        <FindGroup isMyGroups />
       </Container>
     </>
   );

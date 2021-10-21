@@ -33,9 +33,9 @@ export const HabitsProvider = ({ children }) => {
           });
         setOneHabit(search);
       })
-      .catch((error) => console.log("Erro: ", error));
+      .catch((error) => ("Erro: ", error));
   };
-  console.log("oneHabit no provider: ", oneHabit);
+
   useEffect(() => {
     getHabits();
   }, [checkMove, config]);
@@ -71,7 +71,6 @@ export const HabitsProvider = ({ children }) => {
         config
       )
       .then((response) => {
-        console.log(response);
         setCheckMove(!checkMove);
       })
       .catch((error) => console.log(error));

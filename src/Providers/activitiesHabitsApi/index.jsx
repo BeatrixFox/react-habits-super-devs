@@ -25,7 +25,7 @@ export const ActivitiesHabitsApiProvider = ({ children }) => {
         config
       )
       .then((response) => setActivityCreated(response.data))
-      .catch((err) => console.log(err));      
+      .catch((err) => console.log(err));
   };
 
   const updateActivity = (newTitle, activityId) => {
@@ -44,7 +44,7 @@ export const ActivitiesHabitsApiProvider = ({ children }) => {
   const deleteActivity = (activityId) => {
     api
       .delete(`/activities/${activityId}/`, config)
-      .then((response) => console.log("ok"))
+      .then((response) => console.log("Deletado com sucesso!"))
       .catch((err) => console.log(err));
   };
 

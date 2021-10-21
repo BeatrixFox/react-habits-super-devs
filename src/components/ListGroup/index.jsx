@@ -15,11 +15,9 @@ const ListGroup = () => {
 
   const handleClickNextPage = () => {
     setPage(page + 1);
-    console.log(page);
   };
   const handleClickBackPage = () => {
     page > 1 ? setPage(page - 1) : setPage(page);
-    console.log(page);
   };
 
   if (locationPath === "/groups") {

@@ -21,7 +21,7 @@ const GoalCard = ({ item }) => {
   const { getOneGoal, goal, updateGoal, deleteGoal } = useContext(
     GoalsHabitsApiContext
   );
-  //  console.log("goal no GoalCard", goal);
+
   const [showUpdate, setShowUpdate] = useState(false);
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
