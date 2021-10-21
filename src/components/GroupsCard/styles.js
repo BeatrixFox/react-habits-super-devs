@@ -14,7 +14,6 @@ export const Container = styled.div`
   background: var(--baby-blue-eyes);
   height: 150px;
   & p {
-    text-transform: uppercase;
     padding: 10px;
     height: 60px;
     text-align: center;
