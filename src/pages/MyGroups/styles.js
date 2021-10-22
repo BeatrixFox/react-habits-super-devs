@@ -12,4 +12,7 @@ export const Container = styled.div`
   opacity: 70%;
   width: 95vw;
   height: 80vh;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 `;
