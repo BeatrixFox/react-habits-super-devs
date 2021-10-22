@@ -32,7 +32,7 @@ const Group = () => {
   return (
     <>
       <Container>
-        <h1>{oneGroup.name}</h1>
+        <h1>Descrição do grupo</h1>
         <p>{oneGroup.description}</p>
 
         <div>
