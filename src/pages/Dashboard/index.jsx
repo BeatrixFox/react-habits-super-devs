@@ -7,7 +7,7 @@ import { UserContext } from "../../Providers/User";
 import UpdateUserProfile from "../../components/UpdateUserProfile/index";
 
 const Dashboard = () => {
-  const { authorized } = useContext(UserContext);
+  const { authorized, actualUser } = useContext(UserContext);
   const history = useHistory();
 
   const handleClickMyGroups = () => {
@@ -26,8 +26,8 @@ const Dashboard = () => {
       <div className="userInfo">
         <h2>Bem vindo!</h2>
         <h4>Seus dados:</h4>
-        <p>Nome: ARRUMAR ESSA PARADA</p>
-        <p>Email:</p>
+        <p>Nome: {actualUser.name}</p>
+        <p>Email: {actualUser.email}:</p>
       </div>
 
       <div className="menuContainer">
