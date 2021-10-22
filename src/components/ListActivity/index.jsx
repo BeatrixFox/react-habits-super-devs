@@ -15,7 +15,7 @@ const ListActivity = ({ oneGroup }) => {
   } = useContext(ActivitiesHabitsApiContext);
 
   useEffect(() => {
-    getGroupActivities(oneGroup.id);
+    getGroupActivities(oneGroup.id); // eslint-disable-next-line
   }, [oneGroup.id, updateActivity, deleteActivity]);
 
   return (

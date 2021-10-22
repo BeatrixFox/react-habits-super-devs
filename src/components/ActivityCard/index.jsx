@@ -45,6 +45,13 @@ const AtivityCard = ({ item }) => {
     });
   }, [getOneActivity]);
 
+    useEffect(() => {
+        setActivitydate({
+            year: oneActivity.realization_time?.slice(0, 4) || "",
+            month: oneActivity.realization_time?.slice(5, 7) + "/" || "",
+            day: oneActivity.realization_time?.slice(8, 10) + "/" || "",
+        }); // eslint-disable-next-line
+    }, [getOneActivity]);
   return (
     <Container key={item.id}>
       <Div>
