@@ -26,7 +26,6 @@ export const GroupsProvider = ({ children }) => {
     api
       .get(`/groups/${id}/`)
       .then((response) => {
-        toast.success("Grupo adicionado com sucesso!");
         setOneGroup(response.data);
       })
       .catch((error) => {
@@ -43,7 +42,7 @@ export const GroupsProvider = ({ children }) => {
 
   useEffect(() => {
     config.headers && getMyGroups();
-    config.headers && getGroups();
+    config.headers && getGroups(); // eslint-disable-next-line
   }, [checkMove, config, page]);
 
   const createGroup = (data) => {

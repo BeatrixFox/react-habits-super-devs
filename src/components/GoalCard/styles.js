@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-export const Div = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  margin: 10px;
+  padding: 10px;
   border: 1px black solid;
-`;
-
-export const Container = styled.div`
-  border: 1px black solid;
+  border-radius: 20px;
+  background: var(--st-patricks-blue);
 `;

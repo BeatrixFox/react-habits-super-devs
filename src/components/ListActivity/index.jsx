@@ -1,4 +1,4 @@
-import { Container, Div } from "./styles";
+import { Container, Content } from "./styles";
 import AtivityCard from "../ActivityCard/index";
 import { useEffect } from "react";
 
@@ -15,16 +15,19 @@ const ListActivity = ({ oneGroup }) => {
   } = useContext(ActivitiesHabitsApiContext);
 
   useEffect(() => {
-    getGroupActivities(oneGroup.id);
+    getGroupActivities(oneGroup.id); // eslint-disable-next-line
   }, [oneGroup.id, updateActivity, deleteActivity]);
 
   return (
     <Container>
-      {groupActivities?.map((activity) => (
-        <li key={activity.id}>
-          <AtivityCard item={activity} />
-        </li>
-      ))}
+      <h4>Atividades</h4>
+      <Content>
+        {groupActivities?.map((activity) => (
+          <li key={activity.id}>
+            <AtivityCard item={activity} />
+          </li>
+        ))}
+      </Content>
     </Container>
   );
 };
