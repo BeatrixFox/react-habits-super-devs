@@ -8,6 +8,13 @@ export const Container = styled.div`
   background-attachment: fixed;
   background-position: center;
   opacity: 70%;
-  width: 80vw;
-  height: 80vh;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  @media (min-width: 1000px) {
+  }
 `;

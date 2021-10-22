@@ -1,21 +1,44 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  border: 2px solid black;
-  width: 300px;
+export const Container = styled.section`
+  background: var(--little-boy-blue);
+  border-radius: 20px;
+  width: 90%;
+  margin: 10px auto;
   h4 {
-    border-bottom: 2px solid black;
+    padding: 10px;
+    font-size: 30px;
+    text-align: center;
     background: var(--fire-opal);
-    color: black;
+    border-radius: 20px 20px 0 0;
   }
-  ul {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+  @media (min-width: 900px) {
+    width: 600px;
+  }
+`;
+
+export const Content = styled.ul`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  margin: 10px auto;
+
+  li {
+    color: var(--platinum);
+    p {
+      font-size: 15px;
+      padding: 10px;
+    }
+  }
+  @media (min-width: 600px) {
+    flex-direction: row;
     flex-wrap: wrap;
     li {
-      text-align: left;
-      width: 100%;
+      width: 50%;
     }
+  }
+  @media (min-width: 900px) {
+    width: 500px;
   }
 `;
