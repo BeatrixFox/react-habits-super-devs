@@ -12,6 +12,7 @@ export const UserProvider = ({ children }) => {
     const [authorized, setAuthorized] = useState(false);
     const [config, setConfig] = useState({});
     const [actualUser, setActualUser] = useState({});
+    const [ checkMove, setCheckMove ] = useState(false)
 
     const [accessToken, setAccessToken] = useState(
         JSON.parse(localStorage.getItem("@Habit:access")) || ""
@@ -73,7 +74,7 @@ export const UserProvider = ({ children }) => {
             });
             getUsers(decoded?.user_id)
         }
-    }, [accessToken]);
+    }, [accessToken, checkMove]);
 
     const userProfileUpdate = (newUser, userId) => {
         api.patch(
@@ -88,7 +89,9 @@ export const UserProvider = ({ children }) => {
             }
         )
             .then((response) =>
-                toast.success(`Usuário alterado. Olá ${response.data.username}`)
+                {
+                    setCheckMove(!checkMove)
+                    toast.success(`Usuário alterado. Olá ${response.data.username}`)}
             )
             .catch((err) => {
                 console.log(err);

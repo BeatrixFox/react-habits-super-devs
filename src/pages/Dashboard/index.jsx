@@ -27,7 +27,7 @@ const Dashboard = () => {
         <h2>Bem vindo!</h2>
         <h4>Seus dados:</h4>
         <p>Nome: {actualUser.name}</p>
-        <p>Email: {actualUser.email}:</p>
+        <p>Email: {actualUser.email}</p>
       </div>
 
       <div className="menuContainer">
