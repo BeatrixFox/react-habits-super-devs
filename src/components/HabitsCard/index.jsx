@@ -1,5 +1,5 @@
 import { Div, Container } from "./styles";
-import Button from "../Button/index";
+import AuxButton from "../AuxButton/index";
 
 import { useContext } from "react";
 import { HabitsContext } from "../../Providers/Habits";
@@ -17,24 +17,24 @@ const HabitsCard = ({ item }) => {
 
   return (
     <Container>
-      <span>{item.title}</span>
-      <Div>
-        <span>Categoria: {item.category}</span>
-        <span>Dificuldade: {item.difficulty}</span>
-        <span>Frequência: {item.frequency}</span>
-        <span>Status: {item.achieved ? "Concluído" : "Em progresso"}</span>
-        <span>Progresso: {item.how_much_achieved}</span>
-        <Button
+      <p>{item.title}</p>
+      <span>Categoria: {item.category}</span>
+      <span>Dificuldade: {item.difficulty}</span>
+      <span>Frequência: {item.frequency}</span>
+      <span>Status: {item.achieved ? "Concluído" : "Em progresso"}</span>
+      <span>Progresso: {item.how_much_achieved}</span>
+      <div className="buttons">
+        <AuxButton
           handleClick={() => handleClickUpdate(item.id, item.how_much_achieved)}
           type="click"
-          title="Atualizar"
+          title="UPD"
         />
-        <Button
+        <AuxButton
           handleClick={() => handleClickDelete(item.id)}
           type="click"
-          title="Deletar"
+          title="DEL"
         />
-      </Div>
+      </div>
     </Container>
   );
 };

@@ -16,9 +16,11 @@ const Habits = () => {
   return (
     <>
       <Container>
-        <FindHabits />
         <ListHabits />
-        <AddHabits />
+        <section>
+          <FindHabits />
+          <AddHabits />
+        </section>
       </Container>
     </>
   );
