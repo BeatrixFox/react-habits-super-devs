@@ -17,8 +17,10 @@ const Habits = () => {
     <>
       <Container>
         <ListHabits />
-        <FindHabits />
-        <AddHabits />
+        <section>
+          <FindHabits />
+          <AddHabits />
+        </section>
       </Container>
     </>
   );

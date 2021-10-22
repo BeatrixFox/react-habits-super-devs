@@ -17,24 +17,24 @@ const HabitsCard = ({ item }) => {
 
   return (
     <Container>
-      <span>{item.title}</span>
-      <Div>
-        <span>Categoria: {item.category}</span>
-        <span>Dificuldade: {item.difficulty}</span>
-        <span>Frequência: {item.frequency}</span>
-        <span>Status: {item.achieved ? "Concluído" : "Em progresso"}</span>
-        <span>Progresso: {item.how_much_achieved}</span>
+      <p>{item.title}</p>
+      <span>Categoria: {item.category}</span>
+      <span>Dificuldade: {item.difficulty}</span>
+      <span>Frequência: {item.frequency}</span>
+      <span>Status: {item.achieved ? "Concluído" : "Em progresso"}</span>
+      <span>Progresso: {item.how_much_achieved}</span>
+      <div className="buttons">
         <AuxButton
           handleClick={() => handleClickUpdate(item.id, item.how_much_achieved)}
           type="click"
-          title="Atualizar"
+          title="UPD"
         />
         <AuxButton
           handleClick={() => handleClickDelete(item.id)}
           type="click"
-          title="Deletar"
+          title="DEL"
         />
-      </Div>
+      </div>
     </Container>
   );
 };

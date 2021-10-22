@@ -12,7 +12,8 @@ export const Container = styled.div`
   margin: 10px auto;
   border-radius: 20px;
   background: var(--baby-blue-eyes);
-  height: 150px;
+  height: 250px;
+
   & p {
     padding: 10px;
     height: 60px;
@@ -33,7 +34,18 @@ export const Container = styled.div`
   & button {
     height: 30px;
     font-size: 15px;
-    border-radius: 0px 0px 20px 20px;
+    border-radius: 20px;
+    margin: 10px 20px;
+  }
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  @media (min-width: 425px) {
+    .buttons {
+      justify-content: center;
+    }
   }
   @media (min-width: 800px) {
     width: 205px;
