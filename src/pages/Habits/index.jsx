@@ -16,8 +16,8 @@ const Habits = () => {
   return (
     <>
       <Container>
-        <FindHabits />
         <ListHabits />
+        <FindHabits />
         <AddHabits />
       </Container>
     </>
