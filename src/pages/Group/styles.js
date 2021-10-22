@@ -15,6 +15,12 @@ export const Container = styled.div`
   align-items: center;
   align-content: center;
   text-align: center;
+  h1 {
+    margin-top: 10px;
+  }
+  p {
+    font-size: 2rem;
+  }
   @media (min-width: 1000px) {
   }
 `;
